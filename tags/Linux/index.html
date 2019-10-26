@@ -451,6 +451,139 @@
                 <span class="level-item has-text-grey">
                     
                     
+                    6분 읽기 (나에 대하여 875 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
+            
+                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/%ED%8C%8C%EC%9D%BC%EC%B2%98%EB%A6%AC/">리눅스 파일처리 커맨드</a>
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>파일들을 조회하고, 지우고, 잘라내고, 복사하고, 바로가기를 만든다</p>
+</blockquote>
+<h2 id="ls-List"><a href="#ls-List" class="headerlink" title="ls - List"></a>ls - List</h2><ul>
+<li><em>ls -a</em> 숨김파일 포함해 전체 출력.</li>
+<li><em>ls -A</em> -a 와 동일하되 .와 ..를 제외하고 출력.</li>
+<li><em>ls -l</em> 리스트 형태로 출력.<ul>
+<li><em>ls -l (기본값)</em> 기본적으로 최종 수정시간을 표시한다 (<strong>M</strong>odified)</li>
+<li><em>ls -lc</em> -l 옵션에서 시간을 최종 변경시간으로 표시 (<strong>C</strong>hanged)</li>
+<li><em>ls -lu</em> -l 옵션에서 시간을 최종 접근시간으로 표시 (<strong>A</strong>ccess)</li>
+</ul>
+</li>
+<li><em>ls -h</em> 파일크기를 KB, GB, MB 단위로 알아보기 쉽게 출력. (<strong>H</strong>uman)</li>
+</ul>
+<h3 id="ls-정렬-관련-옵션"><a href="#ls-정렬-관련-옵션" class="headerlink" title="ls - 정렬 관련 옵션"></a>ls - 정렬 관련 옵션</h3><ul>
+<li><em>ls -t</em> 시간순으로 정렬<ul>
+<li><em>ls -<strong>c</strong>t</em> 파일을 최종 변경시간 기준으로 정렬 (<strong>C</strong>hanged Time)</li>
+<li><em>ls <strong>-t</strong> (기본값)</em> 파일을 최종 수정시간 기준으로 정렬 (<strong>M</strong>odified Time)</li>
+<li><em>ls -*</em>ut<strong>* 파일을 최종 접근 시간 기준으로 정렬 (</strong>A**ccess Time)</li>
+</ul>
+</li>
+<li><em>ls -S</em> 파일 크기 순서대로 정렬</li>
+<li><em>ls -r</em> 역순으로 정렬</li>
+</ul>
+<h3 id="ls-시간-표기방법-변경"><a href="#ls-시간-표기방법-변경" class="headerlink" title="ls - 시간 표기방법 변경"></a>ls - 시간 표기방법 변경</h3><ul>
+<li><em>ls -lh *</em>–time-style=long-iso***<ul>
+<li>2019-08-02 와 같은 형태로 출력.</li>
+</ul>
+</li>
+<li><em>ls -lh *</em>–time-style=’+%y/%m/%d %H:%M’***<ul>
+<li>19/08/02 23:31 와 같은 형태로 출력.</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://bityoungjae.com/images/imgs/ls.gif" alt="ls 예시"></p>
+<h2 id="rm-Remove"><a href="#rm-Remove" class="headerlink" title="rm - Remove"></a>rm - Remove</h2><ul>
+<li><em>rm -r</em> 디렉토리 삭제. (<strong>R</strong>ecursive, 반복되는, <em>재귀적인</em>)<br>(<strong>I</strong>nteractive, <em>반응형</em>)</li>
+<li><em>rm \</em>.c* c 확장자 파일 다 삭제</li>
+</ul>
+<p><img src="https://bityoungjae.com/images/imgs/rm.gif" alt="rm 예시"></p>
+<h2 id="mv-Move"><a href="#mv-Move" class="headerlink" title="mv - Move"></a>mv - Move</h2><ul>
+<li><em>mv -b aa bb</em><ul>
+<li>aa를 bb로 이동(변경)하는데 bb가 존재할 경우 bb의 백업파일을 생성한다.</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://bityoungjae.com/images/imgs/mv.gif" alt="mv 예시"></p>
+<h2 id="cp-Copy"><a href="#cp-Copy" class="headerlink" title="cp - Copy"></a>cp - Copy</h2><ul>
+<li><em>cp ./aa/\</em> bb*<ul>
+<li>./aa 안의 모든 파일을 bb 폴더로 옮긴다.</li>
+</ul>
+</li>
+<li><em>cp -p aa bb</em><ul>
+<li>aa의 권한, 소유주 정보를 그대로 bb로 복사</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://bityoungjae.com/images/imgs/cp.gif" alt="cp 예시"></p>
+<h3 id="rm-mv-cp-명령어의-i-v-f-옵션에-대하여"><a href="#rm-mv-cp-명령어의-i-v-f-옵션에-대하여" class="headerlink" title="rm mv cp 명령어의 -i -v -f 옵션에 대하여"></a>rm mv cp 명령어의 -i -v -f 옵션에 대하여</h3><ul>
+<li><strong>-i</strong> : Interactive, 동작하기 전 사용자에게 재확인</li>
+<li><strong>-v</strong> : Verbose, 동작한 내용을 출력</li>
+<li><strong>-f</strong> : Force, 강제로 동작</li>
+</ul>
+<h2 id="mkdir-Make-Directory"><a href="#mkdir-Make-Directory" class="headerlink" title="mkdir - Make Directory"></a>mkdir - Make Directory</h2><ul>
+<li><em>mkdir <strong>-p</strong> ./aa/bb</em><ul>
+<li>./aa 경로가 없을 경우 오류가 출력되나, <strong>-p 옵션</strong>(<strong>P</strong>arents) 사용시 ./aa 생성 후 ./aa/bb 생성함.</li>
+</ul>
+</li>
+<li><em>mkdir <strong>-m</strong> 777 ./aa</em><ul>
+<li><strong>-m</strong> 옵션을 사용해 생성할 디렉토리의 권한을 지정.</li>
+</ul>
+</li>
+</ul>
+<h2 id="ln-Link"><a href="#ln-Link" class="headerlink" title="ln - Link"></a>ln - Link</h2><ul>
+<li><em>ln aa bb</em><ul>
+<li>ab라는 이름의 aa를 향한 <strong>하드 링크</strong>를 생성한다.</li>
+</ul>
+</li>
+<li><em>ln -s aa ab</em><ul>
+<li>ab라는 이름의 aa를 향한 <strong>심볼릭 링크</strong>를 생성한다.</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://bityoungjae.com/images/imgs/ln.gif" alt="ln 예시"></p>
+<h3 id="하드링크와-심볼릭-링크"><a href="#하드링크와-심볼릭-링크" class="headerlink" title="하드링크와 심볼릭 링크"></a>하드링크와 심볼릭 링크</h3><p>링크에는 하드링크와 심볼릭링크 두 종류가 있다.</p>
+<h4 id="하드-링크-Hard-Link"><a href="#하드-링크-Hard-Link" class="headerlink" title="하드 링크 Hard Link"></a>하드 링크 Hard Link</h4><p>원본 파일과 동일한 <strong>Inode</strong>에 링크한다.<br>원본 파일이 삭제되어도 해당 Inode에 연결된 하드링크 파일이 있다면,<br><em>(해당 파일의 Inode 상 링크수가 0이 아니라면)</em><br>해당 파일의 Inode는 <strong>Free</strong>가 되지 않고<br>하드링크로 해당 파일에 지속 접근이 가능하다.<br>하드링크 파일과 원본 파일은 <strong>Inumber</strong>가 동일하다.<br><strong>동일한 Inode를 참조하므로 하드링크 생성으로 인해 디스크 공간이 줄어들지 않는다</strong></p>
+<p><img src="https://bityoungjae.com/images/imgs/hardlink.gif" alt="hardlink"></p>
+<h4 id="심볼릭-링크-Symbolic-Link"><a href="#심볼릭-링크-Symbolic-Link" class="headerlink" title="심볼릭 링크 Symbolic Link"></a>심볼릭 링크 Symbolic Link</h4><p>새로운 Inode를 생성하고,<br>해당 Inode에는 <strong>원본 파일의 주소</strong>가 기록되어 있다.<br>당연히, 원본파일이 삭제되거나 경로가 달라지면 더 이상 원본 파일의 내용에 접근이 불가하다.</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
                     4분 읽기 (나에 대하여 603 단어)
                 </span>
                 
@@ -565,139 +698,6 @@
 </li>
 </ul>
 <p><img src="https://bityoungjae.com/images/imgs/free.gif" alt="free 예시"></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6분 읽기 (나에 대하여 875 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
-            
-                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/%ED%8C%8C%EC%9D%BC%EC%B2%98%EB%A6%AC/">리눅스 파일처리 커맨드</a>
-            
-        </h1>
-        <div class="content">
-            <blockquote>
-<p>파일들을 조회하고, 지우고, 잘라내고, 복사하고, 바로가기를 만든다</p>
-</blockquote>
-<h2 id="ls-List"><a href="#ls-List" class="headerlink" title="ls - List"></a>ls - List</h2><ul>
-<li><em>ls -a</em> 숨김파일 포함해 전체 출력.</li>
-<li><em>ls -A</em> -a 와 동일하되 .와 ..를 제외하고 출력.</li>
-<li><em>ls -l</em> 리스트 형태로 출력.<ul>
-<li><em>ls -l (기본값)</em> 기본적으로 최종 수정시간을 표시한다 (<strong>M</strong>odified)</li>
-<li><em>ls -lc</em> -l 옵션에서 시간을 최종 변경시간으로 표시 (<strong>C</strong>hanged)</li>
-<li><em>ls -lu</em> -l 옵션에서 시간을 최종 접근시간으로 표시 (<strong>A</strong>ccess)</li>
-</ul>
-</li>
-<li><em>ls -h</em> 파일크기를 KB, GB, MB 단위로 알아보기 쉽게 출력. (<strong>H</strong>uman)</li>
-</ul>
-<h3 id="ls-정렬-관련-옵션"><a href="#ls-정렬-관련-옵션" class="headerlink" title="ls - 정렬 관련 옵션"></a>ls - 정렬 관련 옵션</h3><ul>
-<li><em>ls -t</em> 시간순으로 정렬<ul>
-<li><em>ls -<strong>c</strong>t</em> 파일을 최종 변경시간 기준으로 정렬 (<strong>C</strong>hanged Time)</li>
-<li><em>ls <strong>-t</strong> (기본값)</em> 파일을 최종 수정시간 기준으로 정렬 (<strong>M</strong>odified Time)</li>
-<li><em>ls -*</em>ut<strong>* 파일을 최종 접근 시간 기준으로 정렬 (</strong>A**ccess Time)</li>
-</ul>
-</li>
-<li><em>ls -S</em> 파일 크기 순서대로 정렬</li>
-<li><em>ls -r</em> 역순으로 정렬</li>
-</ul>
-<h3 id="ls-시간-표기방법-변경"><a href="#ls-시간-표기방법-변경" class="headerlink" title="ls - 시간 표기방법 변경"></a>ls - 시간 표기방법 변경</h3><ul>
-<li><em>ls -lh *</em>–time-style=long-iso***<ul>
-<li>2019-08-02 와 같은 형태로 출력.</li>
-</ul>
-</li>
-<li><em>ls -lh *</em>–time-style=’+%y/%m/%d %H:%M’***<ul>
-<li>19/08/02 23:31 와 같은 형태로 출력.</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/ls.gif" alt="ls 예시"></p>
-<h2 id="rm-Remove"><a href="#rm-Remove" class="headerlink" title="rm - Remove"></a>rm - Remove</h2><ul>
-<li><em>rm -r</em> 디렉토리 삭제. (<strong>R</strong>ecursive, 반복되는, <em>재귀적인</em>)<br>(<strong>I</strong>nteractive, <em>반응형</em>)</li>
-<li><em>rm \</em>.c* c 확장자 파일 다 삭제</li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/rm.gif" alt="rm 예시"></p>
-<h2 id="mv-Move"><a href="#mv-Move" class="headerlink" title="mv - Move"></a>mv - Move</h2><ul>
-<li><em>mv -b aa bb</em><ul>
-<li>aa를 bb로 이동(변경)하는데 bb가 존재할 경우 bb의 백업파일을 생성한다.</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/mv.gif" alt="mv 예시"></p>
-<h2 id="cp-Copy"><a href="#cp-Copy" class="headerlink" title="cp - Copy"></a>cp - Copy</h2><ul>
-<li><em>cp ./aa/\</em> bb*<ul>
-<li>./aa 안의 모든 파일을 bb 폴더로 옮긴다.</li>
-</ul>
-</li>
-<li><em>cp -p aa bb</em><ul>
-<li>aa의 권한, 소유주 정보를 그대로 bb로 복사</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/cp.gif" alt="cp 예시"></p>
-<h3 id="rm-mv-cp-명령어의-i-v-f-옵션에-대하여"><a href="#rm-mv-cp-명령어의-i-v-f-옵션에-대하여" class="headerlink" title="rm mv cp 명령어의 -i -v -f 옵션에 대하여"></a>rm mv cp 명령어의 -i -v -f 옵션에 대하여</h3><ul>
-<li><strong>-i</strong> : Interactive, 동작하기 전 사용자에게 재확인</li>
-<li><strong>-v</strong> : Verbose, 동작한 내용을 출력</li>
-<li><strong>-f</strong> : Force, 강제로 동작</li>
-</ul>
-<h2 id="mkdir-Make-Directory"><a href="#mkdir-Make-Directory" class="headerlink" title="mkdir - Make Directory"></a>mkdir - Make Directory</h2><ul>
-<li><em>mkdir <strong>-p</strong> ./aa/bb</em><ul>
-<li>./aa 경로가 없을 경우 오류가 출력되나, <strong>-p 옵션</strong>(<strong>P</strong>arents) 사용시 ./aa 생성 후 ./aa/bb 생성함.</li>
-</ul>
-</li>
-<li><em>mkdir <strong>-m</strong> 777 ./aa</em><ul>
-<li><strong>-m</strong> 옵션을 사용해 생성할 디렉토리의 권한을 지정.</li>
-</ul>
-</li>
-</ul>
-<h2 id="ln-Link"><a href="#ln-Link" class="headerlink" title="ln - Link"></a>ln - Link</h2><ul>
-<li><em>ln aa bb</em><ul>
-<li>ab라는 이름의 aa를 향한 <strong>하드 링크</strong>를 생성한다.</li>
-</ul>
-</li>
-<li><em>ln -s aa ab</em><ul>
-<li>ab라는 이름의 aa를 향한 <strong>심볼릭 링크</strong>를 생성한다.</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/ln.gif" alt="ln 예시"></p>
-<h3 id="하드링크와-심볼릭-링크"><a href="#하드링크와-심볼릭-링크" class="headerlink" title="하드링크와 심볼릭 링크"></a>하드링크와 심볼릭 링크</h3><p>링크에는 하드링크와 심볼릭링크 두 종류가 있다.</p>
-<h4 id="하드-링크-Hard-Link"><a href="#하드-링크-Hard-Link" class="headerlink" title="하드 링크 Hard Link"></a>하드 링크 Hard Link</h4><p>원본 파일과 동일한 <strong>Inode</strong>에 링크한다.<br>원본 파일이 삭제되어도 해당 Inode에 연결된 하드링크 파일이 있다면,<br><em>(해당 파일의 Inode 상 링크수가 0이 아니라면)</em><br>해당 파일의 Inode는 <strong>Free</strong>가 되지 않고<br>하드링크로 해당 파일에 지속 접근이 가능하다.<br>하드링크 파일과 원본 파일은 <strong>Inumber</strong>가 동일하다.<br><strong>동일한 Inode를 참조하므로 하드링크 생성으로 인해 디스크 공간이 줄어들지 않는다</strong></p>
-<p><img src="https://bityoungjae.com/images/imgs/hardlink.gif" alt="hardlink"></p>
-<h4 id="심볼릭-링크-Symbolic-Link"><a href="#심볼릭-링크-Symbolic-Link" class="headerlink" title="심볼릭 링크 Symbolic Link"></a>심볼릭 링크 Symbolic Link</h4><p>새로운 Inode를 생성하고,<br>해당 Inode에는 <strong>원본 파일의 주소</strong>가 기록되어 있다.<br>당연히, 원본파일이 삭제되거나 경로가 달라지면 더 이상 원본 파일의 내용에 접근이 불가하다.</p>
 
         </div>
         

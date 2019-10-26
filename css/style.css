@@ -201,6 +201,7 @@ img.thumbnail {
   margin-bottom: 1rem !important;
 }
 .article .article-meta .level-left {
+  word-break: keep-all !important;
   width: 100% !important;
 }
 .article .content {
