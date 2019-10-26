@@ -156,7 +156,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4분 읽기 (나에 대하여 601 단어)
+                    6분 읽기 (나에 대하여 875 단어)
                 </span>
                 
                 
@@ -165,124 +165,98 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
             
-                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/">리눅스 텍스트처리 커맨드</a>
+                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/%ED%8C%8C%EC%9D%BC%EC%B2%98%EB%A6%AC/">리눅스 파일처리 커맨드</a>
             
         </h1>
         <div class="content">
             <blockquote>
-<p>텍스트 처리에 관련된 기능들</p>
+<p>파일들을 조회하고, 지우고, 잘라내고, 복사하고, 바로가기를 만든다</p>
 </blockquote>
-<h2 id="cat-파일의-내용을-출력합니다"><a href="#cat-파일의-내용을-출력합니다" class="headerlink" title="cat 파일의 내용을 출력합니다"></a>cat 파일의 내용을 출력합니다</h2><ul>
-<li><em>cat [Filename]</em><ul>
-<li>[Filename] 의 내용을 출력합니다</li>
-<li><em>cat [Filename1] [Filename2] …</em><ul>
-<li>나열된 파일들을 연이어 출력합니다</li>
+<h2 id="ls-List"><a href="#ls-List" class="headerlink" title="ls - List"></a>ls - List</h2><ul>
+<li><em>ls -a</em> 숨김파일 포함해 전체 출력.</li>
+<li><em>ls -A</em> -a 와 동일하되 .와 ..를 제외하고 출력.</li>
+<li><em>ls -l</em> 리스트 형태로 출력.<ul>
+<li><em>ls -l (기본값)</em> 기본적으로 최종 수정시간을 표시한다 (<strong>M</strong>odified)</li>
+<li><em>ls -lc</em> -l 옵션에서 시간을 최종 변경시간으로 표시 (<strong>C</strong>hanged)</li>
+<li><em>ls -lu</em> -l 옵션에서 시간을 최종 접근시간으로 표시 (<strong>A</strong>ccess)</li>
+</ul>
+</li>
+<li><em>ls -h</em> 파일크기를 KB, GB, MB 단위로 알아보기 쉽게 출력. (<strong>H</strong>uman)</li>
+</ul>
+<h3 id="ls-정렬-관련-옵션"><a href="#ls-정렬-관련-옵션" class="headerlink" title="ls - 정렬 관련 옵션"></a>ls - 정렬 관련 옵션</h3><ul>
+<li><em>ls -t</em> 시간순으로 정렬<ul>
+<li><em>ls -<strong>c</strong>t</em> 파일을 최종 변경시간 기준으로 정렬 (<strong>C</strong>hanged Time)</li>
+<li><em>ls <strong>-t</strong> (기본값)</em> 파일을 최종 수정시간 기준으로 정렬 (<strong>M</strong>odified Time)</li>
+<li><em>ls -*</em>ut<strong>* 파일을 최종 접근 시간 기준으로 정렬 (</strong>A**ccess Time)</li>
+</ul>
+</li>
+<li><em>ls -S</em> 파일 크기 순서대로 정렬</li>
+<li><em>ls -r</em> 역순으로 정렬</li>
+</ul>
+<h3 id="ls-시간-표기방법-변경"><a href="#ls-시간-표기방법-변경" class="headerlink" title="ls - 시간 표기방법 변경"></a>ls - 시간 표기방법 변경</h3><ul>
+<li><em>ls -lh *</em>–time-style=long-iso***<ul>
+<li>2019-08-02 와 같은 형태로 출력.</li>
+</ul>
+</li>
+<li><em>ls -lh *</em>–time-style=’+%y/%m/%d %H:%M’***<ul>
+<li>19/08/02 23:31 와 같은 형태로 출력.</li>
 </ul>
 </li>
 </ul>
-</li>
-<li><em>cat <strong>-n</strong> [Filename]</em><ul>
-<li>줄 번호를 붙여서 출력합니다</li>
+<p><img src="https://bityoungjae.com/images/imgs/ls.gif" alt="ls 예시"></p>
+<h2 id="rm-Remove"><a href="#rm-Remove" class="headerlink" title="rm - Remove"></a>rm - Remove</h2><ul>
+<li><em>rm -r</em> 디렉토리 삭제. (<strong>R</strong>ecursive, 반복되는, <em>재귀적인</em>)<br>(<strong>I</strong>nteractive, <em>반응형</em>)</li>
+<li><em>rm \</em>.c* c 확장자 파일 다 삭제</li>
+</ul>
+<p><img src="https://bityoungjae.com/images/imgs/rm.gif" alt="rm 예시"></p>
+<h2 id="mv-Move"><a href="#mv-Move" class="headerlink" title="mv - Move"></a>mv - Move</h2><ul>
+<li><em>mv -b aa bb</em><ul>
+<li>aa를 bb로 이동(변경)하는데 bb가 존재할 경우 bb의 백업파일을 생성한다.</li>
 </ul>
 </li>
 </ul>
-<h3 id="cat을-입력도구로-사용하기"><a href="#cat을-입력도구로-사용하기" class="headerlink" title="cat을 입력도구로 사용하기"></a>cat을 입력도구로 사용하기</h3><ul>
-<li>옵션 없이 <strong>cat</strong> 만을 사용할 경우 입력 도구로 사용이 가능합니다<ul>
-<li><strong>ex :</strong> <em>cat &gt; [Filename]</em><ul>
-<li>이후 텍스트를 입력하고 엔터를 치면 해당 파일에 기록이 되기 시작합니다.</li>
+<p><img src="https://bityoungjae.com/images/imgs/mv.gif" alt="mv 예시"></p>
+<h2 id="cp-Copy"><a href="#cp-Copy" class="headerlink" title="cp - Copy"></a>cp - Copy</h2><ul>
+<li><em>cp ./aa/\</em> bb*<ul>
+<li>./aa 안의 모든 파일을 bb 폴더로 옮긴다.</li>
+</ul>
+</li>
+<li><em>cp -p aa bb</em><ul>
+<li>aa의 권한, 소유주 정보를 그대로 bb로 복사</li>
 </ul>
 </li>
 </ul>
-</li>
+<p><img src="https://bityoungjae.com/images/imgs/cp.gif" alt="cp 예시"></p>
+<h3 id="rm-mv-cp-명령어의-i-v-f-옵션에-대하여"><a href="#rm-mv-cp-명령어의-i-v-f-옵션에-대하여" class="headerlink" title="rm mv cp 명령어의 -i -v -f 옵션에 대하여"></a>rm mv cp 명령어의 -i -v -f 옵션에 대하여</h3><ul>
+<li><strong>-i</strong> : Interactive, 동작하기 전 사용자에게 재확인</li>
+<li><strong>-v</strong> : Verbose, 동작한 내용을 출력</li>
+<li><strong>-f</strong> : Force, 강제로 동작</li>
 </ul>
-<p><img src="https://bityoungjae.com/images/imgs/cat.gif" alt="cat 예시"></p>
-<h2 id="head-앞-쪽만-보여줘"><a href="#head-앞-쪽만-보여줘" class="headerlink" title="head - 앞 쪽만 보여줘"></a>head - 앞 쪽만 보여줘</h2><ul>
-<li><em>cat /etc/passwd | head -n 50</em><ul>
-<li>위에서 50 라인만 출력.</li>
-</ul>
-</li>
-<li><em>cat /etc/passwd | head -n -50</em><ul>
-<li>아래에서 50 라인 빼고 전부 출력.</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/head.gif" alt="head 예시"></p>
-<h2 id="tail-아래-쪽-보여줘"><a href="#tail-아래-쪽-보여줘" class="headerlink" title="tail - 아래 쪽 보여줘"></a>tail - 아래 쪽 보여줘</h2><ul>
-<li>로그 조회하는 용도로 많이 사용.</li>
-<li><em>tail /etc/passwd -n 50</em><ul>
-<li>밑에서 50줄만 보여줘.</li>
+<h2 id="mkdir-Make-Directory"><a href="#mkdir-Make-Directory" class="headerlink" title="mkdir - Make Directory"></a>mkdir - Make Directory</h2><ul>
+<li><em>mkdir <strong>-p</strong> ./aa/bb</em><ul>
+<li>./aa 경로가 없을 경우 오류가 출력되나, <strong>-p 옵션</strong>(<strong>P</strong>arents) 사용시 ./aa 생성 후 ./aa/bb 생성함.</li>
 </ul>
 </li>
-<li><em>tail /etc/passwd -F</em><ul>
-<li>추가되는 내용을 지속 팔로우하여 출력.</li>
-<li>파일이 삭제되었다 다시 생성되어도 re-open하여 계속 팔로우함.</li>
-<li><strong>-f</strong> 옵션의 경우 파일 재생성시 팔로우 안 함.</li>
+<li><em>mkdir <strong>-m</strong> 777 ./aa</em><ul>
+<li><strong>-m</strong> 옵션을 사용해 생성할 디렉토리의 권한을 지정.</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://bityoungjae.com/images/imgs/tail.gif" alt="tail 예시"></p>
-<h2 id="wc-Word-Count"><a href="#wc-Word-Count" class="headerlink" title="wc - Word Count"></a>wc - Word Count</h2><ul>
-<li><em>wc /etc/passwd</em><ul>
-<li>줄수 / 단어수 / 바이트 카운트 출력.</li>
+<h2 id="ln-Link"><a href="#ln-Link" class="headerlink" title="ln - Link"></a>ln - Link</h2><ul>
+<li><em>ln aa bb</em><ul>
+<li>ab라는 이름의 aa를 향한 <strong>하드 링크</strong>를 생성한다.</li>
 </ul>
 </li>
-<li><em>wc /etc/passwd -l</em><ul>
-<li>라인수만 출력함.</li>
-</ul>
-</li>
-<li><em>wc \</em>.c -l*<ul>
-<li>c파일의 모든 라인수 출력.</li>
-</ul>
-</li>
-<li><em>wc /etc/passwd -l | awk ‘{ print $1 }’</em><ul>
-<li>라인수만 출력함.</li>
+<li><em>ln -s aa ab</em><ul>
+<li>ab라는 이름의 aa를 향한 <strong>심볼릭 링크</strong>를 생성한다.</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://bityoungjae.com/images/imgs/wc.gif" alt="wc 예시"></p>
-<h2 id="nl-Number-Line"><a href="#nl-Number-Line" class="headerlink" title="nl - Number Line"></a>nl - Number Line</h2><ul>
-<li><em>nl /etc/passwd</em></li>
-<li><em>nl /etc/passwd -ba</em><ul>
-<li>공백 라인에도 줄 번호를 출력.</li>
-</ul>
-</li>
-<li><em>nl /etc/passwd -v 10</em><ul>
-<li>번호가 10번부터 시작함.</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/nl.gif" alt="nl 예시"></p>
-<h2 id="sort-파일을-정렬"><a href="#sort-파일을-정렬" class="headerlink" title="sort - 파일을 정렬"></a>sort - 파일을 정렬</h2><ul>
-<li><em>cat /etc/passwd | sort</em></li>
-<li><em>cat /etc/passwd | sort -r</em><ul>
-<li><strong>-r</strong> 리버스. 거꾸로 뒤집는다.</li>
-</ul>
-</li>
-<li><em>cat /etc/passwd | sort -t: -k1,1 -k2,2</em><ul>
-<li><strong>-t</strong> 옵션으로 구분자를 정하고, <strong>-k1,1 -k2,2</strong> 옵션으로 첫번째 칼럼과 두번째 칼럼을 기준으로 잡고 정렬함.</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/sort.gif" alt="sort 예시"></p>
-<h2 id="uniq-중복-제거"><a href="#uniq-중복-제거" class="headerlink" title="uniq - 중복 제거"></a>uniq - 중복 제거</h2><ul>
-<li><strong>cat /etc/passwd | awk -F: ‘{print $1}’ | <em>uniq -i</em> | sort -k 2,2 | nl</strong> <ul>
-<li>유저 이름을 중복없이 알파벳 순으로 정렬.</li>
-</ul>
-</li>
-<li><strong>cat /etc/passwd | uniq -i -d</strong><ul>
-<li><strong>-d</strong> 옵션은 중복된 값만 출력한다.</li>
-</ul>
-</li>
-<li><strong>cat /etc/passwd | uniq -i -u</strong><ul>
-<li><strong>-u</strong> 옵션은 중복되지 않은 유일한 값만 출력한다.</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/uniq.gif" alt="uniq 예시"></p>
-<h2 id="cut-잘라내기"><a href="#cut-잘라내기" class="headerlink" title="cut - 잘라내기"></a>cut - 잘라내기</h2><ul>
-<li><strong>cat /etc/passwd cut -d’:’ -f 1,3</strong></li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/cut.gif" alt="cut 예시"></p>
+<p><img src="https://bityoungjae.com/images/imgs/ln.gif" alt="ln 예시"></p>
+<h3 id="하드링크와-심볼릭-링크"><a href="#하드링크와-심볼릭-링크" class="headerlink" title="하드링크와 심볼릭 링크"></a>하드링크와 심볼릭 링크</h3><p>링크에는 하드링크와 심볼릭링크 두 종류가 있다.</p>
+<h4 id="하드-링크-Hard-Link"><a href="#하드-링크-Hard-Link" class="headerlink" title="하드 링크 Hard Link"></a>하드 링크 Hard Link</h4><p>원본 파일과 동일한 <strong>Inode</strong>에 링크한다.<br>원본 파일이 삭제되어도 해당 Inode에 연결된 하드링크 파일이 있다면,<br><em>(해당 파일의 Inode 상 링크수가 0이 아니라면)</em><br>해당 파일의 Inode는 <strong>Free</strong>가 되지 않고<br>하드링크로 해당 파일에 지속 접근이 가능하다.<br>하드링크 파일과 원본 파일은 <strong>Inumber</strong>가 동일하다.<br><strong>동일한 Inode를 참조하므로 하드링크 생성으로 인해 디스크 공간이 줄어들지 않는다</strong></p>
+<p><img src="https://bityoungjae.com/images/imgs/hardlink.gif" alt="hardlink"></p>
+<h4 id="심볼릭-링크-Symbolic-Link"><a href="#심볼릭-링크-Symbolic-Link" class="headerlink" title="심볼릭 링크 Symbolic Link"></a>심볼릭 링크 Symbolic Link</h4><p>새로운 Inode를 생성하고,<br>해당 Inode에는 <strong>원본 파일의 주소</strong>가 기록되어 있다.<br>당연히, 원본파일이 삭제되거나 경로가 달라지면 더 이상 원본 파일의 내용에 접근이 불가하다.</p>
 
         </div>
         
@@ -544,25 +518,6 @@
         
         <article class="media">
             
-            <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="grep 사용법">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">grep 사용법</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/10/26/Linux/Shell%20Commands/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Find 사용법">
@@ -582,16 +537,35 @@
         
         <article class="media">
             
-            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="시스템 조작">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="grep 사용법">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="title has-link-black-ter is-size-6 has-text-weight-bold">시스템 조작</a>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">grep 사용법</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="사용자 관리">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">사용자 관리</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
                     </p>
@@ -745,25 +719,6 @@
         
         <article class="media">
             
-            <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="grep 사용법">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">grep 사용법</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/10/26/Linux/Shell%20Commands/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Find 사용법">
@@ -783,16 +738,35 @@
         
         <article class="media">
             
-            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="시스템 조작">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="grep 사용법">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="title has-link-black-ter is-size-6 has-text-weight-bold">시스템 조작</a>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">grep 사용법</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="사용자 관리">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">사용자 관리</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
                     </p>

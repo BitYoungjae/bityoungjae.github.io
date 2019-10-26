@@ -200,8 +200,8 @@ img.thumbnail {
 .article .article-meta {
   margin-bottom: 1rem !important;
 }
-.article .article-meta time {
-  margin-right: 0.5em !important;
+.article .article-meta .level-left {
+  width: 100% !important;
 }
 .article .content {
   font-size: 1rem;
