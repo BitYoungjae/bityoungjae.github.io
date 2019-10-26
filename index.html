@@ -68,9 +68,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-quick_short-circuit_evaluation" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-단락평가_혹은_지름길평가" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/10/27/quick_short-circuit_evaluation/" class="article-date">
+    <a href="/2019/10/27/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80_%ED%98%B9%EC%9D%80_%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="article-date">
   <time datetime="2019-10-26T15:58:32.232Z" itemprop="datePublished">2019-10-27</time>
 </a>
     
@@ -82,7 +82,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/27/quick_short-circuit_evaluation/">quick_short-circuit_evaluation</a>
+      <a class="article-title" href="/2019/10/27/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80_%ED%98%B9%EC%9D%80_%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/">단락평가_혹은_지름길평가</a>
     </h1>
   
 
@@ -91,8 +91,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="단락평가-지름길-평가-Short-circuit-evaluation"><a href="#단락평가-지름길-평가-Short-circuit-evaluation" class="headerlink" title="단락평가, 지름길 평가 (Short-circuit evaluation)"></a>단락평가, 지름길 평가 (Short-circuit evaluation)</h1><p>자바스크립트의 논리연산자를 기본 용도인 참/거짓의 판단을 위해 사용하는 것이 아닌,<br>조건문을 대체해 사용하는 일종의 문법 설탕이라고 볼 수 있다.</p>
-<h2 id="조건연산자의-좌결합성"><a href="#조건연산자의-좌결합성" class="headerlink" title="조건연산자의 좌결합성"></a>조건연산자의 좌결합성</h2><p>and연산자(&amp;&amp;)와 or연산자(||) 모두 좌결합성을 가진다.<br>즉, 피연산자의 평가순서가 왼쪽부터 오른쪽 순으로 진행이 된다.</p>
-<h2 id="조건연산자의-평가결과"><a href="#조건연산자의-평가결과" class="headerlink" title="조건연산자의 평가결과"></a>조건연산자의 평가결과</h2><p>조건연산자는 Boolean 값을 반환하지 않는다.<br>최종적으로 평가된 피연산자의 평가결과를 반환한다.</p>
+<h2 id="기본원리"><a href="#기본원리" class="headerlink" title="기본원리"></a>기본원리</h2><p>단락평가는 결국 조건연산자가 가진 아래의 두가지 특성을 응용한 것이다.</p>
+<h3 id="조건연산자의-좌결합성"><a href="#조건연산자의-좌결합성" class="headerlink" title="조건연산자의 좌결합성"></a>조건연산자의 좌결합성</h3><p>and연산자(&amp;&amp;)와 or연산자(||) 모두 좌결합성을 가진다.<br>즉, 피연산자의 평가순서가 왼쪽부터 오른쪽 순으로 진행이 된다.</p>
+<h3 id="조건연산자의-평가결과"><a href="#조건연산자의-평가결과" class="headerlink" title="조건연산자의 평가결과"></a>조건연산자의 평가결과</h3><p>조건연산자는 Boolean 값을 반환하지 않는다.<br>최종적으로 평가된 피연산자의 평가결과를 반환한다.</p>
 <h2 id="amp-amp-and"><a href="#amp-amp-and" class="headerlink" title="&amp;&amp; - and"></a>&amp;&amp; - and</h2><p>and 연산자의 경우 앞에 위치한 피연산자의 평가결과가 Falsy값일 경우<br>굳이 이후의 피연산자를 평가하지 않아도 false가 되기에<br>&amp;&amp; 연산자는 false로 평가된 피연산자 이후의 피연산자를 평가하지 않는다.</p>
 <p>역으로 생각해보면 and 연산자는 앞에 위치한 피연산자의 평가결과가 Truthy값 이어야만,<br>뒤쪽의 피연산자를 평가하여 그 결과를 반환한다는 이야기가 된다.</p>
 <h3 id="용도1-단순-if문의-대체"><a href="#용도1-단순-if문의-대체" class="headerlink" title="용도1 : 단순 if문의 대체"></a>용도1 : 단순 if문의 대체</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#1 condition이 true라면 doSomething 함수를 실행</span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#2 위 코드와 동일하다.</span><br><span class="line">condition &amp;&amp; doSomething();</span><br><span class="line"></span><br><span class="line">#3 좌결합성이기 때문에 조건을 계속 이어붙일 수 있다.</span><br><span class="line">condition1 &amp;&amp; condition2 &amp;&amp; doSomething();</span><br></pre></td></tr></table></figure>
@@ -115,7 +116,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://bityoungjae.com/2019/10/27/quick_short-circuit_evaluation/" data-id="ck27tg74y0000iwprc7ia1nde" class="article-share-link">공유</a>
+      <a data-url="https://bityoungjae.com/2019/10/27/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80_%ED%98%B9%EC%9D%80_%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" data-id="ck27tnpje0000xupre4bpgjns" class="article-share-link">공유</a>
       
       
     </footer>
@@ -294,7 +295,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://bityoungjae.com/2019/10/26/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/" data-id="ck27qzb3u0000hrprhujgfbl7" class="article-share-link">공유</a>
+      <a data-url="https://bityoungjae.com/2019/10/26/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/" data-id="ck27tnpju0001xuprgowb2303" class="article-share-link">공유</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" rel="tag">해시함수</a></li></ul>
@@ -351,7 +352,7 @@
       <ul>
         
           <li>
-            <a href="/2019/10/27/quick_short-circuit_evaluation/">quick_short-circuit_evaluation</a>
+            <a href="/2019/10/27/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80_%ED%98%B9%EC%9D%80_%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/">단락평가_혹은_지름길평가</a>
           </li>
         
           <li>
