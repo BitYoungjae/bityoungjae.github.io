@@ -199,7 +199,9 @@ img.thumbnail {
 }
 .article .article-meta {
   margin-bottom: 1rem !important;
-  font-size: 0.7em !important;
+}
+.article .article-meta time {
+  margin-right: 0.5em !important;
 }
 .article .content {
   font-size: 1rem;
