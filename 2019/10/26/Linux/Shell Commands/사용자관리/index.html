@@ -7,19 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Shell Commands/사용자관리 - Youngjae&#39;s Blog</title>
+<title>사용자 관리 - Youngjae&#39;s Blog</title>
 
 
-    <meta name="description" content="사용자 관리 사용자 관리에 대한 별도 정리자료  권한에 대하여소유주, 그룹, 그 외 사람들rwx 로 권한을 표기한다&#x2F;etc&#x2F;passwd 에 대하여&#x2F;etc&#x2F;shadow 에 대하여과거에는 &#x2F;etc&#x2F;passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다. 이후 Shadow Suite의 적용으로 &#x2F;etc&#x2F;passwd에 직접 암호를 저장하지 않고,&#x2F;etc&#x2F;sha">
-<meta name="keywords" content="javascript, html, css, react">
+    <meta name="description" content="사용자 관리에 대한 별도 정리자료  권한에 대하여소유주, 그룹, 그 외 사람들rwx 로 권한을 표기한다&#x2F;etc&#x2F;passwd 에 대하여&#x2F;etc&#x2F;shadow 에 대하여과거에는 &#x2F;etc&#x2F;passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다. 이후 Shadow Suite의 적용으로 &#x2F;etc&#x2F;passwd에 직접 암호를 저장하지 않고,&#x2F;etc&#x2F;shadow 에">
+<meta name="keywords" content="Linux,Shell Commands">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Shell Commands&#x2F;사용자관리">
-<meta property="og:url" content="https:&#x2F;&#x2F;bityoungjae.com&#x2F;2019&#x2F;10&#x2F;27&#x2F;Shell%20Commands&#x2F;%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC&#x2F;index.html">
+<meta property="og:title" content="사용자 관리">
+<meta property="og:url" content="https:&#x2F;&#x2F;bityoungjae.com&#x2F;2019&#x2F;10&#x2F;26&#x2F;Linux&#x2F;Shell%20Commands&#x2F;%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC&#x2F;index.html">
 <meta property="og:site_name" content="Youngjae&#39;s Blog">
-<meta property="og:description" content="사용자 관리 사용자 관리에 대한 별도 정리자료  권한에 대하여소유주, 그룹, 그 외 사람들rwx 로 권한을 표기한다&#x2F;etc&#x2F;passwd 에 대하여&#x2F;etc&#x2F;shadow 에 대하여과거에는 &#x2F;etc&#x2F;passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다. 이후 Shadow Suite의 적용으로 &#x2F;etc&#x2F;passwd에 직접 암호를 저장하지 않고,&#x2F;etc&#x2F;sha">
+<meta property="og:description" content="사용자 관리에 대한 별도 정리자료  권한에 대하여소유주, 그룹, 그 외 사람들rwx 로 권한을 표기한다&#x2F;etc&#x2F;passwd 에 대하여&#x2F;etc&#x2F;shadow 에 대하여과거에는 &#x2F;etc&#x2F;passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다. 이후 Shadow Suite의 적용으로 &#x2F;etc&#x2F;passwd에 직접 암호를 저장하지 않고,&#x2F;etc&#x2F;shadow 에">
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="https:&#x2F;&#x2F;bityoungjae.com&#x2F;images&#x2F;og_image.png">
-<meta property="og:updated_time" content="2019-10-26T19:27:03.319Z">
+<meta property="og:updated_time" content="2019-10-26T20:17:08.788Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;bityoungjae.com&#x2F;images&#x2F;og_image.png">
 
@@ -27,7 +27,7 @@
 
 
 
-<link rel="alternative" href="/atom.xml" title="Shell Commands/사용자관리" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="사용자 관리" type="application/atom+xml">
 
 
 
@@ -82,7 +82,7 @@
 
 
 <link rel="stylesheet" href="/css/style.css">
-    <link rel="canonical" href="https://bityoungjae.com/2019/10/27/shell commands/사용자관리/"/>
+    <link rel="canonical" href="https://bityoungjae.com/2019/10/26/linux/shell commands/사용자관리/"/>
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -90,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Shell Commands/사용자관리" height="28">
+                <img src="/images/logo.svg" alt="사용자 관리" height="28">
             
             </a>
         </div>
@@ -146,17 +146,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-26T19:26:47.791Z">2019-10-27</time>
+                <time class="level-item has-text-grey" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Shell-Commands/">Shell Commands</a>
+                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4분 읽기 (나에 대하여 527 단어)
+                    4분 읽기 (나에 대하여 533 단어)
                 </span>
                 
                 
@@ -165,11 +165,11 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
             
-                Shell Commands/사용자관리
+                사용자 관리
             
         </h1>
         <div class="content">
-            <h1 id="사용자-관리"><a href="#사용자-관리" class="headerlink" title="사용자 관리"></a>사용자 관리</h1><blockquote>
+            <blockquote>
 <p>사용자 관리에 대한 별도 정리자료</p>
 </blockquote>
 <h2 id="권한에-대하여"><a href="#권한에-대하여" class="headerlink" title="권한에 대하여"></a>권한에 대하여</h2><h3 id="소유주-그룹-그-외-사람들"><a href="#소유주-그룹-그-외-사람들" class="headerlink" title="소유주, 그룹, 그 외 사람들"></a>소유주, 그룹, 그 외 사람들</h3><h3 id="rwx-로-권한을-표기한다"><a href="#rwx-로-권한을-표기한다" class="headerlink" title="rwx 로 권한을 표기한다"></a>rwx 로 권한을 표기한다</h3><h2 id="etc-passwd-에-대하여"><a href="#etc-passwd-에-대하여" class="headerlink" title="/etc/passwd 에 대하여"></a>/etc/passwd 에 대하여</h2><h3 id="etc-shadow-에-대하여"><a href="#etc-shadow-에-대하여" class="headerlink" title="/etc/shadow 에 대하여"></a>/etc/shadow 에 대하여</h3><p>과거에는 /etc/passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다.</p>
@@ -198,62 +198,44 @@
 <li>다섯번째 - <em>99999</em></li>
 <li>여섯번째 - <em>7</em></li>
 </ul>
-<h4 id="해시함수"><a href="#해시함수" class="headerlink" title="해시함수"></a>해시함수</h4><p><a href="./부록-해시함수.md">부록-해시함수.md</a> 를 참고할 것.</p>
+<h4 id="해시함수"><a href="#해시함수" class="headerlink" title="해시함수"></a>해시함수</h4><p><a href="https://bityoungjae.com/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/">부록-해시함수.md</a> 를 참고할 것.</p>
 <p>쓰고나서 투머치한 감이 없잖게 있어서 따로 항목을 새로 만들었습니다.</p>
 <p>사족과도 같은 내용으로 필요한 분만 간단하게 참고하는 용도로 열람하시면 될 것 같습니다.</p>
 <h2 id="사용자-추가-삭제-수정"><a href="#사용자-추가-삭제-수정" class="headerlink" title="사용자 추가, 삭제, 수정"></a>사용자 추가, 삭제, 수정</h2><h3 id="사용자-추가하기"><a href="#사용자-추가하기" class="headerlink" title="사용자 추가하기"></a>사용자 추가하기</h3><h3 id="사용자-삭제하기"><a href="#사용자-삭제하기" class="headerlink" title="사용자 삭제하기"></a>사용자 삭제하기</h3><h4 id="사용자-삭제시-오류-사례"><a href="#사용자-삭제시-오류-사례" class="headerlink" title="사용자 삭제시 오류 사례"></a>사용자 삭제시 오류 사례</h4><h3 id="사용자-수정하기"><a href="#사용자-수정하기" class="headerlink" title="사용자 수정하기"></a>사용자 수정하기</h3><h3 id="사용자-목록-확인"><a href="#사용자-목록-확인" class="headerlink" title="사용자 목록 확인"></a>사용자 목록 확인</h3><h3 id="패스워드-변경"><a href="#패스워드-변경" class="headerlink" title="패스워드 변경"></a>패스워드 변경</h3><h2 id="그룹-추가-삭제-수정"><a href="#그룹-추가-삭제-수정" class="headerlink" title="그룹 추가, 삭제, 수정"></a>그룹 추가, 삭제, 수정</h2><h3 id="그룹-목록-확인"><a href="#그룹-목록-확인" class="headerlink" title="그룹 목록 확인"></a>그룹 목록 확인</h3><h2 id="UID-GID"><a href="#UID-GID" class="headerlink" title="UID, GID"></a>UID, GID</h2>
         </div>
         
-        
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
-        <div class="buttons is-centered">
-            
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
-
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
-</div>
-
-                
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Linux/" rel="tag">Linux</a>, <a class="has-link-grey -link" href="/tags/Shell-Commands/" rel="tag">Shell Commands</a>
+                </div>
+            </div>
         </div>
+        
+        
+        
     </div>
 </div>
+
+
 
 
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/26/Linux/Shell%20Commands/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Find 사용법</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/27/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/">
-                <span class="level-item">Shell Commands/시스템조작</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/">
+                <span class="level-item">grep 사용법</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -306,7 +288,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-bold">
-                        9
+                        8
                     </p>
                 </div>
             </div>
@@ -326,7 +308,7 @@
                         태그
                     </p>
                     <p class="title has-text-weight-bold">
-                        2
+                        7
                     </p>
                 </div>
             </div>
@@ -362,31 +344,6 @@
     
         
     
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            링크
-        </h3>
-        <ul class="menu-list">
-        
-            <li>
-                <a class="level is-mobile" href="https://hexo.io" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">Hexo</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">hexo.io</span>
-                    </span>
-                </a>
-            </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-
-    
         
 <div class="card widget">
     <div class="card-content">
@@ -412,12 +369,12 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Shell-Commands/">
+        <a class="level is-marginless" href="/categories/Linux/">
             <span class="level-start">
-                <span class="level-item">Shell Commands</span>
+                <span class="level-item">Linux</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">7</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li>
             </ul>
@@ -430,9 +387,34 @@
         <h3 class="menu-label">
             태그 클라우드
         </h3>
-        <a href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80-%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80-short-circuit-evaluation-javscript/" style="font-size: 10px;">단락평가, 지름길평가, short-circuit evaluation, javscript</a> <a href="/tags/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" style="font-size: 10px;">해시함수</a>
+        <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Shell-Commands/" style="font-size: 20px;">Shell Commands</a> <a href="/tags/javscript/" style="font-size: 10px;">javscript</a> <a href="/tags/short-circuit-evaluation/" style="font-size: 10px;">short-circuit evaluation</a> <a href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/" style="font-size: 10px;">단락평가</a> <a href="/tags/%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" style="font-size: 10px;">지름길평가</a> <a href="/tags/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" style="font-size: 10px;">해시함수</a>
     </div>
 </div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            링크
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen is-sticky">
@@ -445,18 +427,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/27/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="media-left">
+            <a href="/2019/10/27/JavsScript/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80_%ED%98%B9%EC%9D%80_%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Shell Commands/사용자관리">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="단락평가 혹은 지름길평가">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T19:26:47.791Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">Shell Commands/사용자관리</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T17:14:39.000Z">2019-10-27</time></div>
+                    <a href="/2019/10/27/JavsScript/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80_%ED%98%B9%EC%9D%80_%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="title has-link-black-ter is-size-6 has-text-weight-bold">단락평가 혹은 지름길평가</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Shell-Commands/">Shell Commands</a>
+                        <a class="has-link-grey -link" href="/categories/JavsScript/">JavsScript</a>
                     </p>
                 </div>
             </div>
@@ -464,18 +446,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/27/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="media-left">
+            <a href="/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Shell Commands/시스템조작">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="해시함수에 대하여">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T19:26:47.791Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="title has-link-black-ter is-size-6 has-text-weight-bold">Shell Commands/시스템조작</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T10:04:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">해시함수에 대하여</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Shell-Commands/">Shell Commands</a>
+                        <a class="has-link-grey -link" href="/categories/ETC/">ETC</a>
                     </p>
                 </div>
             </div>
@@ -483,18 +465,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/27/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Shell Commands/텍스트처리">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Find 사용법">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T19:26:47.791Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">Shell Commands/텍스트처리</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">Find 사용법</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Shell-Commands/">Shell Commands</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
                     </p>
                 </div>
             </div>
@@ -502,18 +484,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/27/Shell%20Commands/%ED%8C%8C%EC%9D%BC%EC%B2%98%EB%A6%AC/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Shell Commands/파일처리">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="사용자 관리">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T19:26:47.791Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/Shell%20Commands/%ED%8C%8C%EC%9D%BC%EC%B2%98%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">Shell Commands/파일처리</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">사용자 관리</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Shell-Commands/">Shell Commands</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
                     </p>
                 </div>
             </div>
@@ -521,18 +503,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/27/Shell%20Commands/%EB%B6%80%EB%A1%9D-%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Shell Commands/부록-해시함수">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="grep 사용법">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T19:26:47.791Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/Shell%20Commands/%EB%B6%80%EB%A1%9D-%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" class="title has-link-black-ter is-size-6 has-text-weight-bold">Shell Commands/부록-해시함수</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">grep 사용법</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Shell-Commands/">Shell Commands</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
                     </p>
                 </div>
             </div>
@@ -555,7 +537,7 @@
                     <span class="level-item">10월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -574,8 +556,43 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80-%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80-short-circuit-evaluation-javscript/">
-                        <span class="tag">단락평가, 지름길평가, short-circuit evaluation, javscript</span>
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Shell-Commands/">
+                        <span class="tag">Shell Commands</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javscript/">
+                        <span class="tag">javscript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/short-circuit-evaluation/">
+                        <span class="tag">short-circuit evaluation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/">
+                        <span class="tag">단락평가</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/">
+                        <span class="tag">지름길평가</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -611,18 +628,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/27/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="media-left">
+            <a href="/2019/10/27/JavsScript/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80_%ED%98%B9%EC%9D%80_%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Shell Commands/사용자관리">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="단락평가 혹은 지름길평가">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T19:26:47.791Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">Shell Commands/사용자관리</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T17:14:39.000Z">2019-10-27</time></div>
+                    <a href="/2019/10/27/JavsScript/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80_%ED%98%B9%EC%9D%80_%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="title has-link-black-ter is-size-6 has-text-weight-bold">단락평가 혹은 지름길평가</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Shell-Commands/">Shell Commands</a>
+                        <a class="has-link-grey -link" href="/categories/JavsScript/">JavsScript</a>
                     </p>
                 </div>
             </div>
@@ -630,18 +647,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/27/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="media-left">
+            <a href="/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Shell Commands/시스템조작">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="해시함수에 대하여">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T19:26:47.791Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="title has-link-black-ter is-size-6 has-text-weight-bold">Shell Commands/시스템조작</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T10:04:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">해시함수에 대하여</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Shell-Commands/">Shell Commands</a>
+                        <a class="has-link-grey -link" href="/categories/ETC/">ETC</a>
                     </p>
                 </div>
             </div>
@@ -649,18 +666,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/27/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Shell Commands/텍스트처리">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Find 사용법">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T19:26:47.791Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">Shell Commands/텍스트처리</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">Find 사용법</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Shell-Commands/">Shell Commands</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
                     </p>
                 </div>
             </div>
@@ -668,18 +685,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/27/Shell%20Commands/%ED%8C%8C%EC%9D%BC%EC%B2%98%EB%A6%AC/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Shell Commands/파일처리">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="사용자 관리">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T19:26:47.791Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/Shell%20Commands/%ED%8C%8C%EC%9D%BC%EC%B2%98%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">Shell Commands/파일처리</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">사용자 관리</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Shell-Commands/">Shell Commands</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
                     </p>
                 </div>
             </div>
@@ -687,18 +704,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/27/Shell%20Commands/%EB%B6%80%EB%A1%9D-%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Shell Commands/부록-해시함수">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="grep 사용법">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T19:26:47.791Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/Shell%20Commands/%EB%B6%80%EB%A1%9D-%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" class="title has-link-black-ter is-size-6 has-text-weight-bold">Shell Commands/부록-해시함수</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">grep 사용법</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Shell-Commands/">Shell Commands</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
                     </p>
                 </div>
             </div>
@@ -721,7 +738,7 @@
                     <span class="level-item">10월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -740,8 +757,43 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80-%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80-short-circuit-evaluation-javscript/">
-                        <span class="tag">단락평가, 지름길평가, short-circuit evaluation, javscript</span>
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Shell-Commands/">
+                        <span class="tag">Shell Commands</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javscript/">
+                        <span class="tag">javscript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/short-circuit-evaluation/">
+                        <span class="tag">short-circuit evaluation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/">
+                        <span class="tag">단락평가</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/">
+                        <span class="tag">지름길평가</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -770,7 +822,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Shell Commands/사용자관리" height="28">
+                    <img src="/images/logo.svg" alt="사용자 관리" height="28">
                 
                 </a>
                 <p class="is-size-7">
