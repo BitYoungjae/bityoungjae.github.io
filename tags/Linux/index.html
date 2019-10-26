@@ -89,7 +89,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Youngjae&#39;s Blog" height="28">
+                <img src="/images/logo.png" alt="Youngjae&#39;s Blog" height="28">
             
             </a>
         </div>
@@ -183,83 +183,6 @@
 <p>Find 유티리티에 대한 별도 정리자료</p>
 </blockquote>
 
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4분 읽기 (나에 대하여 533 단어)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
-            
-                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/">사용자 관리</a>
-            
-        </h1>
-        <div class="content">
-            <blockquote>
-<p>사용자 관리에 대한 별도 정리자료</p>
-</blockquote>
-<h2 id="권한에-대하여"><a href="#권한에-대하여" class="headerlink" title="권한에 대하여"></a>권한에 대하여</h2><h3 id="소유주-그룹-그-외-사람들"><a href="#소유주-그룹-그-외-사람들" class="headerlink" title="소유주, 그룹, 그 외 사람들"></a>소유주, 그룹, 그 외 사람들</h3><h3 id="rwx-로-권한을-표기한다"><a href="#rwx-로-권한을-표기한다" class="headerlink" title="rwx 로 권한을 표기한다"></a>rwx 로 권한을 표기한다</h3><h2 id="etc-passwd-에-대하여"><a href="#etc-passwd-에-대하여" class="headerlink" title="/etc/passwd 에 대하여"></a>/etc/passwd 에 대하여</h2><h3 id="etc-shadow-에-대하여"><a href="#etc-shadow-에-대하여" class="headerlink" title="/etc/shadow 에 대하여"></a>/etc/shadow 에 대하여</h3><p>과거에는 /etc/passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다.</p>
-<p>이후 Shadow Suite의 적용으로 /etc/passwd에 직접 암호를 저장하지 않고,<br>/etc/shadow 에 각 유저에 매칭되는 암호화된 암호와 암호에 관련된 다양한 설정들을 기록해 사용하는 형태로 변모하였다.</p>
-<p>보통 /etc/passwd 는 <strong>644(rw-r-r)</strong>의 권한을 갖고,<br>/etc/shadow는 <strong>600(rw-권한없음-권한없음)</strong>의 권한을 갖는다.</p>
-<h4 id="etc-shadow의-구조"><a href="#etc-shadow의-구조" class="headerlink" title="/etc/shadow의 구조"></a>/etc/shadow의 구조</h4><p>/etc/shadow 파일내에는 각 유저들의 <strong>암호화된 비밀번호</strong> 와 <strong>비밀번호에 관련된 설정값</strong> 들이 기록되어있다.</p>
-<blockquote>
-<p><code>test:$6$O71pCNwB$GnBKDEYulhNdk0QFEpuDX3Ge(중략 ...):18112:0:99999:7:::</code></p>
-</blockquote>
-<h5 id="각-필드-살펴보기"><a href="#각-필드-살펴보기" class="headerlink" title="각 필드 살펴보기"></a>각 필드 살펴보기</h5><p><strong>콜론 :</strong> 을 구분자로 사용해 각 필드를 구분한다.</p>
-<ul>
-<li>첫번째 - <em>test</em><ul>
-<li>/etc/passwd 에 기록된 유저명과 매칭이 된다.</li>
-</ul>
-</li>
-<li>두번째 - “<code>$6$O71pCNwB$GnBKDEYulhNdk0QFEpuDX3Ge(중략 ...)</code>“<ul>
-<li>암호화된 Password 이다. (동어 반복 느낌이 나서 굳이 영단어를 썼다)</li>
-<li>이 역시도 <strong>달러기호 $</strong> 를 구분자로 사용해 다시 필드가 나뉜다.</li>
-<li>첫번째 - <em>6</em></li>
-<li>두번째 - <em>O71pCNwB</em></li>
-<li>세번째 - <em>GnBKDEYulhNdk0QFEpuDX3Ge(중략 …)</em></li>
-</ul>
-</li>
-<li>세번째 - <em>18112</em></li>
-<li>네번째 - <em>0</em></li>
-<li>다섯번째 - <em>99999</em></li>
-<li>여섯번째 - <em>7</em></li>
-</ul>
-<h4 id="해시함수"><a href="#해시함수" class="headerlink" title="해시함수"></a>해시함수</h4><p><a href="https://bityoungjae.com/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/">부록-해시함수.md</a> 를 참고할 것.</p>
-<p>쓰고나서 투머치한 감이 없잖게 있어서 따로 항목을 새로 만들었습니다.</p>
-<p>사족과도 같은 내용으로 필요한 분만 간단하게 참고하는 용도로 열람하시면 될 것 같습니다.</p>
-<h2 id="사용자-추가-삭제-수정"><a href="#사용자-추가-삭제-수정" class="headerlink" title="사용자 추가, 삭제, 수정"></a>사용자 추가, 삭제, 수정</h2><h3 id="사용자-추가하기"><a href="#사용자-추가하기" class="headerlink" title="사용자 추가하기"></a>사용자 추가하기</h3><h3 id="사용자-삭제하기"><a href="#사용자-삭제하기" class="headerlink" title="사용자 삭제하기"></a>사용자 삭제하기</h3><h4 id="사용자-삭제시-오류-사례"><a href="#사용자-삭제시-오류-사례" class="headerlink" title="사용자 삭제시 오류 사례"></a>사용자 삭제시 오류 사례</h4><h3 id="사용자-수정하기"><a href="#사용자-수정하기" class="headerlink" title="사용자 수정하기"></a>사용자 수정하기</h3><h3 id="사용자-목록-확인"><a href="#사용자-목록-확인" class="headerlink" title="사용자 목록 확인"></a>사용자 목록 확인</h3><h3 id="패스워드-변경"><a href="#패스워드-변경" class="headerlink" title="패스워드 변경"></a>패스워드 변경</h3><h2 id="그룹-추가-삭제-수정"><a href="#그룹-추가-삭제-수정" class="headerlink" title="그룹 추가, 삭제, 수정"></a>그룹 추가, 삭제, 수정</h2><h3 id="그룹-목록-확인"><a href="#그룹-목록-확인" class="headerlink" title="그룹 목록 확인"></a>그룹 목록 확인</h3><h2 id="UID-GID"><a href="#UID-GID" class="headerlink" title="UID, GID"></a>UID, GID</h2>
         </div>
         
         
@@ -566,6 +489,83 @@
 </ul>
 <p><img src="https://bityoungjae.com/images/imgs/free.gif" alt="free 예시"></p>
 
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4분 읽기 (나에 대하여 533 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
+            
+                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/">사용자 관리</a>
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>사용자 관리에 대한 별도 정리자료</p>
+</blockquote>
+<h2 id="권한에-대하여"><a href="#권한에-대하여" class="headerlink" title="권한에 대하여"></a>권한에 대하여</h2><h3 id="소유주-그룹-그-외-사람들"><a href="#소유주-그룹-그-외-사람들" class="headerlink" title="소유주, 그룹, 그 외 사람들"></a>소유주, 그룹, 그 외 사람들</h3><h3 id="rwx-로-권한을-표기한다"><a href="#rwx-로-권한을-표기한다" class="headerlink" title="rwx 로 권한을 표기한다"></a>rwx 로 권한을 표기한다</h3><h2 id="etc-passwd-에-대하여"><a href="#etc-passwd-에-대하여" class="headerlink" title="/etc/passwd 에 대하여"></a>/etc/passwd 에 대하여</h2><h3 id="etc-shadow-에-대하여"><a href="#etc-shadow-에-대하여" class="headerlink" title="/etc/shadow 에 대하여"></a>/etc/shadow 에 대하여</h3><p>과거에는 /etc/passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다.</p>
+<p>이후 Shadow Suite의 적용으로 /etc/passwd에 직접 암호를 저장하지 않고,<br>/etc/shadow 에 각 유저에 매칭되는 암호화된 암호와 암호에 관련된 다양한 설정들을 기록해 사용하는 형태로 변모하였다.</p>
+<p>보통 /etc/passwd 는 <strong>644(rw-r-r)</strong>의 권한을 갖고,<br>/etc/shadow는 <strong>600(rw-권한없음-권한없음)</strong>의 권한을 갖는다.</p>
+<h4 id="etc-shadow의-구조"><a href="#etc-shadow의-구조" class="headerlink" title="/etc/shadow의 구조"></a>/etc/shadow의 구조</h4><p>/etc/shadow 파일내에는 각 유저들의 <strong>암호화된 비밀번호</strong> 와 <strong>비밀번호에 관련된 설정값</strong> 들이 기록되어있다.</p>
+<blockquote>
+<p><code>test:$6$O71pCNwB$GnBKDEYulhNdk0QFEpuDX3Ge(중략 ...):18112:0:99999:7:::</code></p>
+</blockquote>
+<h5 id="각-필드-살펴보기"><a href="#각-필드-살펴보기" class="headerlink" title="각 필드 살펴보기"></a>각 필드 살펴보기</h5><p><strong>콜론 :</strong> 을 구분자로 사용해 각 필드를 구분한다.</p>
+<ul>
+<li>첫번째 - <em>test</em><ul>
+<li>/etc/passwd 에 기록된 유저명과 매칭이 된다.</li>
+</ul>
+</li>
+<li>두번째 - “<code>$6$O71pCNwB$GnBKDEYulhNdk0QFEpuDX3Ge(중략 ...)</code>“<ul>
+<li>암호화된 Password 이다. (동어 반복 느낌이 나서 굳이 영단어를 썼다)</li>
+<li>이 역시도 <strong>달러기호 $</strong> 를 구분자로 사용해 다시 필드가 나뉜다.</li>
+<li>첫번째 - <em>6</em></li>
+<li>두번째 - <em>O71pCNwB</em></li>
+<li>세번째 - <em>GnBKDEYulhNdk0QFEpuDX3Ge(중략 …)</em></li>
+</ul>
+</li>
+<li>세번째 - <em>18112</em></li>
+<li>네번째 - <em>0</em></li>
+<li>다섯번째 - <em>99999</em></li>
+<li>여섯번째 - <em>7</em></li>
+</ul>
+<h4 id="해시함수"><a href="#해시함수" class="headerlink" title="해시함수"></a>해시함수</h4><p><a href="https://bityoungjae.com/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/">부록-해시함수.md</a> 를 참고할 것.</p>
+<p>쓰고나서 투머치한 감이 없잖게 있어서 따로 항목을 새로 만들었습니다.</p>
+<p>사족과도 같은 내용으로 필요한 분만 간단하게 참고하는 용도로 열람하시면 될 것 같습니다.</p>
+<h2 id="사용자-추가-삭제-수정"><a href="#사용자-추가-삭제-수정" class="headerlink" title="사용자 추가, 삭제, 수정"></a>사용자 추가, 삭제, 수정</h2><h3 id="사용자-추가하기"><a href="#사용자-추가하기" class="headerlink" title="사용자 추가하기"></a>사용자 추가하기</h3><h3 id="사용자-삭제하기"><a href="#사용자-삭제하기" class="headerlink" title="사용자 삭제하기"></a>사용자 삭제하기</h3><h4 id="사용자-삭제시-오류-사례"><a href="#사용자-삭제시-오류-사례" class="headerlink" title="사용자 삭제시 오류 사례"></a>사용자 삭제시 오류 사례</h4><h3 id="사용자-수정하기"><a href="#사용자-수정하기" class="headerlink" title="사용자 수정하기"></a>사용자 수정하기</h3><h3 id="사용자-목록-확인"><a href="#사용자-목록-확인" class="headerlink" title="사용자 목록 확인"></a>사용자 목록 확인</h3><h3 id="패스워드-변경"><a href="#패스워드-변경" class="headerlink" title="패스워드 변경"></a>패스워드 변경</h3><h2 id="그룹-추가-삭제-수정"><a href="#그룹-추가-삭제-수정" class="headerlink" title="그룹 추가, 삭제, 수정"></a>그룹 추가, 삭제, 수정</h2><h3 id="그룹-목록-확인"><a href="#그룹-목록-확인" class="headerlink" title="그룹 목록 확인"></a>그룹 목록 확인</h3><h2 id="UID-GID"><a href="#UID-GID" class="headerlink" title="UID, GID"></a>UID, GID</h2>
         </div>
         
         
@@ -1112,25 +1112,6 @@
         
         <article class="media">
             
-            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="사용자 관리">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">사용자 관리</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="grep 사용법">
@@ -1141,6 +1122,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
                     <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">grep 사용법</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="시스템 조작">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="title has-link-black-ter is-size-6 has-text-weight-bold">시스템 조작</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
                     </p>
@@ -1313,25 +1313,6 @@
         
         <article class="media">
             
-            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="사용자 관리">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">사용자 관리</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="grep 사용법">
@@ -1342,6 +1323,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
                     <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">grep 사용법</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="시스템 조작">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="title has-link-black-ter is-size-6 has-text-weight-bold">시스템 조작</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
                     </p>
@@ -1450,7 +1450,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Youngjae&#39;s Blog" height="28">
+                    <img src="/images/logo.png" alt="Youngjae&#39;s Blog" height="28">
                 
                 </a>
                 <p class="is-size-7">
