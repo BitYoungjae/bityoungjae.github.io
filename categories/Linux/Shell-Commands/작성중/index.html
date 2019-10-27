@@ -7,14 +7,14 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Youngjae&#39;s Blog</title>
+<title>카테고리: 작성중 - Youngjae&#39;s Blog</title>
 
 
     <meta name="description" content="개발에 관심이 많은 비개발자입니다.">
 <meta name="keywords" content="javascript, html, css, react">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Youngjae&#39;s Blog">
-<meta property="og:url" content="https:&#x2F;&#x2F;bityoungjae.com&#x2F;page&#x2F;7&#x2F;index.html">
+<meta property="og:url" content="https:&#x2F;&#x2F;bityoungjae.com&#x2F;categories&#x2F;Linux&#x2F;Shell-Commands&#x2F;%EC%9E%91%EC%84%B1%EC%A4%91&#x2F;index.html">
 <meta property="og:site_name" content="Youngjae&#39;s Blog">
 <meta property="og:description" content="개발에 관심이 많은 비개발자입니다.">
 <meta property="og:locale" content="ko">
@@ -81,7 +81,7 @@
 
 
 <link rel="stylesheet" href="/css/style.css">
-    <link rel="canonical" href="https://bityoungjae.com/page/7/"/>
+    <link rel="canonical" href="https://bityoungjae.com/categories/linux/shell-commands/작성중/"/>
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -138,7 +138,22 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">카테고리</a></li>
+            
+            <li><a href="/categories/Linux/Shell-Commands/">Shell Commands</a></li>
+            
+            <li><a href="/categories/Linux/">Linux</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">작성중</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
     
 <div class="card">
     
@@ -149,14 +164,14 @@
                 <time class="level-item has-text-grey" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/%EC%9E%91%EC%84%B1%EC%A4%91/">작성중</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4분 읽기 (나에 대하여 603 단어)
+                    몇 초 읽기 (나에 대하여 14 단어)
                 </span>
                 
                 
@@ -165,114 +180,21 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
             
-                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/">시스템 조작</a>
+                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/">Find 사용법</a>
             
         </h1>
         <div class="content">
-            <blockquote>
-<p>시스템 조작 및 간단한 시스템 정보를 조회하는 방법</p>
-</blockquote>
-<h2 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a>shutdown</h2><p>시스템을 종료하거나 재부팅한다</p>
-<ul>
-<li><em>shutdown -h now</em><ul>
-<li>즉시 시스템 종료</li>
-</ul>
-</li>
-<li><em>shutdown -h 15</em><ul>
-<li>15분 뒤 시스템 종료</li>
-</ul>
-</li>
-<li><em>shutdown -h 22:00</em><ul>
-<li>22:00 에 셧다운 예약</li>
-</ul>
-</li>
-<li><em>shutdown -c</em><ul>
-<li>예약된 셧다운 취소</li>
-</ul>
-</li>
-<li><em>shutdown -k +15</em><ul>
-<li>15분 뒤 종료 예정이라고 전 사용자에게 경고</li>
-</ul>
-</li>
-<li><em>shutdown -r</em><ul>
-<li>재부팅</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/shutdown.gif" alt="shutdown 시리즈 예시"></p>
-<h2 id="w-who-whoami-users"><a href="#w-who-whoami-users" class="headerlink" title="w, who, whoami, users"></a>w, who, whoami, users</h2><p>접속중인 사용자들에 대한 정보를 조회한다</p>
-<ul>
-<li><em>w</em> 현재 접속한 사용자 목록 출력</li>
-<li><em>who</em> 위와 동일</li>
-<li><em>who -b</em> 시스템 부팅시간 출력<ul>
-<li>UTC로 표기가 되므로, 한국 시간을 알고싶다면 -9시간을 계산해야 된다.</li>
-<li><strong>UTC(Universal Time + Coordinated, 협정세계시간)</strong></li>
-<li>한국은 <strong>UTC+9 (UTC에 9시간을 더함)</strong> 를 사용한다.</li>
-</ul>
-</li>
-<li><em>whoami</em> 현재 로그인된 호스트명 출력</li>
-<li><em>users</em> 접속된 사용자 리스트를 나열</li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/ws.gif" alt="who 시리즈 예시"></p>
-<h2 id="id"><a href="#id" class="headerlink" title="id"></a>id</h2><p>id에 관련된 조회 동작을 실시한다</p>
-<ul>
-<li><em>id -un</em> 현재 호스트명 출력</li>
-<li><em>id 1000 -un</em> uid 1000의 호스트명 출력</li>
-<li><em>id -u</em> 현재 로그인된 계정의 uid 출력</li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/id.gif" alt="id 예시"></p>
-<h2 id="finger"><a href="#finger" class="headerlink" title="finger"></a>finger</h2><p>특정 유저의 이름, 메일, 로그인시간 등의 정보를 확인한다</p>
-<ul>
-<li><em>finger -s</em><ul>
-<li>현재 로그인된 계정의 정보를 출력</li>
-</ul>
-</li>
-<li><em>finger -s username</em><ul>
-<li>username으로 지정한 유저의 정보를 출력</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/finger.gif" alt="finger 예시"></p>
-<h2 id="md5sum"><a href="#md5sum" class="headerlink" title="md5sum"></a>md5sum</h2><p>  특정 파일의 md5 체크섬을 확인</p>
-<ul>
-<li><em>md5sum filename</em> md5 체크섬을 출력.</li>
-</ul>
-<h2 id="df-Disk-Free"><a href="#df-Disk-Free" class="headerlink" title="df - Disk Free"></a>df - Disk Free</h2><p>디스크 사용정보를 출력</p>
-<ul>
-<li><em>df *</em>-text4 -hT***<ul>
-<li><strong>-h</strong> 옵션으로 읽기 쉬운 단위로 출력</li>
-<li><strong>-T</strong> 옵션으로 파일시스템 정보를 출력</li>
-<li><strong>-t[type]</strong> 옵션으로 해당 파일시스템의 파티션만 필터링</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/df.gif" alt="df 예시"></p>
-<h2 id="du-Disk-Usage"><a href="#du-Disk-Usage" class="headerlink" title="du - Disk Usage"></a>du - Disk Usage</h2><p>디스크 사용량을 표시한다</p>
-<ul>
-<li><em>du *</em>-hs***<ul>
-<li><strong>-hs</strong> -&gt; Human Readable, Short</li>
-<li>사람이 읽을 수 있게 요약해서 총량만 출력</li>
-</ul>
-</li>
-<li><em>dur *</em>-hsS***<ul>
-<li><strong>-S</strong></li>
-<li>하위 파일 제외 순수 현재 폴더만의 디스크 사용량 표시</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/du.gif" alt="du 예시"></p>
-<h2 id="free-Memory-Usage"><a href="#free-Memory-Usage" class="headerlink" title="free - Memory Usage"></a>free - Memory Usage</h2><p>메모리 사용량을 표시한다</p>
-<ul>
-<li><em>free *</em>-hs1***<ul>
-<li><strong>-s1</strong> 1초에 한 번씩 사용현황을 append</li>
-<li><strong>-t</strong> 총 사용량 행을 가장 아래에 출력</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://bityoungjae.com/images/imgs/free.gif" alt="free 예시"></p>
-
+            Find 유티리티에 대한 별도 정리자료
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/#more">자세히 보기</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -285,38 +207,78 @@
 
 
 
-
     
-<div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/page/6/">이전</a>
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/%EC%9E%91%EC%84%B1%EC%A4%91/">작성중</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4분 읽기 (나에 대하여 533 단어)
+                </span>
+                
+                
+            </div>
         </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/8/">다음</a>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
+            
+                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/">사용자 관리</a>
+            
+        </h1>
+        <div class="content">
+            사용자 관리에 대한 별도 정리자료
+
+권한에 대하여
+소유주, 그룹, 그 외 사람들
+rwx 로 권한을 표기한다
+/etc/passwd 에 대하여
+/etc/shadow 에 대하여
+과거에는 /etc/passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다.
+
+이후 Shadow Suite의 적용으로 /etc/passwd에 직접 암호를 저장하지 않고,
+/etc/shadow 에 각 유저에 매칭되는 암호화된 암호와 암호에 관련된 다양한 설정들을 기록해 사용하는 형태로 변모하였다.
+
+보통 /etc/passwd 는 644(rw-r-r)의 권한을 갖고
         </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link has-text-black-ter" href="/">1</a></li>
-            
-            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/6/">6</a></li>
-            
-            <li><a class="pagination-link is-current" href="/page/7/">7</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/8/">8</a></li>
-            
-        </ul>
-    </nav>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/#more">자세히 보기</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
 </div>
+
+
+
+
+
+
+
+
 </div>
                 
 
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
         
 <div class="card widget">
@@ -354,7 +316,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-bold">
-                        8
+                        10
                     </p>
                 </div>
             </div>
@@ -364,7 +326,7 @@
                         카테고리
                     </p>
                     <p class="title has-text-weight-bold">
-                        3
+                        7
                     </p>
                 </div>
             </div>
@@ -374,7 +336,7 @@
                         태그
                     </p>
                     <p class="title has-text-weight-bold">
-                        7
+                        9
                     </p>
                 </div>
             </div>
@@ -432,9 +394,17 @@
                 <span class="level-item">JavsScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">3</span>
             </span>
-        </a></li><li>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/JavsScript/%EC%8B%9C%EB%A6%AC%EC%A6%88/">
+            <span class="level-start">
+                <span class="level-item">시리즈</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Linux/">
             <span class="level-start">
                 <span class="level-item">Linux</span>
@@ -442,7 +412,15 @@
             <span class="level-end">
                 <span class="level-item tag">6</span>
             </span>
-        </a></li>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Linux/Shell-Commands/">
+            <span class="level-start">
+                <span class="level-item">Shell Commands</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -453,7 +431,7 @@
         <h3 class="menu-label">
             태그 클라우드
         </h3>
-        <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Shell-Commands/" style="font-size: 20px;">Shell Commands</a> <a href="/tags/javscript/" style="font-size: 10px;">javscript</a> <a href="/tags/short-circuit-evaluation/" style="font-size: 10px;">short-circuit evaluation</a> <a href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/" style="font-size: 10px;">단락평가</a> <a href="/tags/%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" style="font-size: 10px;">지름길평가</a> <a href="/tags/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" style="font-size: 10px;">해시함수</a>
+        <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Shell-Commands/" style="font-size: 20px;">Shell Commands</a> <a href="/tags/javscript/" style="font-size: 16.67px;">javscript</a> <a href="/tags/short-circuit-evaluation/" style="font-size: 10px;">short-circuit evaluation</a> <a href="/tags/%EA%B0%9D%EC%B2%B4/" style="font-size: 13.33px;">객체</a> <a href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/" style="font-size: 10px;">단락평가</a> <a href="/tags/%EC%8B%9C%EB%A6%AC%EC%A6%88/" style="font-size: 13.33px;">시리즈</a> <a href="/tags/%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" style="font-size: 10px;">지름길평가</a> <a href="/tags/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" style="font-size: 10px;">해시함수</a>
     </div>
 </div>
     
@@ -483,7 +461,7 @@
 
     
     
-        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        <div class="column-right-shadow is-hidden-widescreen ">
         
             <div class="card widget">
     <div class="card-content">
@@ -531,18 +509,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/26/Linux/Shell%20Commands/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Find 사용법">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="시스템 조작">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/Linux/Shell%20Commands/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">Find 사용법</a>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="title has-link-black-ter is-size-6 has-text-weight-bold">시스템 조작</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
                     </p>
                 </div>
             </div>
@@ -561,7 +539,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
                     <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">grep 사용법</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
                     </p>
                 </div>
             </div>
@@ -569,18 +547,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="사용자 관리">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="리눅스 텍스트처리 커맨드">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">사용자 관리</a>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">리눅스 텍스트처리 커맨드</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
                     </p>
                 </div>
             </div>
@@ -604,6 +582,17 @@
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">9월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -638,7 +627,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javscript/">
                         <span class="tag">javscript</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -650,9 +639,23 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%EA%B0%9D%EC%B2%B4/">
+                        <span class="tag">객체</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/">
                         <span class="tag">단락평가</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EC%8B%9C%EB%A6%AC%EC%A6%88/">
+                        <span class="tag">시리즈</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -684,7 +687,7 @@
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
     
         <div class="card widget">
     <div class="card-content">
@@ -732,18 +735,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/26/Linux/Shell%20Commands/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Find 사용법">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="시스템 조작">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/Linux/Shell%20Commands/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">Find 사용법</a>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="title has-link-black-ter is-size-6 has-text-weight-bold">시스템 조작</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
                     </p>
                 </div>
             </div>
@@ -762,7 +765,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
                     <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">grep 사용법</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
                     </p>
                 </div>
             </div>
@@ -770,18 +773,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="사용자 관리">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="리눅스 텍스트처리 커맨드">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">사용자 관리</a>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">리눅스 텍스트처리 커맨드</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
                     </p>
                 </div>
             </div>
@@ -805,6 +808,17 @@
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">9월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -839,7 +853,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javscript/">
                         <span class="tag">javscript</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -851,9 +865,23 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%EA%B0%9D%EC%B2%B4/">
+                        <span class="tag">객체</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/">
                         <span class="tag">단락평가</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EC%8B%9C%EB%A6%AC%EC%A6%88/">
+                        <span class="tag">시리즈</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 

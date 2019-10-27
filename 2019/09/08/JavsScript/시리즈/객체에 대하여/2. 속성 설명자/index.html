@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html  lang="ko">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.0.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>속성 설명자 (PropertyDescriptor) - Youngjae&#39;s Blog</title>
+
+
+    <meta name="description" content="속성 설명자란 무엇인가 객체의 속성들은 그 자체로 객체 내부의 정보와 기능을 표현하지만, 각 속성들은 다시 그 자신들의 값과 성질에 대한 눈에 보이지않는 내부 속성들을 가지고 있습니다.  위에서 말한 속성의 성질이란 이 속성이 읽기전용인지, 나열될 수 있는지 등의 정보를 의미합니다.  자바스크립트에서는 이러한 속성의 세부적인 성질을 직접 설정하거나 조회할">
+<meta name="keywords" content="javscript,객체,시리즈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="속성 설명자 (PropertyDescriptor)">
+<meta property="og:url" content="https:&#x2F;&#x2F;bityoungjae.com&#x2F;2019&#x2F;09&#x2F;08&#x2F;JavsScript&#x2F;%EC%8B%9C%EB%A6%AC%EC%A6%88&#x2F;%EA%B0%9D%EC%B2%B4%EC%97%90%20%EB%8C%80%ED%95%98%EC%97%AC&#x2F;2.%20%EC%86%8D%EC%84%B1%20%EC%84%A4%EB%AA%85%EC%9E%90&#x2F;index.html">
+<meta property="og:site_name" content="Youngjae&#39;s Blog">
+<meta property="og:description" content="속성 설명자란 무엇인가 객체의 속성들은 그 자체로 객체 내부의 정보와 기능을 표현하지만, 각 속성들은 다시 그 자신들의 값과 성질에 대한 눈에 보이지않는 내부 속성들을 가지고 있습니다.  위에서 말한 속성의 성질이란 이 속성이 읽기전용인지, 나열될 수 있는지 등의 정보를 의미합니다.  자바스크립트에서는 이러한 속성의 세부적인 성질을 직접 설정하거나 조회할">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="https:&#x2F;&#x2F;bityoungjae.com&#x2F;images&#x2F;og_image.png">
+<meta property="og:updated_time" content="2019-10-27T05:03:38.858Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;bityoungjae.com&#x2F;images&#x2F;og_image.png">
+
+
+
+
+
+<link rel="alternative" href="/atom.xml" title="속성 설명자 (PropertyDescriptor)" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.10/styles/atom-one-dark-reasonable.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150990505-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-150990505-1');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="https://bityoungjae.com/2019/09/08/javsscript/시리즈/객체에 대하여/2. 속성 설명자/"/>
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="속성 설명자 (PropertyDescriptor)" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="https://github.com/bityoungjae">Github</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="검색" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-08T04:55:00.000Z">2019-09-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JavsScript/">JavsScript</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/JavsScript/%EC%8B%9C%EB%A6%AC%EC%A6%88/">시리즈</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/JavsScript/%EC%8B%9C%EB%A6%AC%EC%A6%88/%EA%B0%9D%EC%B2%B4%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/">객체에 대하여</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    17분 읽기 (나에 대하여 2562 단어)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
+            
+                속성 설명자 (PropertyDescriptor)
+            
+        </h1>
+        <div class="content">
+            <h2 id="속성-설명자란-무엇인가"><a href="#속성-설명자란-무엇인가" class="headerlink" title="속성 설명자란 무엇인가"></a>속성 설명자란 무엇인가</h2><p>객체의 속성들은 그 자체로 객체 내부의 정보와 기능을 표현하지만, 각 속성들은 다시 그 자신들의 값과 <strong>성질</strong>에 대한 눈에 보이지않는 내부 속성들을 가지고 있습니다.</p>
+<p>위에서 말한 속성의 성질이란 이 속성이 읽기전용인지, 나열될 수 있는지 등의 정보를 의미합니다.</p>
+<p>자바스크립트에서는 이러한 속성의 세부적인 성질을 직접 설정하거나 조회할 수 있는 방법을 제공하는데, 이 때 이용되는 특수한 객체가 바로 <strong>속성 설명자(PropertyDescriptor)</strong> 입니다.</p>
+<h2 id="생김새"><a href="#생김새" class="headerlink" title="생김새"></a>생김새</h2><p>속성 설명자는 아래와 같이 약속된 구성대로 정형화된 객체의 모양새를 갖추고 있습니다.</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    value: ...,</span><br><span class="line">    writable: <span class="hljs-literal">true</span>,</span><br><span class="line">    enumerable: <span class="hljs-literal">true</span>,</span><br><span class="line">    configurable: <span class="hljs-literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>속성 설명자는 키값으로 value, get, set, writable, enumerable, configureable 을 가질 수 있습니다.</p>
+<h2 id="속성-설명자를-확인하는-방법"><a href="#속성-설명자를-확인하는-방법" class="headerlink" title="속성 설명자를 확인하는 방법"></a>속성 설명자를 확인하는 방법</h2><p>어떤 속성(들)의 설명자를 확인하는 방법은 아래와 같습니다.</p>
+<h3 id="특정-한-개의-속성의-설명자를-확인"><a href="#특정-한-개의-속성의-설명자를-확인" class="headerlink" title="특정 한 개의 속성의 설명자를 확인"></a>특정 한 개의 속성의 설명자를 확인</h3><p>속성 설명자는 Object 내장 객체의 <strong>Object.getOwnPropertyDescriptor()</strong> 메서드를 이용해 확인이 가능합니다.</p>
+<ul>
+<li><strong>Object.getOwnPropertyDescriptor(객체, 속성명)</strong> </li>
+</ul>
+<p>매개변수로 조회하고자하는 객체와  함께 <strong>속성의 이름(키값)을 문자열 형태로 받습니다.</strong> (문자열이 아닌 값이 오면 내부적으로 형변환을 진행합니다.)</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> human1 = &#123;</span><br><span class="line">  firstName: <span class="hljs-string">"영재"</span>,</span><br><span class="line">  lastName: <span class="hljs-string">"주"</span>,</span><br><span class="line">  age: <span class="hljs-number">30</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> result = <span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor(human1,<span class="hljs-string">"age"</span>);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(result);</span><br><span class="line"><span class="hljs-comment">//출력 : &#123;value: 30, writable: true, enumerable: true, configurable: true&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="모든-속성들에-대해-설명자를-확인"><a href="#모든-속성들에-대해-설명자를-확인" class="headerlink" title="모든 속성들에 대해 설명자를 확인"></a>모든 속성들에 대해 설명자를 확인</h3><p>Object.getOwnPropertyDescriptor<strong>s</strong>(객체) 라는 Object 내장함수를 사용하여 해당 객체의 모든 속성들의 설명자를 일괄 조회할 수도 있습니다.</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> human1 = &#123;</span><br><span class="line">  firstName: <span class="hljs-string">"영재"</span>,</span><br><span class="line">  lastName: <span class="hljs-string">"주"</span>,</span><br><span class="line">  age: <span class="hljs-number">30</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> result = <span class="hljs-built_in">Object</span>.getOwnPropertyDescriptors(human1);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(result);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/* 출력 :</span></span><br><span class="line"><span class="hljs-comment">&#123;</span></span><br><span class="line"><span class="hljs-comment">    firstName: &#123;</span></span><br><span class="line"><span class="hljs-comment">        value: 영재,</span></span><br><span class="line"><span class="hljs-comment">        writable: true,</span></span><br><span class="line"><span class="hljs-comment">        enumerable: true,</span></span><br><span class="line"><span class="hljs-comment">        configurable: true</span></span><br><span class="line"><span class="hljs-comment">    &#125;,</span></span><br><span class="line"><span class="hljs-comment">    lastName: &#123;</span></span><br><span class="line"><span class="hljs-comment">        value: 주,</span></span><br><span class="line"><span class="hljs-comment">        writable: true,</span></span><br><span class="line"><span class="hljs-comment">        enumerable: true,</span></span><br><span class="line"><span class="hljs-comment">        configurable: true</span></span><br><span class="line"><span class="hljs-comment">    &#125;,</span></span><br><span class="line"><span class="hljs-comment">    age: &#123;</span></span><br><span class="line"><span class="hljs-comment">        value: 30,</span></span><br><span class="line"><span class="hljs-comment">        writable: true,</span></span><br><span class="line"><span class="hljs-comment">        enumerable: true,</span></span><br><span class="line"><span class="hljs-comment">        configurable: true</span></span><br><span class="line"><span class="hljs-comment">    &#125;</span></span><br><span class="line"><span class="hljs-comment">&#125;*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="속성-설명자를-이용해-속성을-정의하는-방법"><a href="#속성-설명자를-이용해-속성을-정의하는-방법" class="headerlink" title="속성 설명자를 이용해 속성을 정의하는 방법"></a>속성 설명자를 이용해 속성을 정의하는 방법</h2><p>어떤 속성(들)을 설명자를 통해 정의하는 방법은 아래와 같습니다.</p>
+<h3 id="특정-한-개의-속성을-설정"><a href="#특정-한-개의-속성을-설정" class="headerlink" title="특정 한 개의 속성을 설정"></a>특정 한 개의 속성을 설정</h3><p>속성 설명자를 확인할 때와 마찬가지로 내장객체인 Object의 메서드를 사용합니다.</p>
+<ul>
+<li><strong>Object.defineProperty(객체, 속성명, 설명자 객체)</strong></li>
+</ul>
+<p>매개변수로 조회하고자하는 객체와  함께 <strong>속성의 이름(키값)을 문자열 형태로 받습니다.</strong> (문자열이 아닌 값이 오면 내부적으로 형변환을 진행합니다.)</p>
+<p>그리고 마지막 인자로 해당 속성을 정의하는데 사용할 설명자 객체를 받습니다.</p>
+<h4 id="예시"><a href="#예시" class="headerlink" title="예시"></a>예시</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">Object</span>.defineProperty(arr, <span class="hljs-string">"4"</span>, &#123;</span><br><span class="line">  value: <span class="hljs-number">5</span>,</span><br><span class="line">  writable: <span class="hljs-literal">false</span>,</span><br><span class="line">  configurable: <span class="hljs-literal">true</span>,</span><br><span class="line">  enumerable: <span class="hljs-literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// 출력 : [1, 2, 3, undefined, 5]</span></span><br><span class="line">arr[<span class="hljs-number">4</span>] = <span class="hljs-number">2</span>; <span class="hljs-comment">// writable 키를 이용해 읽기전용으로 설정했으므로 오류 발생.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="여러가지-속성을-한-번에-설정"><a href="#여러가지-속성을-한-번에-설정" class="headerlink" title="여러가지 속성을 한 번에 설정"></a>여러가지 속성을 한 번에 설정</h3><p>한 번에 여러가지 속성을 일괄적으로 설정하는 것도 가능합니다.</p>
+<ul>
+<li>Object.definePropert<strong>ies</strong>(객체, 속성명, { 설명자 객체1, 설명자 객체2, … })</li>
+</ul>
+<h4 id="예시-1"><a href="#예시-1" class="headerlink" title="예시"></a>예시</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> arr = [];</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">Object</span>.defineProperties(arr, &#123;</span><br><span class="line">  <span class="hljs-number">0</span>: &#123;</span><br><span class="line">    value: <span class="hljs-number">1</span>,</span><br><span class="line">    writable: <span class="hljs-literal">false</span>,</span><br><span class="line">    configurable: <span class="hljs-literal">true</span>,</span><br><span class="line">    enumerable: <span class="hljs-literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-number">1</span>: &#123;</span><br><span class="line">    value: <span class="hljs-number">2</span>,</span><br><span class="line">    writable: <span class="hljs-literal">true</span>,</span><br><span class="line">    configurable: <span class="hljs-literal">true</span>,</span><br><span class="line">    enumerable: <span class="hljs-literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// 출력 : [1, 2]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="설명자의-키-값을-생략했을-때"><a href="#설명자의-키-값을-생략했을-때" class="headerlink" title="설명자의 키 값을 생략했을 때"></a>설명자의 키 값을 생략했을 때</h3><p>속성 설명자를 기술할 때, 기술하지 않은 키들이 있을 경우의 동작은 다음 두 가지 경우 중 하나입니다.</p>
+<h4 id="기존-설명자가-있을-경우"><a href="#기존-설명자가-있을-경우" class="headerlink" title="기존 설명자가 있을 경우"></a>기존 설명자가 있을 경우</h4><p>즉, 이미 존재하는 속성에 대해 변경을 시도할 때에는 직접 서술한 키값 외에는 기존의 것을 유지합니다.</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor(arr, <span class="hljs-string">"0"</span>));</span><br><span class="line"><span class="hljs-comment">// 출력 : Object &#123;value: 1, writable: true, enumerable: true, configurable: true&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">Object</span>.defineProperty(arr, <span class="hljs-string">"0"</span>, &#123; <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor(arr, <span class="hljs-string">"0"</span>));</span><br><span class="line"><span class="hljs-comment">// 출력 : Object &#123;value: 1, writable: false, enumerable: true, configurable: true&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="기존-설명자가-없을-경우"><a href="#기존-설명자가-없을-경우" class="headerlink" title="기존 설명자가 없을 경우"></a>기존 설명자가 없을 경우</h4><p>기존 설명자가 없을 경우, 즉 새로운 속성을 설명자를 통해 할당할 때에는</p>
+<p><strong>비어있는 키값은 모두 false를 기본값으로 갖습니다.</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="hljs-string">"name"</span>));</span><br><span class="line"><span class="hljs-comment">// 출력 : undefined</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">Object</span>.defineProperty(obj, <span class="hljs-string">"name"</span>, &#123; <span class="hljs-attr">value</span>: <span class="hljs-string">"주영재"</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="hljs-string">"name"</span>));</span><br><span class="line"><span class="hljs-comment">// 출력 : Object &#123;value: "주영재", writable: false, enumerable: false, configurable: false&#125;</span></span><br></pre></td></tr></table></figure>
+<p>이 경우,</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    value: <span class="hljs-number">1</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>은</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    value: <span class="hljs-number">1</span>,</span><br><span class="line">    writable: <span class="hljs-literal">false</span>,</span><br><span class="line">    enumerable: <span class="hljs-literal">false</span>,</span><br><span class="line">    configurable: <span class="hljs-literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>와 같습니다.</p>
+<h2 id="속성-설명자의-구성요소"><a href="#속성-설명자의-구성요소" class="headerlink" title="속성 설명자의 구성요소"></a>속성 설명자의 구성요소</h2><p>이제 속성 설명자의 키값에 대해 각각의 역할과 기능을 알아보도록 합시다.</p>
+<h3 id="value"><a href="#value" class="headerlink" title="value"></a>value</h3><p>말 그대로 해당 속성의 ‘값’을 나타냅니다.</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    value: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">name</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이 value 키값에 어떤 값을 지정하고 어떤 속성을 정의할 경우, 해당 속성의 값으로 value에 지정된 값이 할당하게 됩니다.</p>
+<h4 id="value-예시"><a href="#value-예시" class="headerlink" title="value 예시"></a>value 예시</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];</span><br><span class="line"><span class="hljs-built_in">Object</span>.defineProperty(arr, <span class="hljs-string">"4"</span>, &#123; <span class="hljs-attr">value</span>: <span class="hljs-number">5</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// 출력 : [1, 2, 3, undefined, 5]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="get과-set"><a href="#get과-set" class="headerlink" title="get과 set"></a>get과 set</h3><p>getter와 setter 접근자 속성은 get과 set이라는 특수한 설명자 요소를 이용해 정의할 수 있습니다.</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="hljs-keyword">get</span>: [함수],</span><br><span class="line">    <span class="hljs-keyword">set</span>: [함수]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="writable-value와-공존할-수-없음"><a href="#writable-value와-공존할-수-없음" class="headerlink" title="writable, value와 공존할 수 없음"></a>writable, value와 공존할 수 없음</h4><p>get/set 키값은 writable, value 키값과 함께 선언될 수 없습니다.<br>getter/setter는 할당 연산자를 이용한 문법으로 연결된 메서드를 동작하는 속성으로 writable, value와 공존할 수 없는 것은 사실 당연합니다.</p>
+<p>함께 사용하고자 시도할 경우 관련된 오류가 다음과 같이 발생합니다.</p>
+<blockquote>
+<p>TypeError: Invalid property descriptor. Cannot both specify accessors and a value or writable attribute</p>
+</blockquote>
+<h4 id="같은-속성에-두-개의-get-set을-설정-가능"><a href="#같은-속성에-두-개의-get-set을-설정-가능" class="headerlink" title="같은 속성에 두 개의 get, set을 설정 가능"></a>같은 속성에 두 개의 get, set을 설정 가능</h4><p>아시다시피 getter과 setter는 동일한 속성명으로 한 쌍을 구성하여 사용할 수 있기에(오버로딩) 하나의 속성에 대해 get, set 키값을 동시에 정의하는 것이 가능합니다.</p>
+<h4 id="get-set-예시"><a href="#get-set-예시" class="headerlink" title="get set 예시"></a>get set 예시</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> human1 = &#123;</span><br><span class="line">  firstName:<span class="hljs-string">"영재"</span>,</span><br><span class="line">  lastName: <span class="hljs-string">"주"</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">Object</span>.defineProperty(human1, <span class="hljs-string">"name"</span>, &#123;</span><br><span class="line">  <span class="hljs-keyword">get</span>:function () &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.lastName + <span class="hljs-keyword">this</span>.firstName;</span><br><span class="line">    &#125;,</span><br><span class="line">  <span class="hljs-keyword">set</span>: function(name) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.firstName = name.substr(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);</span><br><span class="line">    <span class="hljs-keyword">this</span>.lastName = name[<span class="hljs-number">0</span>];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(human1.name); <span class="hljs-comment">// 출력 : "주영재"</span></span><br><span class="line">human1.name = <span class="hljs-string">"김개똥"</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(human1); <span class="hljs-comment">// 출력 : Object &#123;firstName: "개똥", lastName: "김"&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="writable"><a href="#writable" class="headerlink" title="writable"></a>writable</h3><p>writable 키값이 false 일 경우 해당 속성은 읽기전용(read-only)이 됩니다.<br>할당연산자를 통해 새로운 값을 할당하는 것이 불가능해집니다.</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    writable: <span class="hljs-literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>writable이 false인 읽기전용 속성에 대해 값을 할당하고자하면 다음과 같은 오류가 발생합니다.</p>
+<blockquote>
+<p>TypeError: Cannot assign to read only property ‘[프로퍼티명]’ of object ‘[객체명]’</p>
+</blockquote>
+<h4 id="writable-예시"><a href="#writable-예시" class="headerlink" title="writable 예시"></a>writable 예시</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];</span><br><span class="line"><span class="hljs-built_in">Object</span>.defineProperty(arr, <span class="hljs-string">"1"</span>, &#123; <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span> &#125;);</span><br><span class="line"></span><br><span class="line">arr[<span class="hljs-number">1</span>] = <span class="hljs-number">3</span>; <span class="hljs-comment">// 오류 발생</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="enumerable"><a href="#enumerable" class="headerlink" title="enumerable"></a>enumerable</h3><p>enumerable 키값이 false 일 경우 해당 속성은 나열 불가능한 상태가 됩니다.</p>
+<h4 id="나열이-불가능하다는-의미"><a href="#나열이-불가능하다는-의미" class="headerlink" title="나열이 불가능하다는 의미"></a>나열이 불가능하다는 의미</h4><p>우리가 어떤 객체의 속성들에 대해 순차적으로 참조를 하고자한다면 크게 두 가지 방법을 생각해볼 수 있습니다.</p>
+<p>하나는 for in 루프를 사용하는 것, 둘째는 Object.keys() 함수를 사용하는 것입니다.</p>
+<p>이 때 enumerable 키값이 false로 설정된 속성은 위 방법을 통해 참조할 수 없습니다.</p>
+<h4 id="예시-2"><a href="#예시-2" class="headerlink" title="예시"></a>예시</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> human1 = &#123;</span><br><span class="line">  name: <span class="hljs-string">"주영재"</span>,</span><br><span class="line">  age: <span class="hljs-number">30</span>,</span><br><span class="line">  height: <span class="hljs-string">"174cm"</span>,</span><br><span class="line">  hobby: <span class="hljs-string">"자바스크립트 공부"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">Object</span>.defineProperties(human1, &#123;</span><br><span class="line">  height: &#123;</span><br><span class="line">    enumerable: <span class="hljs-literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.keys(human1));</span><br><span class="line"><span class="hljs-comment">// 출력 : ["name", "age", "hobby"]</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> result = [];</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> one <span class="hljs-keyword">in</span> human1) &#123;</span><br><span class="line">  result.push(one);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(result);</span><br><span class="line"><span class="hljs-comment">// 출력 : ["name", "age", "hobby"]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>여담이지만 enumrable 값이 false 일 경우 크롬 디버거에서도 흐린 값으로 표시가 됩니다.</strong></p>
+<p><img src="https://images.velog.io/post-images/zuyonze/c43d4e10-d241-11e9-9e60-fd0a4329804f/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7-2019-09-08-20-44-33.png" alt="스크린샷, 2019-09-08 20-44-33.png"></p>
+<h3 id="configurable"><a href="#configurable" class="headerlink" title="configurable"></a>configurable</h3><p>configurable 키값을 false로 설정하면 무슨 일이 일어날까요?</p>
+<h4 id="더이상-속성의-내부속성을-더이상-재정의할-수-없게됩니다"><a href="#더이상-속성의-내부속성을-더이상-재정의할-수-없게됩니다" class="headerlink" title="더이상 속성의 내부속성을 더이상 재정의할 수 없게됩니다."></a>더이상 속성의 내부속성을 더이상 재정의할 수 없게됩니다.</h4><p>configurable 값이 false인 경우 Object.defineProperty 메서드를 통해 해당 속성의 내부속성을 재설정하는 것이 불가능합니다.</p>
+<p>조금 더 구체적으로 configuralbe이 false인 경우 enumerable, configurable 속성을 다시 변경하는 것이 불가능합니다.</p>
+<p>단, value 속성을 변경하는 것은 가능하고 writable 속성이 true일 경우 false로 변경하는 것은 가능합니다. (반대로 writable을 false에서true로 변경하는 것은 불가능합니다.)</p>
+<p><strong>configurable 속성 그 자신도 더이상 변경이 안 된다는 부분에 주목해주십시오.</strong></p>
+<p>즉, 한 번 false로 설정이 되면 해당 속성은 더이상 내부 속성을 변경할 수 없게된다는 이야기입니다.</p>
+<h4 id="또한-속성을-삭제할-수-없습니다"><a href="#또한-속성을-삭제할-수-없습니다" class="headerlink" title="또한 속성을 삭제할 수 없습니다"></a>또한 속성을 삭제할 수 없습니다</h4><p>delete 키워드를 사용하던, 해당 속성에 null 값을 할당하던, 더이상 객체에서 해당 속성을 삭제할 수 없게 됩니다.</p>
+<h4 id="예시-3"><a href="#예시-3" class="headerlink" title="예시"></a>예시</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> human1 = &#123;</span><br><span class="line">  name: <span class="hljs-string">"주영재"</span>,</span><br><span class="line">  age: <span class="hljs-number">30</span>,</span><br><span class="line">  height: <span class="hljs-string">"174cm"</span>,</span><br><span class="line">  hobby: <span class="hljs-string">"자바스크립트 공부"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">Object</span>.defineProperties(human1, &#123;</span><br><span class="line">  height: &#123;</span><br><span class="line">    configurable: <span class="hljs-literal">false</span> <span class="hljs-comment">// (*)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">Object</span>.defineProperty(human1, <span class="hljs-string">"height"</span>, &#123;</span><br><span class="line">  configurable: <span class="hljs-literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="hljs-comment">// 오류 : TypeError: Cannot redefine property: height</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="configurable-과-writable-의-차이점"><a href="#configurable-과-writable-의-차이점" class="headerlink" title="configurable 과 writable 의 차이점"></a>configurable 과 writable 의 차이점</h2><p>configurable과 writable은 별개의 것으로 각각 다른 값을 지정할 수 있습니다.<br>경우의 수가 4가지밖에 되지 않으므로 각각의 경우들에 대해 모두 알아보도록 합시다.</p>
+<ul>
+<li>writable: false &amp;&amp; configurable: false<ul>
+<li>할당연산자를 이용한 값의 재할당이 불가능합니다.</li>
+<li>value 외의 내부 설정의 재정의가 불가능합니다.</li>
+<li>이를 어떤 속성이 얼려진 상태라고 합니다.</li>
+</ul>
+</li>
+<li>writable: false &amp;&amp; configurable: true<ul>
+<li>할당연산자를 이용한 값의 재할당이 불가능합니다.</li>
+<li><strong>defineProperty 메서드를 이용해 값의 재할당이 가능합니다.</strong></li>
+</ul>
+</li>
+<li>writable: true &amp;&amp; configurable: false<ul>
+<li>할당연산자를 이용해 값을 새롭게 할당할 수 있습니다.</li>
+<li>writable을 false로 바꾸거나 value를 변경하는 것 외의 내부 설정의 재정의가 불가능합니다.</li>
+<li><strong>값이 재할당되어도 내부속성은 그대로 유지됩니다.</strong></li>
+<li>이를 어떤 속성이 봉인된 상태라고 합니다.</li>
+</ul>
+</li>
+<li>writable: true &amp;&amp; configurable: true<ul>
+<li>내부 설정의 재정의와 할당연산자를 통한 값의 재할당이 가능합니다.</li>
+<li>신규 속성을 리터럴 표기법 등 일반적 방법으로 추가시 갖게되는 내부 속성들입니다.</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/javscript/" rel="tag">javscript</a>, <a class="has-link-grey -link" href="/tags/%EA%B0%9D%EC%B2%B4/" rel="tag">객체</a>, <a class="has-link-grey -link" href="/tags/%EC%8B%9C%EB%A6%AC%EC%A6%88/" rel="tag">시리즈</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">사용자 관리</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/08/JavsScript/%EC%8B%9C%EB%A6%AC%EC%A6%88/%EA%B0%9D%EC%B2%B4%EC%97%90%20%EB%8C%80%ED%95%98%EC%97%AC/1.%20%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%9D%98%20%EA%B0%9D%EC%B2%B4/">
+                <span class="level-item">자바스크립트의 객체</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="https://www.gravatar.com/avatar/6b1305265e23d02b9b5ce721c664e9f5?s=128" alt="Joo Youngjae">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Joo Youngjae
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        개발을 좋아하는 비개발자
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Seoul, Korea</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        포스트
+                    </p>
+                    <p class="title has-text-weight-bold">
+                        10
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        카테고리
+                    </p>
+                    <p class="title has-text-weight-bold">
+                        7
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        태그
+                    </p>
+                    <p class="title has-text-weight-bold">
+                        9
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/bityoungjae" target="_blank">
+                팔로우</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                카테고리
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/ETC/">
+            <span class="level-start">
+                <span class="level-item">ETC</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/JavsScript/">
+            <span class="level-start">
+                <span class="level-item">JavsScript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/JavsScript/%EC%8B%9C%EB%A6%AC%EC%A6%88/">
+            <span class="level-start">
+                <span class="level-item">시리즈</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Linux/">
+            <span class="level-start">
+                <span class="level-item">Linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Linux/Shell-Commands/">
+            <span class="level-start">
+                <span class="level-item">Shell Commands</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            태그 클라우드
+        </h3>
+        <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Shell-Commands/" style="font-size: 20px;">Shell Commands</a> <a href="/tags/javscript/" style="font-size: 16.67px;">javscript</a> <a href="/tags/short-circuit-evaluation/" style="font-size: 10px;">short-circuit evaluation</a> <a href="/tags/%EA%B0%9D%EC%B2%B4/" style="font-size: 13.33px;">객체</a> <a href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/" style="font-size: 10px;">단락평가</a> <a href="/tags/%EC%8B%9C%EB%A6%AC%EC%A6%88/" style="font-size: 13.33px;">시리즈</a> <a href="/tags/%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" style="font-size: 10px;">지름길평가</a> <a href="/tags/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" style="font-size: 10px;">해시함수</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            링크
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            최근 글
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/27/JavsScript/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80_%ED%98%B9%EC%9D%80_%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="단락평가 혹은 지름길평가">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T17:14:39.000Z">2019-10-27</time></div>
+                    <a href="/2019/10/27/JavsScript/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80_%ED%98%B9%EC%9D%80_%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="title has-link-black-ter is-size-6 has-text-weight-bold">단락평가 혹은 지름길평가</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JavsScript/">JavsScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="해시함수에 대하여">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T10:04:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">해시함수에 대하여</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ETC/">ETC</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="시스템 조작">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="title has-link-black-ter is-size-6 has-text-weight-bold">시스템 조작</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="grep 사용법">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">grep 사용법</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="리눅스 텍스트처리 커맨드">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">리눅스 텍스트처리 커맨드</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            아카이브
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">10월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">9월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                태그
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Shell-Commands/">
+                        <span class="tag">Shell Commands</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javscript/">
+                        <span class="tag">javscript</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/short-circuit-evaluation/">
+                        <span class="tag">short-circuit evaluation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EA%B0%9D%EC%B2%B4/">
+                        <span class="tag">객체</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/">
+                        <span class="tag">단락평가</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EC%8B%9C%EB%A6%AC%EC%A6%88/">
+                        <span class="tag">시리즈</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/">
+                        <span class="tag">지름길평가</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/">
+                        <span class="tag">해시함수</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            최근 글
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/27/JavsScript/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80_%ED%98%B9%EC%9D%80_%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="단락평가 혹은 지름길평가">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T17:14:39.000Z">2019-10-27</time></div>
+                    <a href="/2019/10/27/JavsScript/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80_%ED%98%B9%EC%9D%80_%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="title has-link-black-ter is-size-6 has-text-weight-bold">단락평가 혹은 지름길평가</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JavsScript/">JavsScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="해시함수에 대하여">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T10:04:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">해시함수에 대하여</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ETC/">ETC</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="시스템 조작">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="title has-link-black-ter is-size-6 has-text-weight-bold">시스템 조작</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="grep 사용법">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">grep 사용법</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="리눅스 텍스트처리 커맨드">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">리눅스 텍스트처리 커맨드</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            아카이브
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">10월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">9월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                태그
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Shell-Commands/">
+                        <span class="tag">Shell Commands</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javscript/">
+                        <span class="tag">javscript</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/short-circuit-evaluation/">
+                        <span class="tag">short-circuit evaluation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EA%B0%9D%EC%B2%B4/">
+                        <span class="tag">객체</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/">
+                        <span class="tag">단락평가</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EC%8B%9C%EB%A6%AC%EC%A6%88/">
+                        <span class="tag">시리즈</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/">
+                        <span class="tag">지름길평가</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/">
+                        <span class="tag">해시함수</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="속성 설명자 (PropertyDescriptor)" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Joo Youngjae&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("ko");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: ''
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="입력 하세요..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '포스트',
+                PAGES: '페이지',
+                CATEGORIES: '카테고리',
+                TAGS: '태그',
+                UNTITLED: '(제목없음)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

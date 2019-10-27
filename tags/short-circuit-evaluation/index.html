@@ -166,7 +166,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7분 읽기 (나에 대하여 1120 단어)
+                    8분 읽기 (나에 대하여 1128 단어)
                 </span>
                 
                 
@@ -179,31 +179,29 @@
             
         </h1>
         <div class="content">
-            <h1 id="단락평가-지름길-평가-Short-circuit-evaluation"><a href="#단락평가-지름길-평가-Short-circuit-evaluation" class="headerlink" title="단락평가, 지름길 평가 (Short-circuit evaluation)"></a>단락평가, 지름길 평가 (Short-circuit evaluation)</h1><p>자바스크립트의 논리연산자를 기본 용도인 참/거짓의 판단을 위해 사용하는 것이 아닌,<br>조건문을 대체해 사용하는 일종의 문법 설탕이라고 볼 수 있다.</p>
-<h2 id="기본원리"><a href="#기본원리" class="headerlink" title="기본원리"></a>기본원리</h2><p>단락평가는 결국 조건연산자가 가진 아래의 두가지 특성을 응용한 것이다.</p>
-<h3 id="조건연산자의-좌결합성"><a href="#조건연산자의-좌결합성" class="headerlink" title="조건연산자의 좌결합성"></a>조건연산자의 좌결합성</h3><p>and연산자(&amp;&amp;)와 or연산자(||) 모두 좌결합성을 가진다.<br>즉, 피연산자의 평가순서가 왼쪽부터 오른쪽 순으로 진행이 된다.</p>
-<h3 id="조건연산자의-평가결과"><a href="#조건연산자의-평가결과" class="headerlink" title="조건연산자의 평가결과"></a>조건연산자의 평가결과</h3><p>조건연산자는 Boolean 값을 반환하지 않는다.<br>최종적으로 평가된 피연산자의 평가결과를 반환한다.</p>
-<h2 id="amp-amp-and"><a href="#amp-amp-and" class="headerlink" title="&amp;&amp; - and"></a>&amp;&amp; - and</h2><p>and 연산자의 경우 앞에 위치한 피연산자의 평가결과가 Falsy값일 경우<br>굳이 이후의 피연산자를 평가하지 않아도 false가 되기에<br>&amp;&amp; 연산자는 false로 평가된 피연산자 이후의 피연산자를 평가하지 않는다.</p>
-<p>역으로 생각해보면 and 연산자는 앞에 위치한 피연산자의 평가결과가 Truthy값 이어야만,<br>뒤쪽의 피연산자를 평가하여 그 결과를 반환한다는 이야기가 된다.</p>
-<h3 id="용도1-단순-if문의-대체"><a href="#용도1-단순-if문의-대체" class="headerlink" title="용도1 : 단순 if문의 대체"></a>용도1 : 단순 if문의 대체</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 1 condition이 true라면 doSomething 함수를 실행</span></span><br><span class="line"><span class="hljs-keyword">if</span> (condition) &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 2 위 코드와 동일하다.</span></span><br><span class="line">condition &amp;&amp; doSomething();</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 3 좌결합성이기 때문에 조건을 계속 이어붙일 수 있다.</span></span><br><span class="line">condition1 &amp;&amp; condition2 &amp;&amp; doSomething();</span><br></pre></td></tr></table></figure>
+            단락평가, 지름길 평가 (Short-circuit evaluation)
+자바스크립트의 논리연산자를 기본 용도인 참/거짓의 판단을 위해 사용하는 것이 아닌, 조건문을 대체해 사용하는 일종의 문법 설탕 이라고 볼 수 있다.
 
-<h3 id="용도2-null-undefined에-대한-대응"><a href="#용도2-null-undefined에-대한-대응" class="headerlink" title="용도2 : null, undefined에 대한 대응"></a>용도2 : null, undefined에 대한 대응</h3><p>null이나 undefined인 값에 대해 .연산자나 []연산자를 통해 멤버접근을 시도하고자 하면,<br>속성을 읽을 수 없다는 내용의 TypeError 가 발생한다.</p>
-<p>&amp;&amp; 연산자를 활용하면 이를 예방할 수 있다.</p>
-<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> bark = <span class="hljs-function">(<span class="hljs-params">animal</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">    animal이 null이나 undefined가 아닐 경우 animal.sound에 접근한다.</span></span><br><span class="line"><span class="hljs-comment">    null, undefined 외의 데이터 타입에 대해서는 해당 멤버가 존재하지 않더라도</span></span><br><span class="line"><span class="hljs-comment">    undefined 만을 반환할 뿐, TypeError가 발생하지 않는다.</span></span><br><span class="line"><span class="hljs-comment">    */</span></span><br><span class="line">    <span class="hljs-keyword">return</span> animal &amp;&amp; animal.sound;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+기본원리
+단락평가는 결국 조건연산자가 가진 아래의 두가지 특성을 응용한 것이다.
 
-<h2 id="or"><a href="#or" class="headerlink" title="|| - or"></a>|| - or</h2><p>or 연산자의 경우 앞에 위치한 피연산자의 평가결과가 Truthy 값일 경우<br>굳이 이후의 피연산자를 평가하지 않아도 true가 되기에<br>|| 연산자는 앞쪽의 피연산자의 평가결과를 그대로 반환하고 뒤쪽의 피연산자는 평가하지 않는다.</p>
-<p>역으로 생각해보면 or 연산자는 앞에 위치한 피연산자의 평가결과가 Falsy값이라면,<br>무조건 뒤쪽의 피연산자를 평가하여 그 결과를 반환한다는 이야기가 된다.</p>
-<h3 id="용도1-기본값-설정"><a href="#용도1-기본값-설정" class="headerlink" title="용도1 : 기본값 설정"></a>용도1 : 기본값 설정</h3><p>두 개의 피연산자가 있을 경우, 앞 부분이 falsy값일 때,<br>보통 undefined나 null인 경우 argument가 정상적으로 전달되지 않았다고 가정하고<br>뒷 부분의 피연산자를 평가해 기본값으로 사용한다.</p>
-<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> bark = <span class="hljs-function">(<span class="hljs-params">animal</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> sound = animal &amp;&amp; animal.sound;</span><br><span class="line">    <span class="hljs-keyword">return</span> sound || <span class="hljs-string">"호로로로롤"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 혹은 &amp;&amp;와 같이 이어붙여서 사용하면.. (체이닝)</span></span><br><span class="line"><span class="hljs-keyword">const</span> bark = <span class="hljs-function">(<span class="hljs-params">animal</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">    조건 연산자의 우선순위가 ||보다 &amp;&amp; 가 높아서 아래와 같이 표현도 가능하지만,</span></span><br><span class="line"><span class="hljs-comment">    좀 더 명확하게 괄호로 묶어서 표현하거나 위 처럼 별 개의 라인으로 구분지어 놓는 것이 좋을 것 같다.</span></span><br><span class="line"><span class="hljs-comment">    */</span></span><br><span class="line">    <span class="hljs-keyword">return</span> animal &amp;&amp; animal.sound || <span class="hljs-string">"호로로로롤"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+조건연산자의 좌결합성
+and연산자(&&)와 or연산자(||) 모두 좌결합성을 가진다.
+즉, 피연산자의 평가순서가 왼쪽부터 오른쪽 순으로 진행이 된다.
 
-<h3 id="용도2-여러-후보군-중-하나를-골라내야할-때"><a href="#용도2-여러-후보군-중-하나를-골라내야할-때" class="headerlink" title="용도2 : 여러 후보군 중 하나를 골라내야할 때"></a>용도2 : 여러 후보군 중 하나를 골라내야할 때</h3><p>앞 부분에서 Truthy 값이 나오면 뒷 부분을 평가하지 않는다는 특성을 활용해,<br>있을지 없을지 보장할 수 없는 여러 후보군에 대해 존재하는 하나를 골라낼 때 활용이 가능하다.</p>
-<p>각 피연산자들을 같은 용도의 여러 선택지들이라고 가정할 때,<br>기회비용이 작은 순으로 좌에서 우로 나열해야한다.</p>
-<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">lightFunc가 가벼우니까 있으면 먼저 사용해보고,</span></span><br><span class="line"><span class="hljs-comment">없으면 어쩔 수 없지.. 무겁지만 heavyFunc라도 사용하자.</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line">(lightFunc || heavyFunc)();</span><br></pre></td></tr></table></figure>
-
-<h2 id="주의사항"><a href="#주의사항" class="headerlink" title="주의사항"></a>주의사항</h2><p>단락평가의 경우 용도야 만들면 다양하겠지만,<br>코드의 가독성과 간결성을 위해서가 아니라면 굳이 억지로 사용해서 문법 닌자가 되지 말자.</p>
-
+조건연산자의 평가결과
+조건연산자는 Boolean 값을 반환하지 않는다.
+최종적으로
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/10/27/JavsScript/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80_%ED%98%B9%EC%9D%80_%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/#more">자세히 보기</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -222,7 +220,7 @@
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
         
 <div class="card widget">
@@ -260,7 +258,7 @@
                         포스트
                     </p>
                     <p class="title has-text-weight-bold">
-                        8
+                        10
                     </p>
                 </div>
             </div>
@@ -270,7 +268,7 @@
                         카테고리
                     </p>
                     <p class="title has-text-weight-bold">
-                        3
+                        7
                     </p>
                 </div>
             </div>
@@ -280,7 +278,7 @@
                         태그
                     </p>
                     <p class="title has-text-weight-bold">
-                        7
+                        9
                     </p>
                 </div>
             </div>
@@ -338,9 +336,17 @@
                 <span class="level-item">JavsScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">3</span>
             </span>
-        </a></li><li>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/JavsScript/%EC%8B%9C%EB%A6%AC%EC%A6%88/">
+            <span class="level-start">
+                <span class="level-item">시리즈</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Linux/">
             <span class="level-start">
                 <span class="level-item">Linux</span>
@@ -348,7 +354,15 @@
             <span class="level-end">
                 <span class="level-item tag">6</span>
             </span>
-        </a></li>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Linux/Shell-Commands/">
+            <span class="level-start">
+                <span class="level-item">Shell Commands</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -359,7 +373,7 @@
         <h3 class="menu-label">
             태그 클라우드
         </h3>
-        <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Shell-Commands/" style="font-size: 20px;">Shell Commands</a> <a href="/tags/javscript/" style="font-size: 10px;">javscript</a> <a href="/tags/short-circuit-evaluation/" style="font-size: 10px;">short-circuit evaluation</a> <a href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/" style="font-size: 10px;">단락평가</a> <a href="/tags/%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" style="font-size: 10px;">지름길평가</a> <a href="/tags/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" style="font-size: 10px;">해시함수</a>
+        <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Shell-Commands/" style="font-size: 20px;">Shell Commands</a> <a href="/tags/javscript/" style="font-size: 16.67px;">javscript</a> <a href="/tags/short-circuit-evaluation/" style="font-size: 10px;">short-circuit evaluation</a> <a href="/tags/%EA%B0%9D%EC%B2%B4/" style="font-size: 13.33px;">객체</a> <a href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/" style="font-size: 10px;">단락평가</a> <a href="/tags/%EC%8B%9C%EB%A6%AC%EC%A6%88/" style="font-size: 13.33px;">시리즈</a> <a href="/tags/%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" style="font-size: 10px;">지름길평가</a> <a href="/tags/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" style="font-size: 10px;">해시함수</a>
     </div>
 </div>
     
@@ -389,7 +403,7 @@
 
     
     
-        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        <div class="column-right-shadow is-hidden-widescreen ">
         
             <div class="card widget">
     <div class="card-content">
@@ -437,18 +451,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/26/Linux/Shell%20Commands/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Find 사용법">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="시스템 조작">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/Linux/Shell%20Commands/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">Find 사용법</a>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="title has-link-black-ter is-size-6 has-text-weight-bold">시스템 조작</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
                     </p>
                 </div>
             </div>
@@ -467,7 +481,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
                     <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">grep 사용법</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
                     </p>
                 </div>
             </div>
@@ -475,18 +489,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="사용자 관리">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="리눅스 텍스트처리 커맨드">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">사용자 관리</a>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">리눅스 텍스트처리 커맨드</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
                     </p>
                 </div>
             </div>
@@ -510,6 +524,17 @@
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">9월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -544,7 +569,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javscript/">
                         <span class="tag">javscript</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -556,9 +581,23 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%EA%B0%9D%EC%B2%B4/">
+                        <span class="tag">객체</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/">
                         <span class="tag">단락평가</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EC%8B%9C%EB%A6%AC%EC%A6%88/">
+                        <span class="tag">시리즈</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -590,7 +629,7 @@
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
     
         <div class="card widget">
     <div class="card-content">
@@ -638,18 +677,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/26/Linux/Shell%20Commands/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Find 사용법">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="시스템 조작">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/Linux/Shell%20Commands/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">Find 사용법</a>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/" class="title has-link-black-ter is-size-6 has-text-weight-bold">시스템 조작</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
                     </p>
                 </div>
             </div>
@@ -668,7 +707,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
                     <a href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/" class="title has-link-black-ter is-size-6 has-text-weight-bold">grep 사용법</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
                     </p>
                 </div>
             </div>
@@ -676,18 +715,18 @@
         
         <article class="media">
             
-            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="사용자 관리">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="리눅스 텍스트처리 커맨드">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">사용자 관리</a>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">리눅스 텍스트처리 커맨드</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
                     </p>
                 </div>
             </div>
@@ -711,6 +750,17 @@
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">9월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -745,7 +795,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javscript/">
                         <span class="tag">javscript</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -757,9 +807,23 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%EA%B0%9D%EC%B2%B4/">
+                        <span class="tag">객체</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/">
                         <span class="tag">단락평가</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EC%8B%9C%EB%A6%AC%EC%A6%88/">
+                        <span class="tag">시리즈</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 

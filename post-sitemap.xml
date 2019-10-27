@@ -8,16 +8,32 @@
     </url>
 
     <url>
-        <loc>https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/</loc>
-        <lastmod>2019-10-26T20:17:08.788Z</lastmod>
+        <loc>https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/</loc>
+        <lastmod>2019-10-27T05:12:51.244Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/</loc>
-        <lastmod>2019-10-26T20:17:01.716Z</lastmod>
+        <loc>https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/</loc>
+        <lastmod>2019-10-27T05:12:51.244Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://bityoungjae.com/2019/09/08/JavsScript/%EC%8B%9C%EB%A6%AC%EC%A6%88/%EA%B0%9D%EC%B2%B4%EC%97%90%20%EB%8C%80%ED%95%98%EC%97%AC/2.%20%EC%86%8D%EC%84%B1%20%EC%84%A4%EB%AA%85%EC%9E%90/</loc>
+        <lastmod>2019-10-27T05:03:38.858Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://bityoungjae.com/2019/09/08/JavsScript/%EC%8B%9C%EB%A6%AC%EC%A6%88/%EA%B0%9D%EC%B2%B4%EC%97%90%20%EB%8C%80%ED%95%98%EC%97%AC/1.%20%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%9D%98%20%EA%B0%9D%EC%B2%B4/</loc>
+        <lastmod>2019-10-27T05:03:38.858Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -25,23 +41,7 @@
 
     <url>
         <loc>https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/</loc>
-        <lastmod>2019-10-26T20:17:01.716Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%ED%8C%8C%EC%9D%BC%EC%B2%98%EB%A6%AC/</loc>
-        <lastmod>2019-10-26T20:17:01.716Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/</loc>
-        <lastmod>2019-10-26T20:17:01.716Z</lastmod>
+        <lastmod>2019-10-27T05:03:05.571Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -49,7 +49,23 @@
 
     <url>
         <loc>https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/</loc>
-        <lastmod>2019-10-26T20:17:01.716Z</lastmod>
+        <lastmod>2019-10-27T05:03:05.571Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%ED%8C%8C%EC%9D%BC%EC%B2%98%EB%A6%AC/</loc>
+        <lastmod>2019-10-27T05:03:05.571Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/</loc>
+        <lastmod>2019-10-27T05:03:05.567Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -57,7 +73,7 @@
 
     <url>
         <loc>https://bityoungjae.com/2019/10/27/JavsScript/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80_%ED%98%B9%EC%9D%80_%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/</loc>
-        <lastmod>2019-10-26T20:16:03.852Z</lastmod>
+        <lastmod>2019-10-27T03:45:47.834Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
