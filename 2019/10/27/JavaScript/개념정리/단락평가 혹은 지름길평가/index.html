@@ -19,7 +19,7 @@
 <meta property="og:description" content="자바스크립트의 논리연산자를 기본 용도인 참&#x2F;거짓의 판단을 위해 사용하는 것이 아닌, 조건문을 대체해 사용하는 일종의 문법 설탕 이라고 볼 수 있다.  기본원리 단락평가는 결국 조건연산자가 가진 아래의 두가지 특성을 응용한 것이다.  조건연산자의 좌결합성 and연산자(&amp;&amp;)와 or연산자(||) 모두 좌결합성을 가진다. 즉, 피연산자의 평가순서가 왼쪽부터 오른">
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="https:&#x2F;&#x2F;bityoungjae.com&#x2F;images&#x2F;og_img.png">
-<meta property="og:updated_time" content="2019-10-27T08:44:40.501Z">
+<meta property="og:updated_time" content="2019-10-27T10:11:53.093Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;bityoungjae.com&#x2F;images&#x2F;og_img.png">
 
@@ -156,7 +156,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8분 읽기 (나에 대하여 1261 단어)
+                    9분 읽기 (나에 대하여 1279 단어)
                 </span>
                 
                 
@@ -194,7 +194,7 @@
 <p>두 번째 코드의 경우 조건 연산자의 우선순위가 ||보다 &amp;&amp; 가 높아서 아래와 같이 표현도 가능하지만, 좀 더 명확하게 괄호로 묶어서 표현하거나 위 처럼 별 개의 라인으로 구분지어 놓는 것이 좋을 것 같다.</p>
 <h3 id="용도3-여러-후보군-중-하나를-골라내야할-때"><a href="#용도3-여러-후보군-중-하나를-골라내야할-때" class="headerlink" title="용도3 : 여러 후보군 중 하나를 골라내야할 때"></a>용도3 : 여러 후보군 중 하나를 골라내야할 때</h3><p>앞 부분에서 Truthy 값이 나오면 뒷 부분을 평가하지 않는다는 특성을 활용해, 있을지 없을지 보장할 수 없는 여러 후보군에 대해 존재하는 하나를 골라낼 때 활용이 가능하다.</p>
 <p>각 피연산자들을 같은 용도의 여러 선택지들이라고 가정할 때, 기회비용이 작은 순으로 좌에서 우로 나열해야한다.</p>
-<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">lightFunc가 가벼우니까 있으면 먼저 사용해보고,</span></span><br><span class="line"><span class="hljs-comment">없으면 어쩔 수 없지.. 무겁지만 heavyFunc라도 사용하자.</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line">(lightFunc || heavyFunc)();</span><br></pre></td></tr></table></figure>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">새로 만들어진 newFunc가 가벼우니까 있으면 먼저 사용해보고,</span></span><br><span class="line"><span class="hljs-comment">없으면 어쩔 수 없지.. 무겁지만 기존의 legacyFunc라도 사용하자.</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line">(obj.newFunc || obj.legacyFunc)();</span><br><span class="line"></span><br><span class="line">(<span class="hljs-built_in">Array</span>.prototype.filter || SomePolyfill.filter)(</span><br><span class="line">    (v) =&gt; !!v;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
 <h2 id="주의사항"><a href="#주의사항" class="headerlink" title="주의사항"></a>주의사항</h2><p>단락평가의 경우 용도야 만들면 다양하겠지만, 코드의 가독성과 간결성을 위해서가 아니라면 굳이 억지로 사용해서 문법 닌자가 되지 말자.</p>
 
