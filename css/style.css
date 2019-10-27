@@ -200,10 +200,6 @@ img.thumbnail {
 .article .article-meta {
   margin-bottom: 1rem !important;
 }
-.article .article-meta .level-left {
-  word-break: keep-all !important;
-  width: 100% !important;
-}
 .article .content {
   font-size: 1rem;
 }
@@ -284,7 +280,7 @@ img.thumbnail {
   border: none;
 }
 .is-size-7 {
-  font-size: 0.85rem !important;
+  font-size: 0.8rem !important;
 }
 .is-7by1 {
   padding-top: 42.8%;
