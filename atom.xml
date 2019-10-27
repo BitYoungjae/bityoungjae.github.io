@@ -259,35 +259,6 @@ cat을 입력도구로 사용하기
   </entry>
   
   <entry>
-    <title>Find 사용법</title>
-    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/"/>
-    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/작성중/Find 유틸리티/</id>
-    <published>2019-10-26T08:14:39.000Z</published>
-    <updated>2019-10-27T05:12:51.244Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>Find 유티리티에 대한 별도 정리자료</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      Find 유티리티에 대한 별도 정리자료
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://bityoungjae.com/categories/Linux/"/>
-    
-      <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
-    
-      <category term="작성중" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/%EC%9E%91%EC%84%B1%EC%A4%91/"/>
-    
-    
-      <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
-    
-      <category term="Shell Commands" scheme="https://bityoungjae.com/tags/Shell-Commands/"/>
-    
-  </entry>
-  
-  <entry>
     <title>사용자 관리</title>
     <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/"/>
     <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/작성중/사용자관리/</id>
@@ -311,6 +282,35 @@ rwx 로 권한을 표기한다
 /etc/shadow 에 각 유저에 매칭되는 암호화된 암호와 암호에 관련된 다양한 설정들을 기록해 사용하는 형태로 변모하였다.
 
 보통 /etc/passwd 는 644(rw-r-r)의 권한을 갖고
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://bityoungjae.com/categories/Linux/"/>
+    
+      <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
+    
+      <category term="작성중" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/%EC%9E%91%EC%84%B1%EC%A4%91/"/>
+    
+    
+      <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
+    
+      <category term="Shell Commands" scheme="https://bityoungjae.com/tags/Shell-Commands/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Find 사용법</title>
+    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/"/>
+    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/작성중/Find 유틸리티/</id>
+    <published>2019-10-26T08:14:39.000Z</published>
+    <updated>2019-10-27T05:12:51.244Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Find 유티리티에 대한 별도 정리자료</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      Find 유티리티에 대한 별도 정리자료
     
     </summary>
     
