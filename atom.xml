@@ -102,39 +102,27 @@ Basic regular expression
   </entry>
   
   <entry>
-    <title>시스템 조작</title>
-    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/"/>
-    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/시스템조작/</id>
+    <title>리눅스 파일처리 커맨드</title>
+    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%ED%8C%8C%EC%9D%BC%EC%B2%98%EB%A6%AC/"/>
+    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/파일처리/</id>
     <published>2019-10-26T08:14:39.000Z</published>
-    <updated>2019-10-27T05:03:05.567Z</updated>
+    <updated>2019-10-27T05:03:05.571Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>시스템 조작 및 간단한 시스템 정보를 조회하는 방법</p></blockquote><h2 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a>shutdown</h2><p>시스템을 종료하거나 재부팅한다</p><ul><li><em>shutdown -h now</em><ul><li>즉시 시스템 종료</li></ul></li><li><em>shutdown -h 15</em><ul><li>15분 뒤 시스템 종료</li></ul></li><li><em>shutdown -h 22:00</em><ul><li>22:00 에 셧다운 예약</li></ul></li><li><em>shutdown -c</em><ul><li>예약된 셧다운 취소</li></ul></li><li><em>shutdown -k +15</em><ul><li>15분 뒤 종료 예정이라고 전 사용자에게 경고</li></ul></li><li><em>shutdown -r</em><ul><li>재부팅</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/shutdown.gif" alt="shutdown 시리즈 예시"></p><h2 id="w-who-whoami-users"><a href="#w-who-whoami-users" class="headerlink" title="w, who, whoami, users"></a>w, who, whoami, users</h2><p>접속중인 사용자들에 대한 정보를 조회한다</p><ul><li><em>w</em> 현재 접속한 사용자 목록 출력</li><li><em>who</em> 위와 동일</li><li><em>who -b</em> 시스템 부팅시간 출력<ul><li>UTC로 표기가 되므로, 한국 시간을 알고싶다면 -9시간을 계산해야 된다.</li><li><strong>UTC(Universal Time + Coordinated, 협정세계시간)</strong></li><li>한국은 <strong>UTC+9 (UTC에 9시간을 더함)</strong> 를 사용한다.</li></ul></li><li><em>whoami</em> 현재 로그인된 호스트명 출력</li><li><em>users</em> 접속된 사용자 리스트를 나열</li></ul><p><img src="https://bityoungjae.com/images/imgs/ws.gif" alt="who 시리즈 예시"></p><h2 id="id"><a href="#id" class="headerlink" title="id"></a>id</h2><p>id에 관련된 조회 동작을 실시한다</p><ul><li><em>id -un</em> 현재 호스트명 출력</li><li><em>id 1000 -un</em> uid 1000의 호스트명 출력</li><li><em>id -u</em> 현재 로그인된 계정의 uid 출력</li></ul><p><img src="https://bityoungjae.com/images/imgs/id.gif" alt="id 예시"></p><h2 id="finger"><a href="#finger" class="headerlink" title="finger"></a>finger</h2><p>특정 유저의 이름, 메일, 로그인시간 등의 정보를 확인한다</p><ul><li><em>finger -s</em><ul><li>현재 로그인된 계정의 정보를 출력</li></ul></li><li><em>finger -s username</em><ul><li>username으로 지정한 유저의 정보를 출력</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/finger.gif" alt="finger 예시"></p><h2 id="md5sum"><a href="#md5sum" class="headerlink" title="md5sum"></a>md5sum</h2><p>  특정 파일의 md5 체크섬을 확인</p><ul><li><em>md5sum filename</em> md5 체크섬을 출력.</li></ul><h2 id="df-Disk-Free"><a href="#df-Disk-Free" class="headerlink" title="df - Disk Free"></a>df - Disk Free</h2><p>디스크 사용정보를 출력</p><ul><li><em>df *</em>-text4 -hT***<ul><li><strong>-h</strong> 옵션으로 읽기 쉬운 단위로 출력</li><li><strong>-T</strong> 옵션으로 파일시스템 정보를 출력</li><li><strong>-t[type]</strong> 옵션으로 해당 파일시스템의 파티션만 필터링</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/df.gif" alt="df 예시"></p><h2 id="du-Disk-Usage"><a href="#du-Disk-Usage" class="headerlink" title="du - Disk Usage"></a>du - Disk Usage</h2><p>디스크 사용량을 표시한다</p><ul><li><em>du *</em>-hs***<ul><li><strong>-hs</strong> -&gt; Human Readable, Short</li><li>사람이 읽을 수 있게 요약해서 총량만 출력</li></ul></li><li><em>dur *</em>-hsS***<ul><li><strong>-S</strong></li><li>하위 파일 제외 순수 현재 폴더만의 디스크 사용량 표시</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/du.gif" alt="du 예시"></p><h2 id="free-Memory-Usage"><a href="#free-Memory-Usage" class="headerlink" title="free - Memory Usage"></a>free - Memory Usage</h2><p>메모리 사용량을 표시한다</p><ul><li><em>free *</em>-hs1***<ul><li><strong>-s1</strong> 1초에 한 번씩 사용현황을 append</li><li><strong>-t</strong> 총 사용량 행을 가장 아래에 출력</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/free.gif" alt="free 예시"></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>파일들을 조회하고, 지우고, 잘라내고, 복사하고, 바로가기를 만든다</p></blockquote><h2 id="ls-List"><a href="#ls-List" class="headerlink" title="ls - List"></a>ls - List</h2><ul><li><em>ls -a</em> 숨김파일 포함해 전체 출력.</li><li><em>ls -A</em> -a 와 동일하되 .와 ..를 제외하고 출력.</li><li><em>ls -l</em> 리스트 형태로 출력.<ul><li><em>ls -l (기본값)</em> 기본적으로 최종 수정시간을 표시한다 (<strong>M</strong>odified)</li><li><em>ls -lc</em> -l 옵션에서 시간을 최종 변경시간으로 표시 (<strong>C</strong>hanged)</li><li><em>ls -lu</em> -l 옵션에서 시간을 최종 접근시간으로 표시 (<strong>A</strong>ccess)</li></ul></li><li><em>ls -h</em> 파일크기를 KB, GB, MB 단위로 알아보기 쉽게 출력. (<strong>H</strong>uman)</li></ul><h3 id="ls-정렬-관련-옵션"><a href="#ls-정렬-관련-옵션" class="headerlink" title="ls - 정렬 관련 옵션"></a>ls - 정렬 관련 옵션</h3><ul><li><em>ls -t</em> 시간순으로 정렬<ul><li><em>ls -<strong>c</strong>t</em> 파일을 최종 변경시간 기준으로 정렬 (<strong>C</strong>hanged Time)</li><li><em>ls <strong>-t</strong> (기본값)</em> 파일을 최종 수정시간 기준으로 정렬 (<strong>M</strong>odified Time)</li><li><em>ls -*</em>ut<strong>* 파일을 최종 접근 시간 기준으로 정렬 (</strong>A**ccess Time)</li></ul></li><li><em>ls -S</em> 파일 크기 순서대로 정렬</li><li><em>ls -r</em> 역순으로 정렬</li></ul><h3 id="ls-시간-표기방법-변경"><a href="#ls-시간-표기방법-변경" class="headerlink" title="ls - 시간 표기방법 변경"></a>ls - 시간 표기방법 변경</h3><ul><li><em>ls -lh *</em>–time-style=long-iso***<ul><li>2019-08-02 와 같은 형태로 출력.</li></ul></li><li><em>ls -lh *</em>–time-style=’+%y/%m/%d %H:%M’***<ul><li>19/08/02 23:31 와 같은 형태로 출력.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/ls.gif" alt="ls 예시"></p><h2 id="rm-Remove"><a href="#rm-Remove" class="headerlink" title="rm - Remove"></a>rm - Remove</h2><ul><li><em>rm -r</em> 디렉토리 삭제. (<strong>R</strong>ecursive, 반복되는, <em>재귀적인</em>)<br>(<strong>I</strong>nteractive, <em>반응형</em>)</li><li><em>rm \</em>.c* c 확장자 파일 다 삭제</li></ul><p><img src="https://bityoungjae.com/images/imgs/rm.gif" alt="rm 예시"></p><h2 id="mv-Move"><a href="#mv-Move" class="headerlink" title="mv - Move"></a>mv - Move</h2><ul><li><em>mv -b aa bb</em><ul><li>aa를 bb로 이동(변경)하는데 bb가 존재할 경우 bb의 백업파일을 생성한다.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/mv.gif" alt="mv 예시"></p><h2 id="cp-Copy"><a href="#cp-Copy" class="headerlink" title="cp - Copy"></a>cp - Copy</h2><ul><li><em>cp ./aa/\</em> bb*<ul><li>./aa 안의 모든 파일을 bb 폴더로 옮긴다.</li></ul></li><li><em>cp -p aa bb</em><ul><li>aa의 권한, 소유주 정보를 그대로 bb로 복사</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/cp.gif" alt="cp 예시"></p><h3 id="rm-mv-cp-명령어의-i-v-f-옵션에-대하여"><a href="#rm-mv-cp-명령어의-i-v-f-옵션에-대하여" class="headerlink" title="rm mv cp 명령어의 -i -v -f 옵션에 대하여"></a>rm mv cp 명령어의 -i -v -f 옵션에 대하여</h3><ul><li><strong>-i</strong> : Interactive, 동작하기 전 사용자에게 재확인</li><li><strong>-v</strong> : Verbose, 동작한 내용을 출력</li><li><strong>-f</strong> : Force, 강제로 동작</li></ul><h2 id="mkdir-Make-Directory"><a href="#mkdir-Make-Directory" class="headerlink" title="mkdir - Make Directory"></a>mkdir - Make Directory</h2><ul><li><em>mkdir <strong>-p</strong> ./aa/bb</em><ul><li>./aa 경로가 없을 경우 오류가 출력되나, <strong>-p 옵션</strong>(<strong>P</strong>arents) 사용시 ./aa 생성 후 ./aa/bb 생성함.</li></ul></li><li><em>mkdir <strong>-m</strong> 777 ./aa</em><ul><li><strong>-m</strong> 옵션을 사용해 생성할 디렉토리의 권한을 지정.</li></ul></li></ul><h2 id="ln-Link"><a href="#ln-Link" class="headerlink" title="ln - Link"></a>ln - Link</h2><ul><li><em>ln aa bb</em><ul><li>ab라는 이름의 aa를 향한 <strong>하드 링크</strong>를 생성한다.</li></ul></li><li><em>ln -s aa ab</em><ul><li>ab라는 이름의 aa를 향한 <strong>심볼릭 링크</strong>를 생성한다.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/ln.gif" alt="ln 예시"></p><h3 id="하드링크와-심볼릭-링크"><a href="#하드링크와-심볼릭-링크" class="headerlink" title="하드링크와 심볼릭 링크"></a>하드링크와 심볼릭 링크</h3><p>링크에는 하드링크와 심볼릭링크 두 종류가 있다.</p><h4 id="하드-링크-Hard-Link"><a href="#하드-링크-Hard-Link" class="headerlink" title="하드 링크 Hard Link"></a>하드 링크 Hard Link</h4><p>원본 파일과 동일한 <strong>Inode</strong>에 링크한다.<br>원본 파일이 삭제되어도 해당 Inode에 연결된 하드링크 파일이 있다면,<br><em>(해당 파일의 Inode 상 링크수가 0이 아니라면)</em><br>해당 파일의 Inode는 <strong>Free</strong>가 되지 않고<br>하드링크로 해당 파일에 지속 접근이 가능하다.<br>하드링크 파일과 원본 파일은 <strong>Inumber</strong>가 동일하다.<br><strong>동일한 Inode를 참조하므로 하드링크 생성으로 인해 디스크 공간이 줄어들지 않는다</strong></p><p><img src="https://bityoungjae.com/images/imgs/hardlink.gif" alt="hardlink"></p><h4 id="심볼릭-링크-Symbolic-Link"><a href="#심볼릭-링크-Symbolic-Link" class="headerlink" title="심볼릭 링크 Symbolic Link"></a>심볼릭 링크 Symbolic Link</h4><p>새로운 Inode를 생성하고,<br>해당 Inode에는 <strong>원본 파일의 주소</strong>가 기록되어 있다.<br>당연히, 원본파일이 삭제되거나 경로가 달라지면 더 이상 원본 파일의 내용에 접근이 불가하다.</p>]]></content>
     
     <summary type="html">
     
-      시스템 조작 및 간단한 시스템 정보를 조회하는 방법
+      파일들을 조회하고, 지우고, 잘라내고, 복사하고, 바로가기를 만든다
 
-shutdown
-시스템을 종료하거나 재부팅한다
-
- * shutdown -h now * 즉시 시스템 종료
+ls - List
+ * ls -a 숨김파일 포함해 전체 출력.
+ * ls -A -a 와 동일하되 .와 ..를 제외하고 출력.
+ * ls -l 리스트 형태로 출력. * ls -l (기본값) 기본적으로 최종 수정시간을 표시한다 (Modified)
+    * ls -lc -l 옵션에서 시간을 최종 변경시간으로 표시 (Changed)
+    * ls -lu -l 옵션에서 시간을 최종 접근시간으로 표시 (Access)
    
    
- * shutdown -h 15 * 15분 뒤 시스템 종료
-   
-   
- * shutdown -h 22:00 * 22:00 에 셧다운 예약
-   
-   
- * shutdown -c * 예약된 셧다운 취소
-   
-   
- * shutdown -k +15 * 15분 뒤 종료 예정이라고 전 사용자에게 경고
-   
-   
- * shutdown -r * 재부팅
-   
- 
+ * ls -h 파일크기를 KB, GB,
     
     </summary>
     
@@ -192,27 +180,39 @@ cat을 입력도구로 사용하기
   </entry>
   
   <entry>
-    <title>리눅스 파일처리 커맨드</title>
-    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%ED%8C%8C%EC%9D%BC%EC%B2%98%EB%A6%AC/"/>
-    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/파일처리/</id>
+    <title>시스템 조작</title>
+    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/"/>
+    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/시스템조작/</id>
     <published>2019-10-26T08:14:39.000Z</published>
-    <updated>2019-10-27T05:03:05.571Z</updated>
+    <updated>2019-10-27T05:03:05.567Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>파일들을 조회하고, 지우고, 잘라내고, 복사하고, 바로가기를 만든다</p></blockquote><h2 id="ls-List"><a href="#ls-List" class="headerlink" title="ls - List"></a>ls - List</h2><ul><li><em>ls -a</em> 숨김파일 포함해 전체 출력.</li><li><em>ls -A</em> -a 와 동일하되 .와 ..를 제외하고 출력.</li><li><em>ls -l</em> 리스트 형태로 출력.<ul><li><em>ls -l (기본값)</em> 기본적으로 최종 수정시간을 표시한다 (<strong>M</strong>odified)</li><li><em>ls -lc</em> -l 옵션에서 시간을 최종 변경시간으로 표시 (<strong>C</strong>hanged)</li><li><em>ls -lu</em> -l 옵션에서 시간을 최종 접근시간으로 표시 (<strong>A</strong>ccess)</li></ul></li><li><em>ls -h</em> 파일크기를 KB, GB, MB 단위로 알아보기 쉽게 출력. (<strong>H</strong>uman)</li></ul><h3 id="ls-정렬-관련-옵션"><a href="#ls-정렬-관련-옵션" class="headerlink" title="ls - 정렬 관련 옵션"></a>ls - 정렬 관련 옵션</h3><ul><li><em>ls -t</em> 시간순으로 정렬<ul><li><em>ls -<strong>c</strong>t</em> 파일을 최종 변경시간 기준으로 정렬 (<strong>C</strong>hanged Time)</li><li><em>ls <strong>-t</strong> (기본값)</em> 파일을 최종 수정시간 기준으로 정렬 (<strong>M</strong>odified Time)</li><li><em>ls -*</em>ut<strong>* 파일을 최종 접근 시간 기준으로 정렬 (</strong>A**ccess Time)</li></ul></li><li><em>ls -S</em> 파일 크기 순서대로 정렬</li><li><em>ls -r</em> 역순으로 정렬</li></ul><h3 id="ls-시간-표기방법-변경"><a href="#ls-시간-표기방법-변경" class="headerlink" title="ls - 시간 표기방법 변경"></a>ls - 시간 표기방법 변경</h3><ul><li><em>ls -lh *</em>–time-style=long-iso***<ul><li>2019-08-02 와 같은 형태로 출력.</li></ul></li><li><em>ls -lh *</em>–time-style=’+%y/%m/%d %H:%M’***<ul><li>19/08/02 23:31 와 같은 형태로 출력.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/ls.gif" alt="ls 예시"></p><h2 id="rm-Remove"><a href="#rm-Remove" class="headerlink" title="rm - Remove"></a>rm - Remove</h2><ul><li><em>rm -r</em> 디렉토리 삭제. (<strong>R</strong>ecursive, 반복되는, <em>재귀적인</em>)<br>(<strong>I</strong>nteractive, <em>반응형</em>)</li><li><em>rm \</em>.c* c 확장자 파일 다 삭제</li></ul><p><img src="https://bityoungjae.com/images/imgs/rm.gif" alt="rm 예시"></p><h2 id="mv-Move"><a href="#mv-Move" class="headerlink" title="mv - Move"></a>mv - Move</h2><ul><li><em>mv -b aa bb</em><ul><li>aa를 bb로 이동(변경)하는데 bb가 존재할 경우 bb의 백업파일을 생성한다.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/mv.gif" alt="mv 예시"></p><h2 id="cp-Copy"><a href="#cp-Copy" class="headerlink" title="cp - Copy"></a>cp - Copy</h2><ul><li><em>cp ./aa/\</em> bb*<ul><li>./aa 안의 모든 파일을 bb 폴더로 옮긴다.</li></ul></li><li><em>cp -p aa bb</em><ul><li>aa의 권한, 소유주 정보를 그대로 bb로 복사</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/cp.gif" alt="cp 예시"></p><h3 id="rm-mv-cp-명령어의-i-v-f-옵션에-대하여"><a href="#rm-mv-cp-명령어의-i-v-f-옵션에-대하여" class="headerlink" title="rm mv cp 명령어의 -i -v -f 옵션에 대하여"></a>rm mv cp 명령어의 -i -v -f 옵션에 대하여</h3><ul><li><strong>-i</strong> : Interactive, 동작하기 전 사용자에게 재확인</li><li><strong>-v</strong> : Verbose, 동작한 내용을 출력</li><li><strong>-f</strong> : Force, 강제로 동작</li></ul><h2 id="mkdir-Make-Directory"><a href="#mkdir-Make-Directory" class="headerlink" title="mkdir - Make Directory"></a>mkdir - Make Directory</h2><ul><li><em>mkdir <strong>-p</strong> ./aa/bb</em><ul><li>./aa 경로가 없을 경우 오류가 출력되나, <strong>-p 옵션</strong>(<strong>P</strong>arents) 사용시 ./aa 생성 후 ./aa/bb 생성함.</li></ul></li><li><em>mkdir <strong>-m</strong> 777 ./aa</em><ul><li><strong>-m</strong> 옵션을 사용해 생성할 디렉토리의 권한을 지정.</li></ul></li></ul><h2 id="ln-Link"><a href="#ln-Link" class="headerlink" title="ln - Link"></a>ln - Link</h2><ul><li><em>ln aa bb</em><ul><li>ab라는 이름의 aa를 향한 <strong>하드 링크</strong>를 생성한다.</li></ul></li><li><em>ln -s aa ab</em><ul><li>ab라는 이름의 aa를 향한 <strong>심볼릭 링크</strong>를 생성한다.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/ln.gif" alt="ln 예시"></p><h3 id="하드링크와-심볼릭-링크"><a href="#하드링크와-심볼릭-링크" class="headerlink" title="하드링크와 심볼릭 링크"></a>하드링크와 심볼릭 링크</h3><p>링크에는 하드링크와 심볼릭링크 두 종류가 있다.</p><h4 id="하드-링크-Hard-Link"><a href="#하드-링크-Hard-Link" class="headerlink" title="하드 링크 Hard Link"></a>하드 링크 Hard Link</h4><p>원본 파일과 동일한 <strong>Inode</strong>에 링크한다.<br>원본 파일이 삭제되어도 해당 Inode에 연결된 하드링크 파일이 있다면,<br><em>(해당 파일의 Inode 상 링크수가 0이 아니라면)</em><br>해당 파일의 Inode는 <strong>Free</strong>가 되지 않고<br>하드링크로 해당 파일에 지속 접근이 가능하다.<br>하드링크 파일과 원본 파일은 <strong>Inumber</strong>가 동일하다.<br><strong>동일한 Inode를 참조하므로 하드링크 생성으로 인해 디스크 공간이 줄어들지 않는다</strong></p><p><img src="https://bityoungjae.com/images/imgs/hardlink.gif" alt="hardlink"></p><h4 id="심볼릭-링크-Symbolic-Link"><a href="#심볼릭-링크-Symbolic-Link" class="headerlink" title="심볼릭 링크 Symbolic Link"></a>심볼릭 링크 Symbolic Link</h4><p>새로운 Inode를 생성하고,<br>해당 Inode에는 <strong>원본 파일의 주소</strong>가 기록되어 있다.<br>당연히, 원본파일이 삭제되거나 경로가 달라지면 더 이상 원본 파일의 내용에 접근이 불가하다.</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>시스템 조작 및 간단한 시스템 정보를 조회하는 방법</p></blockquote><h2 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a>shutdown</h2><p>시스템을 종료하거나 재부팅한다</p><ul><li><em>shutdown -h now</em><ul><li>즉시 시스템 종료</li></ul></li><li><em>shutdown -h 15</em><ul><li>15분 뒤 시스템 종료</li></ul></li><li><em>shutdown -h 22:00</em><ul><li>22:00 에 셧다운 예약</li></ul></li><li><em>shutdown -c</em><ul><li>예약된 셧다운 취소</li></ul></li><li><em>shutdown -k +15</em><ul><li>15분 뒤 종료 예정이라고 전 사용자에게 경고</li></ul></li><li><em>shutdown -r</em><ul><li>재부팅</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/shutdown.gif" alt="shutdown 시리즈 예시"></p><h2 id="w-who-whoami-users"><a href="#w-who-whoami-users" class="headerlink" title="w, who, whoami, users"></a>w, who, whoami, users</h2><p>접속중인 사용자들에 대한 정보를 조회한다</p><ul><li><em>w</em> 현재 접속한 사용자 목록 출력</li><li><em>who</em> 위와 동일</li><li><em>who -b</em> 시스템 부팅시간 출력<ul><li>UTC로 표기가 되므로, 한국 시간을 알고싶다면 -9시간을 계산해야 된다.</li><li><strong>UTC(Universal Time + Coordinated, 협정세계시간)</strong></li><li>한국은 <strong>UTC+9 (UTC에 9시간을 더함)</strong> 를 사용한다.</li></ul></li><li><em>whoami</em> 현재 로그인된 호스트명 출력</li><li><em>users</em> 접속된 사용자 리스트를 나열</li></ul><p><img src="https://bityoungjae.com/images/imgs/ws.gif" alt="who 시리즈 예시"></p><h2 id="id"><a href="#id" class="headerlink" title="id"></a>id</h2><p>id에 관련된 조회 동작을 실시한다</p><ul><li><em>id -un</em> 현재 호스트명 출력</li><li><em>id 1000 -un</em> uid 1000의 호스트명 출력</li><li><em>id -u</em> 현재 로그인된 계정의 uid 출력</li></ul><p><img src="https://bityoungjae.com/images/imgs/id.gif" alt="id 예시"></p><h2 id="finger"><a href="#finger" class="headerlink" title="finger"></a>finger</h2><p>특정 유저의 이름, 메일, 로그인시간 등의 정보를 확인한다</p><ul><li><em>finger -s</em><ul><li>현재 로그인된 계정의 정보를 출력</li></ul></li><li><em>finger -s username</em><ul><li>username으로 지정한 유저의 정보를 출력</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/finger.gif" alt="finger 예시"></p><h2 id="md5sum"><a href="#md5sum" class="headerlink" title="md5sum"></a>md5sum</h2><p>  특정 파일의 md5 체크섬을 확인</p><ul><li><em>md5sum filename</em> md5 체크섬을 출력.</li></ul><h2 id="df-Disk-Free"><a href="#df-Disk-Free" class="headerlink" title="df - Disk Free"></a>df - Disk Free</h2><p>디스크 사용정보를 출력</p><ul><li><em>df *</em>-text4 -hT***<ul><li><strong>-h</strong> 옵션으로 읽기 쉬운 단위로 출력</li><li><strong>-T</strong> 옵션으로 파일시스템 정보를 출력</li><li><strong>-t[type]</strong> 옵션으로 해당 파일시스템의 파티션만 필터링</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/df.gif" alt="df 예시"></p><h2 id="du-Disk-Usage"><a href="#du-Disk-Usage" class="headerlink" title="du - Disk Usage"></a>du - Disk Usage</h2><p>디스크 사용량을 표시한다</p><ul><li><em>du *</em>-hs***<ul><li><strong>-hs</strong> -&gt; Human Readable, Short</li><li>사람이 읽을 수 있게 요약해서 총량만 출력</li></ul></li><li><em>dur *</em>-hsS***<ul><li><strong>-S</strong></li><li>하위 파일 제외 순수 현재 폴더만의 디스크 사용량 표시</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/du.gif" alt="du 예시"></p><h2 id="free-Memory-Usage"><a href="#free-Memory-Usage" class="headerlink" title="free - Memory Usage"></a>free - Memory Usage</h2><p>메모리 사용량을 표시한다</p><ul><li><em>free *</em>-hs1***<ul><li><strong>-s1</strong> 1초에 한 번씩 사용현황을 append</li><li><strong>-t</strong> 총 사용량 행을 가장 아래에 출력</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/free.gif" alt="free 예시"></p>]]></content>
     
     <summary type="html">
     
-      파일들을 조회하고, 지우고, 잘라내고, 복사하고, 바로가기를 만든다
+      시스템 조작 및 간단한 시스템 정보를 조회하는 방법
 
-ls - List
- * ls -a 숨김파일 포함해 전체 출력.
- * ls -A -a 와 동일하되 .와 ..를 제외하고 출력.
- * ls -l 리스트 형태로 출력. * ls -l (기본값) 기본적으로 최종 수정시간을 표시한다 (Modified)
-    * ls -lc -l 옵션에서 시간을 최종 변경시간으로 표시 (Changed)
-    * ls -lu -l 옵션에서 시간을 최종 접근시간으로 표시 (Access)
+shutdown
+시스템을 종료하거나 재부팅한다
+
+ * shutdown -h now * 즉시 시스템 종료
    
    
- * ls -h 파일크기를 KB, GB,
+ * shutdown -h 15 * 15분 뒤 시스템 종료
+   
+   
+ * shutdown -h 22:00 * 22:00 에 셧다운 예약
+   
+   
+ * shutdown -c * 예약된 셧다운 취소
+   
+   
+ * shutdown -k +15 * 15분 뒤 종료 예정이라고 전 사용자에게 경고
+   
+   
+ * shutdown -r * 재부팅
+   
+ 
     
     </summary>
     
