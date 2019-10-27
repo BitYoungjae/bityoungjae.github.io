@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://bityoungjae.com/tags/%25ED%2595%25B4%25EC%258B%259C%25ED%2595%25A8%25EC%2588%2598/</loc>
+        <lastmod>2019-10-27T08:30:41.671Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://bityoungjae.com/tags/%25EC%258B%259C%25EB%25A6%25AC%25EC%25A6%2588/</loc>
         <lastmod>2019-10-27T08:26:16.074Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -54,13 +61,6 @@
     <url>
         <loc>https://bityoungjae.com/tags/Linux/</loc>
         <lastmod>2019-10-27T05:12:51.244Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://bityoungjae.com/tags/%25ED%2595%25B4%25EC%258B%259C%25ED%2595%25A8%25EC%2588%2598/</loc>
-        <lastmod>2019-10-26T17:34:23.756Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

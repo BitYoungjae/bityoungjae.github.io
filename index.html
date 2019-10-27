@@ -211,17 +211,17 @@ and연산자(&&)와 or연산자(||) 모두 좌결합성을 가진다.
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-26T10:04:39.000Z">2019-10-26</time>
+                <time class="level-item has-text-grey" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/ETC/">ETC</a>
+                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/%EC%9E%91%EC%84%B1%EC%A4%91/">작성중</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    42분 읽기 (나에 대하여 6342 단어)
+                    4분 읽기 (나에 대하여 533 단어)
                 </span>
                 
                 
@@ -230,29 +230,30 @@ and연산자(&&)와 or연산자(||) 모두 좌결합성을 가진다.
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
             
-                <a class="has-link-black-ter" href="/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/">해시함수에 대하여</a>
+                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/">사용자 관리</a>
             
         </h1>
         <div class="content">
-            해시함수란
-해시함수는 임의의 길이의 데이터를 입력받아 일정한 길이의 비트열로 반환 시켜주는 함수이다.
+            사용자 관리에 대한 별도 정리자료
 
-입력값의 길이가 달라도 출력값은 언제나 고정된 길이로 반환한다.
+권한에 대하여
+소유주, 그룹, 그 외 사람들
+rwx 로 권한을 표기한다
+/etc/passwd 에 대하여
+/etc/shadow 에 대하여
+과거에는 /etc/passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다.
 
-동일한 값이 입력되면 언제나 동일한 출력값을 보장한다.
+이후 Shadow Suite의 적용으로 /etc/passwd에 직접 암호를 저장하지 않고,
+/etc/shadow 에 각 유저에 매칭되는 암호화된 암호와 암호에 관련된 다양한 설정들을 기록해 사용하는 형태로 변모하였다.
 
-암호화 해시 함수란
-암호화 해시 함수 는 이 해시함수의 부분집합으로 역상저항성과 제2역상저항성 그리고 충돌저항성을 가지고 있어 암호화에 활용될 수 있는 경우를 의미한다.
-
-암호화 해시 함수의 특성과 효과들
- * 역상저항성은 입력값 A에 의해 B가 출력되었다면, 출력된 B값만 주어졌을 때 입력값인 A값을 찾는 
+보통 /etc/passwd 는 644(rw-r-r)의 권한을 갖고
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/#more">자세히 보기</a>
+                <a class="button is-size-7 is-light" href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/#more">자세히 보기</a>
                 </div>
             </div>
         </div>
@@ -584,18 +585,18 @@ shutdown
         
         <article class="media">
             
-            <a href="/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="해시함수에 대하여">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="사용자 관리">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T10:04:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">해시함수에 대하여</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">사용자 관리</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/ETC/">ETC</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
                     </p>
                 </div>
             </div>
@@ -675,7 +676,7 @@ shutdown
                     <span class="level-item">10월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -687,6 +688,17 @@ shutdown
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">8월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
                 </span>
             </a>
         </li>
@@ -810,18 +822,18 @@ shutdown
         
         <article class="media">
             
-            <a href="/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/" class="media-left">
+            <a href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="해시함수에 대하여">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="사용자 관리">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T10:04:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">해시함수에 대하여</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
+                    <a href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">사용자 관리</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/ETC/">ETC</a>
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
                     </p>
                 </div>
             </div>
@@ -901,7 +913,7 @@ shutdown
                     <span class="level-item">10월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -913,6 +925,17 @@ shutdown
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">8월 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
                 </span>
             </a>
         </li>
