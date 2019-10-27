@@ -8,6 +8,27 @@
     </url>
 
     <url>
+        <loc>https://bityoungjae.com/categories/JavaScript/%25EC%258B%259C%25EB%25A6%25AC%25EC%25A6%2588/%25EA%25B0%259D%25EC%25B2%25B4%25EC%2597%2590-%25EB%258C%2580%25ED%2595%2598%25EC%2597%25AC/</loc>
+        <lastmod>2019-10-27T07:48:48.764Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://bityoungjae.com/categories/JavaScript/%25EC%258B%259C%25EB%25A6%25AC%25EC%25A6%2588/</loc>
+        <lastmod>2019-10-27T07:48:48.764Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://bityoungjae.com/categories/JavaScript/</loc>
+        <lastmod>2019-10-27T07:48:48.764Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://bityoungjae.com/categories/Linux/Shell-Commands/%25EC%259E%2591%25EC%2584%25B1%25EC%25A4%2591/</loc>
         <lastmod>2019-10-27T05:12:51.244Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -24,27 +45,6 @@
     <url>
         <loc>https://bityoungjae.com/categories/Linux/</loc>
         <lastmod>2019-10-27T05:12:51.244Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://bityoungjae.com/categories/JavsScript/%25EC%258B%259C%25EB%25A6%25AC%25EC%25A6%2588/%25EA%25B0%259D%25EC%25B2%25B4%25EC%2597%2590-%25EB%258C%2580%25ED%2595%2598%25EC%2597%25AC/</loc>
-        <lastmod>2019-10-27T05:03:38.858Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://bityoungjae.com/categories/JavsScript/%25EC%258B%259C%25EB%25A6%25AC%25EC%25A6%2588/</loc>
-        <lastmod>2019-10-27T05:03:38.858Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://bityoungjae.com/categories/JavsScript/</loc>
-        <lastmod>2019-10-27T05:03:38.858Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

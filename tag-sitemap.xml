@@ -3,6 +3,48 @@
 
 
     <url>
+        <loc>https://bityoungjae.com/tags/javacript/</loc>
+        <lastmod>2019-10-27T07:48:48.764Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://bityoungjae.com/tags/%25EC%258B%259C%25EB%25A6%25AC%25EC%25A6%2588/</loc>
+        <lastmod>2019-10-27T07:48:48.764Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://bityoungjae.com/tags/%25EA%25B0%259D%25EC%25B2%25B4/</loc>
+        <lastmod>2019-10-27T07:48:48.764Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://bityoungjae.com/tags/short-circuit-evaluation/</loc>
+        <lastmod>2019-10-27T07:48:48.764Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://bityoungjae.com/tags/%25EC%25A7%2580%25EB%25A6%2584%25EA%25B8%25B8%25ED%258F%2589%25EA%25B0%2580/</loc>
+        <lastmod>2019-10-27T07:48:48.764Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://bityoungjae.com/tags/%25EB%258B%25A8%25EB%259D%25BD%25ED%258F%2589%25EA%25B0%2580/</loc>
+        <lastmod>2019-10-27T07:48:48.764Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://bityoungjae.com/tags/Shell-Commands/</loc>
         <lastmod>2019-10-27T05:12:51.244Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -12,48 +54,6 @@
     <url>
         <loc>https://bityoungjae.com/tags/Linux/</loc>
         <lastmod>2019-10-27T05:12:51.244Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://bityoungjae.com/tags/%25EC%258B%259C%25EB%25A6%25AC%25EC%25A6%2588/</loc>
-        <lastmod>2019-10-27T05:03:38.858Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://bityoungjae.com/tags/%25EA%25B0%259D%25EC%25B2%25B4/</loc>
-        <lastmod>2019-10-27T05:03:38.858Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://bityoungjae.com/tags/javscript/</loc>
-        <lastmod>2019-10-27T05:03:38.858Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://bityoungjae.com/tags/short-circuit-evaluation/</loc>
-        <lastmod>2019-10-27T03:45:47.834Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://bityoungjae.com/tags/%25EC%25A7%2580%25EB%25A6%2584%25EA%25B8%25B8%25ED%258F%2589%25EA%25B0%2580/</loc>
-        <lastmod>2019-10-27T03:45:47.834Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://bityoungjae.com/tags/%25EB%258B%25A8%25EB%259D%25BD%25ED%258F%2589%25EA%25B0%2580/</loc>
-        <lastmod>2019-10-27T03:45:47.834Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
