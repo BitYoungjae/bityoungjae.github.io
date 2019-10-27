@@ -102,47 +102,6 @@ Basic regular expression
   </entry>
   
   <entry>
-    <title>리눅스 텍스트처리 커맨드</title>
-    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/"/>
-    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/텍스트처리/</id>
-    <published>2019-10-26T08:14:39.000Z</published>
-    <updated>2019-10-27T05:03:05.571Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>텍스트 처리에 관련된 기능들</p></blockquote><h2 id="cat-파일의-내용을-출력합니다"><a href="#cat-파일의-내용을-출력합니다" class="headerlink" title="cat 파일의 내용을 출력합니다"></a>cat 파일의 내용을 출력합니다</h2><ul><li><em>cat [Filename]</em><ul><li>[Filename] 의 내용을 출력합니다</li><li><em>cat [Filename1] [Filename2] …</em><ul><li>나열된 파일들을 연이어 출력합니다</li></ul></li></ul></li><li><em>cat <strong>-n</strong> [Filename]</em><ul><li>줄 번호를 붙여서 출력합니다</li></ul></li></ul><h3 id="cat을-입력도구로-사용하기"><a href="#cat을-입력도구로-사용하기" class="headerlink" title="cat을 입력도구로 사용하기"></a>cat을 입력도구로 사용하기</h3><ul><li>옵션 없이 <strong>cat</strong> 만을 사용할 경우 입력 도구로 사용이 가능합니다<ul><li><strong>ex :</strong> <em>cat &gt; [Filename]</em><ul><li>이후 텍스트를 입력하고 엔터를 치면 해당 파일에 기록이 되기 시작합니다.</li></ul></li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/cat.gif" alt="cat 예시"></p><h2 id="head-앞-쪽만-보여줘"><a href="#head-앞-쪽만-보여줘" class="headerlink" title="head - 앞 쪽만 보여줘"></a>head - 앞 쪽만 보여줘</h2><ul><li><em>cat /etc/passwd | head -n 50</em><ul><li>위에서 50 라인만 출력.</li></ul></li><li><em>cat /etc/passwd | head -n -50</em><ul><li>아래에서 50 라인 빼고 전부 출력.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/head.gif" alt="head 예시"></p><h2 id="tail-아래-쪽-보여줘"><a href="#tail-아래-쪽-보여줘" class="headerlink" title="tail - 아래 쪽 보여줘"></a>tail - 아래 쪽 보여줘</h2><ul><li>로그 조회하는 용도로 많이 사용.</li><li><em>tail /etc/passwd -n 50</em><ul><li>밑에서 50줄만 보여줘.</li></ul></li><li><em>tail /etc/passwd -F</em><ul><li>추가되는 내용을 지속 팔로우하여 출력.</li><li>파일이 삭제되었다 다시 생성되어도 re-open하여 계속 팔로우함.</li><li><strong>-f</strong> 옵션의 경우 파일 재생성시 팔로우 안 함.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/tail.gif" alt="tail 예시"></p><h2 id="wc-Word-Count"><a href="#wc-Word-Count" class="headerlink" title="wc - Word Count"></a>wc - Word Count</h2><ul><li><em>wc /etc/passwd</em><ul><li>줄수 / 단어수 / 바이트 카운트 출력.</li></ul></li><li><em>wc /etc/passwd -l</em><ul><li>라인수만 출력함.</li></ul></li><li><em>wc \</em>.c -l*<ul><li>c파일의 모든 라인수 출력.</li></ul></li><li><em>wc /etc/passwd -l | awk ‘{ print $1 }’</em><ul><li>라인수만 출력함.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/wc.gif" alt="wc 예시"></p><h2 id="nl-Number-Line"><a href="#nl-Number-Line" class="headerlink" title="nl - Number Line"></a>nl - Number Line</h2><ul><li><em>nl /etc/passwd</em></li><li><em>nl /etc/passwd -ba</em><ul><li>공백 라인에도 줄 번호를 출력.</li></ul></li><li><em>nl /etc/passwd -v 10</em><ul><li>번호가 10번부터 시작함.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/nl.gif" alt="nl 예시"></p><h2 id="sort-파일을-정렬"><a href="#sort-파일을-정렬" class="headerlink" title="sort - 파일을 정렬"></a>sort - 파일을 정렬</h2><ul><li><em>cat /etc/passwd | sort</em></li><li><em>cat /etc/passwd | sort -r</em><ul><li><strong>-r</strong> 리버스. 거꾸로 뒤집는다.</li></ul></li><li><em>cat /etc/passwd | sort -t: -k1,1 -k2,2</em><ul><li><strong>-t</strong> 옵션으로 구분자를 정하고, <strong>-k1,1 -k2,2</strong> 옵션으로 첫번째 칼럼과 두번째 칼럼을 기준으로 잡고 정렬함.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/sort.gif" alt="sort 예시"></p><h2 id="uniq-중복-제거"><a href="#uniq-중복-제거" class="headerlink" title="uniq - 중복 제거"></a>uniq - 중복 제거</h2><ul><li><strong>cat /etc/passwd | awk -F: ‘{print $1}’ | <em>uniq -i</em> | sort -k 2,2 | nl</strong> <ul><li>유저 이름을 중복없이 알파벳 순으로 정렬.</li></ul></li><li><strong>cat /etc/passwd | uniq -i -d</strong><ul><li><strong>-d</strong> 옵션은 중복된 값만 출력한다.</li></ul></li><li><strong>cat /etc/passwd | uniq -i -u</strong><ul><li><strong>-u</strong> 옵션은 중복되지 않은 유일한 값만 출력한다.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/uniq.gif" alt="uniq 예시"></p><h2 id="cut-잘라내기"><a href="#cut-잘라내기" class="headerlink" title="cut - 잘라내기"></a>cut - 잘라내기</h2><ul><li><strong>cat /etc/passwd cut -d’:’ -f 1,3</strong></li></ul><p><img src="https://bityoungjae.com/images/imgs/cut.gif" alt="cut 예시"></p>]]></content>
-    
-    <summary type="html">
-    
-      텍스트 처리에 관련된 기능들
-
-cat 파일의 내용을 출력합니다
- * cat [Filename] * [Filename] 의 내용을 출력합니다
-    * cat [Filename1] [Filename2] … * 나열된 파일들을 연이어 출력합니다
-      
-      
-   
-   
- * cat -n [Filename] * 줄 번호를 붙여서 출력합니다
-   
-   
-
-cat을 입력도구로 사용하기
- * 옵션 없이 cat 만을 사용할 경우 입력 도구로 사용이 가능합니다 * ex : cat &gt; [Filename] * 이후 텍스트를 입력하고 
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://bityoungjae.com/categories/Linux/"/>
-    
-      <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
-    
-    
-      <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
-    
-      <category term="Shell Commands" scheme="https://bityoungjae.com/tags/Shell-Commands/"/>
-    
-  </entry>
-  
-  <entry>
     <title>시스템 조작</title>
     <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/"/>
     <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/시스템조작/</id>
@@ -176,6 +135,47 @@ shutdown
  * shutdown -r * 재부팅
    
  
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://bityoungjae.com/categories/Linux/"/>
+    
+      <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
+    
+    
+      <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
+    
+      <category term="Shell Commands" scheme="https://bityoungjae.com/tags/Shell-Commands/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>리눅스 텍스트처리 커맨드</title>
+    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/"/>
+    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/텍스트처리/</id>
+    <published>2019-10-26T08:14:39.000Z</published>
+    <updated>2019-10-27T05:03:05.571Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>텍스트 처리에 관련된 기능들</p></blockquote><h2 id="cat-파일의-내용을-출력합니다"><a href="#cat-파일의-내용을-출력합니다" class="headerlink" title="cat 파일의 내용을 출력합니다"></a>cat 파일의 내용을 출력합니다</h2><ul><li><em>cat [Filename]</em><ul><li>[Filename] 의 내용을 출력합니다</li><li><em>cat [Filename1] [Filename2] …</em><ul><li>나열된 파일들을 연이어 출력합니다</li></ul></li></ul></li><li><em>cat <strong>-n</strong> [Filename]</em><ul><li>줄 번호를 붙여서 출력합니다</li></ul></li></ul><h3 id="cat을-입력도구로-사용하기"><a href="#cat을-입력도구로-사용하기" class="headerlink" title="cat을 입력도구로 사용하기"></a>cat을 입력도구로 사용하기</h3><ul><li>옵션 없이 <strong>cat</strong> 만을 사용할 경우 입력 도구로 사용이 가능합니다<ul><li><strong>ex :</strong> <em>cat &gt; [Filename]</em><ul><li>이후 텍스트를 입력하고 엔터를 치면 해당 파일에 기록이 되기 시작합니다.</li></ul></li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/cat.gif" alt="cat 예시"></p><h2 id="head-앞-쪽만-보여줘"><a href="#head-앞-쪽만-보여줘" class="headerlink" title="head - 앞 쪽만 보여줘"></a>head - 앞 쪽만 보여줘</h2><ul><li><em>cat /etc/passwd | head -n 50</em><ul><li>위에서 50 라인만 출력.</li></ul></li><li><em>cat /etc/passwd | head -n -50</em><ul><li>아래에서 50 라인 빼고 전부 출력.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/head.gif" alt="head 예시"></p><h2 id="tail-아래-쪽-보여줘"><a href="#tail-아래-쪽-보여줘" class="headerlink" title="tail - 아래 쪽 보여줘"></a>tail - 아래 쪽 보여줘</h2><ul><li>로그 조회하는 용도로 많이 사용.</li><li><em>tail /etc/passwd -n 50</em><ul><li>밑에서 50줄만 보여줘.</li></ul></li><li><em>tail /etc/passwd -F</em><ul><li>추가되는 내용을 지속 팔로우하여 출력.</li><li>파일이 삭제되었다 다시 생성되어도 re-open하여 계속 팔로우함.</li><li><strong>-f</strong> 옵션의 경우 파일 재생성시 팔로우 안 함.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/tail.gif" alt="tail 예시"></p><h2 id="wc-Word-Count"><a href="#wc-Word-Count" class="headerlink" title="wc - Word Count"></a>wc - Word Count</h2><ul><li><em>wc /etc/passwd</em><ul><li>줄수 / 단어수 / 바이트 카운트 출력.</li></ul></li><li><em>wc /etc/passwd -l</em><ul><li>라인수만 출력함.</li></ul></li><li><em>wc \</em>.c -l*<ul><li>c파일의 모든 라인수 출력.</li></ul></li><li><em>wc /etc/passwd -l | awk ‘{ print $1 }’</em><ul><li>라인수만 출력함.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/wc.gif" alt="wc 예시"></p><h2 id="nl-Number-Line"><a href="#nl-Number-Line" class="headerlink" title="nl - Number Line"></a>nl - Number Line</h2><ul><li><em>nl /etc/passwd</em></li><li><em>nl /etc/passwd -ba</em><ul><li>공백 라인에도 줄 번호를 출력.</li></ul></li><li><em>nl /etc/passwd -v 10</em><ul><li>번호가 10번부터 시작함.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/nl.gif" alt="nl 예시"></p><h2 id="sort-파일을-정렬"><a href="#sort-파일을-정렬" class="headerlink" title="sort - 파일을 정렬"></a>sort - 파일을 정렬</h2><ul><li><em>cat /etc/passwd | sort</em></li><li><em>cat /etc/passwd | sort -r</em><ul><li><strong>-r</strong> 리버스. 거꾸로 뒤집는다.</li></ul></li><li><em>cat /etc/passwd | sort -t: -k1,1 -k2,2</em><ul><li><strong>-t</strong> 옵션으로 구분자를 정하고, <strong>-k1,1 -k2,2</strong> 옵션으로 첫번째 칼럼과 두번째 칼럼을 기준으로 잡고 정렬함.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/sort.gif" alt="sort 예시"></p><h2 id="uniq-중복-제거"><a href="#uniq-중복-제거" class="headerlink" title="uniq - 중복 제거"></a>uniq - 중복 제거</h2><ul><li><strong>cat /etc/passwd | awk -F: ‘{print $1}’ | <em>uniq -i</em> | sort -k 2,2 | nl</strong> <ul><li>유저 이름을 중복없이 알파벳 순으로 정렬.</li></ul></li><li><strong>cat /etc/passwd | uniq -i -d</strong><ul><li><strong>-d</strong> 옵션은 중복된 값만 출력한다.</li></ul></li><li><strong>cat /etc/passwd | uniq -i -u</strong><ul><li><strong>-u</strong> 옵션은 중복되지 않은 유일한 값만 출력한다.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/uniq.gif" alt="uniq 예시"></p><h2 id="cut-잘라내기"><a href="#cut-잘라내기" class="headerlink" title="cut - 잘라내기"></a>cut - 잘라내기</h2><ul><li><strong>cat /etc/passwd cut -d’:’ -f 1,3</strong></li></ul><p><img src="https://bityoungjae.com/images/imgs/cut.gif" alt="cut 예시"></p>]]></content>
+    
+    <summary type="html">
+    
+      텍스트 처리에 관련된 기능들
+
+cat 파일의 내용을 출력합니다
+ * cat [Filename] * [Filename] 의 내용을 출력합니다
+    * cat [Filename1] [Filename2] … * 나열된 파일들을 연이어 출력합니다
+      
+      
+   
+   
+ * cat -n [Filename] * 줄 번호를 붙여서 출력합니다
+   
+   
+
+cat을 입력도구로 사용하기
+ * 옵션 없이 cat 만을 사용할 경우 입력 도구로 사용이 가능합니다 * ex : cat &gt; [Filename] * 이후 텍스트를 입력하고 
     
     </summary>
     
