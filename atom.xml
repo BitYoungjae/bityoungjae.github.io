@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://bityoungjae.com/"/>
-  <updated>2019-10-27T07:49:37.969Z</updated>
+  <updated>2019-10-27T08:44:21.487Z</updated>
   <id>https://bityoungjae.com/</id>
   
   <author>
@@ -17,18 +17,17 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>단락평가 혹은 지름길평가</title>
-    <link href="https://bityoungjae.com/2019/10/27/JavaScript/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80_%ED%98%B9%EC%9D%80_%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/"/>
-    <id>https://bityoungjae.com/2019/10/27/JavaScript/단락평가_혹은_지름길평가/</id>
+    <title>단락평가, 지름길 평가 (Short-circuit evaluation)</title>
+    <link href="https://bityoungjae.com/2019/10/27/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80%20%ED%98%B9%EC%9D%80%20%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/"/>
+    <id>https://bityoungjae.com/2019/10/27/JavaScript/개념정리/단락평가 혹은 지름길평가/</id>
     <published>2019-10-26T17:14:39.000Z</published>
-    <updated>2019-10-27T07:49:37.969Z</updated>
+    <updated>2019-10-27T08:44:21.487Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="단락평가-지름길-평가-Short-circuit-evaluation"><a href="#단락평가-지름길-평가-Short-circuit-evaluation" class="headerlink" title="단락평가, 지름길 평가 (Short-circuit evaluation)"></a>단락평가, 지름길 평가 (Short-circuit evaluation)</h1><p>자바스크립트의 논리연산자를 기본 용도인 참/거짓의 판단을 위해 사용하는 것이 아닌, 조건문을 대체해 사용하는 일종의 <strong>문법 설탕</strong> 이라고 볼 수 있다.</p><h2 id="기본원리"><a href="#기본원리" class="headerlink" title="기본원리"></a>기본원리</h2><p>단락평가는 결국 조건연산자가 가진 아래의 두가지 특성을 응용한 것이다.</p><h3 id="조건연산자의-좌결합성"><a href="#조건연산자의-좌결합성" class="headerlink" title="조건연산자의 좌결합성"></a>조건연산자의 좌결합성</h3><p>and연산자(&amp;&amp;)와 or연산자(||) 모두 좌결합성을 가진다.<br>즉, 피연산자의 평가순서가 왼쪽부터 오른쪽 순으로 진행이 된다.</p><h3 id="조건연산자의-평가결과"><a href="#조건연산자의-평가결과" class="headerlink" title="조건연산자의 평가결과"></a>조건연산자의 평가결과</h3><p>조건연산자는 Boolean 값을 반환하지 않는다.<br>최종적으로 평가된 피연산자의 평가결과를 반환한다.</p><h2 id="amp-amp-and"><a href="#amp-amp-and" class="headerlink" title="&amp;&amp; - and"></a>&amp;&amp; - and</h2><p>and 연산자의 경우 앞에 위치한 피연산자의 평가결과가 Falsy값일 경우<br>굳이 이후의 피연산자를 평가하지 않아도 false가 되기에<br>&amp;&amp; 연산자는 false로 평가된 피연산자 이후의 피연산자를 평가하지 않는다.</p><p>역으로 생각해보면 and 연산자는 앞에 위치한 피연산자의 평가결과가 Truthy값 이어야만,<br>뒤쪽의 피연산자를 평가하여 그 결과를 반환한다는 이야기가 된다.</p><h3 id="용도1-단순-if문의-대체"><a href="#용도1-단순-if문의-대체" class="headerlink" title="용도1 : 단순 if문의 대체"></a>용도1 : 단순 if문의 대체</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 1 condition이 true라면 doSomething 함수를 실행</span></span><br><span class="line"><span class="hljs-keyword">if</span> (condition) &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 2 위 코드와 동일하다.</span></span><br><span class="line">condition &amp;&amp; doSomething();</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 3 좌결합성이기 때문에 조건을 계속 이어붙일 수 있다.</span></span><br><span class="line">condition1 &amp;&amp; condition2 &amp;&amp; doSomething();</span><br></pre></td></tr></table></figure><h3 id="용도2-null-undefined에-대한-대응"><a href="#용도2-null-undefined에-대한-대응" class="headerlink" title="용도2 : null, undefined에 대한 대응"></a>용도2 : null, undefined에 대한 대응</h3><p>null이나 undefined인 값에 대해 .연산자나 []연산자를 통해 멤버접근을 시도하고자 하면, 속성을 읽을 수 없다는 내용의 TypeError 가 발생한다.</p><p>&amp;&amp; 연산자를 활용하면 이를 예방할 수 있다.</p><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> bark = <span class="hljs-function">(<span class="hljs-params">animal</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> animal &amp;&amp; animal.sound;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>animal이 null이나 undefined가 아닐 경우 animal.sound에 접근한다.<br>null, undefined 외의 데이터 타입에 대해서는 해당 멤버가 존재하지 않더라도 undefined 만을 반환할 뿐, TypeError가 발생하지 않는다.</p><h2 id="or"><a href="#or" class="headerlink" title="|| - or"></a>|| - or</h2><p>or 연산자의 경우 앞에 위치한 피연산자의 평가결과가 Truthy 값일 경우<br>굳이 이후의 피연산자를 평가하지 않아도 true가 되기에 || 연산자는 앞쪽의 피연산자의 평가결과를 그대로 반환하고 뒤쪽의 피연산자는 평가하지 않는다.</p><p>역으로 생각해보면 or 연산자는 앞에 위치한 피연산자의 평가결과가 Falsy값이라면, 무조건 뒤쪽의 피연산자를 평가하여 그 결과를 반환한다는 이야기가 된다.</p><h3 id="용도1-기본값-설정"><a href="#용도1-기본값-설정" class="headerlink" title="용도1 : 기본값 설정"></a>용도1 : 기본값 설정</h3><p>두 개의 피연산자가 있을 경우, 앞 부분이 falsy값일 때,<br>보통 undefined나 null인 경우 argument가 정상적으로 전달되지 않았다고 가정하고 뒷 부분의 피연산자를 평가해 기본값으로 사용한다.</p><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> bark = <span class="hljs-function">(<span class="hljs-params">animal</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> sound = animal &amp;&amp; animal.sound;</span><br><span class="line">    <span class="hljs-keyword">return</span> sound || <span class="hljs-string">"호로로로롤"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 혹은 &amp;&amp;와 같이 이어붙여서 사용하면.. (체이닝)</span></span><br><span class="line"><span class="hljs-keyword">const</span> bark = <span class="hljs-function">(<span class="hljs-params">animal</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> animal &amp;&amp; animal.sound || <span class="hljs-string">"호로로로롤"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>두 번째 코드의 경우 조건 연산자의 우선순위가 ||보다 &amp;&amp; 가 높아서 아래와 같이 표현도 가능하지만, 좀 더 명확하게 괄호로 묶어서 표현하거나 위 처럼 별 개의 라인으로 구분지어 놓는 것이 좋을 것 같다.</p><h3 id="용도2-여러-후보군-중-하나를-골라내야할-때"><a href="#용도2-여러-후보군-중-하나를-골라내야할-때" class="headerlink" title="용도2 : 여러 후보군 중 하나를 골라내야할 때"></a>용도2 : 여러 후보군 중 하나를 골라내야할 때</h3><p>앞 부분에서 Truthy 값이 나오면 뒷 부분을 평가하지 않는다는 특성을 활용해, 있을지 없을지 보장할 수 없는 여러 후보군에 대해 존재하는 하나를 골라낼 때 활용이 가능하다.</p><p>각 피연산자들을 같은 용도의 여러 선택지들이라고 가정할 때, 기회비용이 작은 순으로 좌에서 우로 나열해야한다.</p><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">lightFunc가 가벼우니까 있으면 먼저 사용해보고,</span></span><br><span class="line"><span class="hljs-comment">없으면 어쩔 수 없지.. 무겁지만 heavyFunc라도 사용하자.</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line">(lightFunc || heavyFunc)();</span><br></pre></td></tr></table></figure><h2 id="주의사항"><a href="#주의사항" class="headerlink" title="주의사항"></a>주의사항</h2><p>단락평가의 경우 용도야 만들면 다양하겠지만, 코드의 가독성과 간결성을 위해서가 아니라면 굳이 억지로 사용해서 문법 닌자가 되지 말자.</p>]]></content>
+    <content type="html"><![CDATA[<p>자바스크립트의 논리연산자를 기본 용도인 참/거짓의 판단을 위해 사용하는 것이 아닌, 조건문을 대체해 사용하는 일종의 <strong>문법 설탕</strong> 이라고 볼 수 있다.</p><h2 id="기본원리"><a href="#기본원리" class="headerlink" title="기본원리"></a>기본원리</h2><p>단락평가는 결국 조건연산자가 가진 아래의 두가지 특성을 응용한 것이다.</p><h3 id="조건연산자의-좌결합성"><a href="#조건연산자의-좌결합성" class="headerlink" title="조건연산자의 좌결합성"></a>조건연산자의 좌결합성</h3><p>and연산자(&amp;&amp;)와 or연산자(||) 모두 좌결합성을 가진다.<br>즉, 피연산자의 평가순서가 왼쪽부터 오른쪽 순으로 진행이 된다.</p><h3 id="조건연산자의-평가결과"><a href="#조건연산자의-평가결과" class="headerlink" title="조건연산자의 평가결과"></a>조건연산자의 평가결과</h3><p>조건연산자는 Boolean 값을 반환하지 않는다.<br>최종적으로 평가된 피연산자의 평가결과를 반환한다.</p><h2 id="amp-amp-and"><a href="#amp-amp-and" class="headerlink" title="&amp;&amp; - and"></a>&amp;&amp; - and</h2><p>and 연산자의 경우 앞에 위치한 피연산자의 평가결과가 Falsy값일 경우<br>굳이 이후의 피연산자를 평가하지 않아도 false가 되기에<br>&amp;&amp; 연산자는 false로 평가된 피연산자 이후의 피연산자를 평가하지 않는다.</p><p>역으로 생각해보면 and 연산자는 앞에 위치한 피연산자의 평가결과가 Truthy값 이어야만,<br>뒤쪽의 피연산자를 평가하여 그 결과를 반환한다는 이야기가 된다.</p><h3 id="용도1-조건문의-단축표현"><a href="#용도1-조건문의-단축표현" class="headerlink" title="용도1 : 조건문의 단축표현"></a>용도1 : 조건문의 단축표현</h3><p><strong>condition &amp;&amp; doSomething()</strong> 이라면 condition이 참일 때만 뒤 따라오는 doSomething을 호출한다.</p><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 1 condition이 true라면 doSomething 함수를 실행</span></span><br><span class="line"><span class="hljs-keyword">if</span> (condition) &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 2 위 코드와 동일하다.</span></span><br><span class="line">condition &amp;&amp; doSomething();</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 3 좌결합성이기 때문에 조건을 계속 이어붙일 수 있다.</span></span><br><span class="line">condition1 &amp;&amp; condition2 &amp;&amp; doSomething();</span><br></pre></td></tr></table></figure><h3 id="용도2-null-undefined에-대한-대응"><a href="#용도2-null-undefined에-대한-대응" class="headerlink" title="용도2 : null, undefined에 대한 대응"></a>용도2 : null, undefined에 대한 대응</h3><p>null이나 undefined인 값에 대해 .연산자나 []연산자를 통해 멤버접근을 시도하고자 하면, 속성을 읽을 수 없다는 내용의 TypeError 가 발생한다.</p><p>&amp;&amp; 연산자를 활용하면 이를 예방할 수 있다.</p><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> bark = <span class="hljs-function">(<span class="hljs-params">animal</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> animal &amp;&amp; animal.sound;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>animal이 null이나 undefined가 아닐 경우 animal.sound에 접근한다.<br>null, undefined 외의 데이터 타입에 대해서는 해당 멤버가 존재하지 않더라도 undefined 만을 반환할 뿐, TypeError가 발생하지 않는다.</p><h2 id="or"><a href="#or" class="headerlink" title="|| - or"></a>|| - or</h2><p>or 연산자의 경우 앞에 위치한 피연산자의 평가결과가 Truthy 값일 경우<br>굳이 이후의 피연산자를 평가하지 않아도 true가 되기에 || 연산자는 앞쪽의 피연산자의 평가결과를 그대로 반환하고 뒤쪽의 피연산자는 평가하지 않는다.</p><p>역으로 생각해보면 or 연산자는 앞에 위치한 피연산자의 평가결과가 Falsy값이라면, 무조건 뒤쪽의 피연산자를 평가하여 그 결과를 반환한다는 이야기가 된다.</p><h3 id="용도1-조건문의-대용"><a href="#용도1-조건문의-대용" class="headerlink" title="용도1 : 조건문의 대용"></a>용도1 : 조건문의 대용</h3><p>아래의 예제는 and 조건문의 경우와 정확히 반대이다.<br>and 조건문이 어떤 condition이 참일 때 따라오는 피연산자를 호출하였다면,<br>or 조건문은 어떤 condition이 거짓일 때 호출한다.</p><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 1 condition이 false라면 doSomething 함수를 실행</span></span><br><span class="line"><span class="hljs-keyword">if</span> (!condition) &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 2 위 코드와 동일하다.</span></span><br><span class="line">condition || doSomething();</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 3 좌결합성이기 때문에 조건을 계속 이어붙일 수 있다.</span></span><br><span class="line">condition1 || condition2 || doSomething();</span><br></pre></td></tr></table></figure><h3 id="용도2-기본값-설정"><a href="#용도2-기본값-설정" class="headerlink" title="용도2 : 기본값 설정"></a>용도2 : 기본값 설정</h3><p>두 개의 피연산자가 있을 경우, 앞 부분이 falsy값일 때,<br>보통 undefined나 null인 경우 argument가 정상적으로 전달되지 않았다고 가정하고 뒷 부분의 피연산자를 평가해 기본값으로 사용한다.</p><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> bark = <span class="hljs-function">(<span class="hljs-params">animal</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> sound = animal &amp;&amp; animal.sound;</span><br><span class="line">    <span class="hljs-keyword">return</span> sound || <span class="hljs-string">"호로로로롤"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 혹은 &amp;&amp;와 같이 이어붙여서 사용하면.. (체이닝)</span></span><br><span class="line"><span class="hljs-keyword">const</span> bark = <span class="hljs-function">(<span class="hljs-params">animal</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> animal &amp;&amp; animal.sound || <span class="hljs-string">"호로로로롤"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>두 번째 코드의 경우 조건 연산자의 우선순위가 ||보다 &amp;&amp; 가 높아서 아래와 같이 표현도 가능하지만, 좀 더 명확하게 괄호로 묶어서 표현하거나 위 처럼 별 개의 라인으로 구분지어 놓는 것이 좋을 것 같다.</p><h3 id="용도3-여러-후보군-중-하나를-골라내야할-때"><a href="#용도3-여러-후보군-중-하나를-골라내야할-때" class="headerlink" title="용도3 : 여러 후보군 중 하나를 골라내야할 때"></a>용도3 : 여러 후보군 중 하나를 골라내야할 때</h3><p>앞 부분에서 Truthy 값이 나오면 뒷 부분을 평가하지 않는다는 특성을 활용해, 있을지 없을지 보장할 수 없는 여러 후보군에 대해 존재하는 하나를 골라낼 때 활용이 가능하다.</p><p>각 피연산자들을 같은 용도의 여러 선택지들이라고 가정할 때, 기회비용이 작은 순으로 좌에서 우로 나열해야한다.</p><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">lightFunc가 가벼우니까 있으면 먼저 사용해보고,</span></span><br><span class="line"><span class="hljs-comment">없으면 어쩔 수 없지.. 무겁지만 heavyFunc라도 사용하자.</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line">(lightFunc || heavyFunc)();</span><br></pre></td></tr></table></figure><h2 id="주의사항"><a href="#주의사항" class="headerlink" title="주의사항"></a>주의사항</h2><p>단락평가의 경우 용도야 만들면 다양하겠지만, 코드의 가독성과 간결성을 위해서가 아니라면 굳이 억지로 사용해서 문법 닌자가 되지 말자.</p>]]></content>
     
     <summary type="html">
     
-      단락평가, 지름길 평가 (Short-circuit evaluation)
-자바스크립트의 논리연산자를 기본 용도인 참/거짓의 판단을 위해 사용하는 것이 아닌, 조건문을 대체해 사용하는 일종의 문법 설탕 이라고 볼 수 있다.
+      자바스크립트의 논리연산자를 기본 용도인 참/거짓의 판단을 위해 사용하는 것이 아닌, 조건문을 대체해 사용하는 일종의 문법 설탕 이라고 볼 수 있다.
 
 기본원리
 단락평가는 결국 조건연산자가 가진 아래의 두가지 특성을 응용한 것이다.
@@ -39,7 +38,10 @@ and연산자(&amp;&amp;)와 or연산자(||) 모두 좌결합성을 가진다.
 
 조건연산자의 평가결과
 조건연산자는 Boolean 값을 반환하지 않는다.
-최종적으로
+최종적으로 평가된 피연산자의 평가결과를 반환한다.
+
+&amp;&amp; - and
+and 연산자
     
     </summary>
     
@@ -58,29 +60,17 @@ and연산자(&amp;&amp;)와 or연산자(||) 모두 좌결합성을 가진다.
   </entry>
   
   <entry>
-    <title>사용자 관리</title>
-    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/"/>
-    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/작성중/사용자관리/</id>
+    <title>Find 사용법</title>
+    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/"/>
+    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/작성중/Find 유틸리티/</id>
     <published>2019-10-26T08:14:39.000Z</published>
     <updated>2019-10-27T05:12:51.244Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>사용자 관리에 대한 별도 정리자료</p></blockquote><h2 id="권한에-대하여"><a href="#권한에-대하여" class="headerlink" title="권한에 대하여"></a>권한에 대하여</h2><h3 id="소유주-그룹-그-외-사람들"><a href="#소유주-그룹-그-외-사람들" class="headerlink" title="소유주, 그룹, 그 외 사람들"></a>소유주, 그룹, 그 외 사람들</h3><h3 id="rwx-로-권한을-표기한다"><a href="#rwx-로-권한을-표기한다" class="headerlink" title="rwx 로 권한을 표기한다"></a>rwx 로 권한을 표기한다</h3><h2 id="etc-passwd-에-대하여"><a href="#etc-passwd-에-대하여" class="headerlink" title="/etc/passwd 에 대하여"></a>/etc/passwd 에 대하여</h2><h3 id="etc-shadow-에-대하여"><a href="#etc-shadow-에-대하여" class="headerlink" title="/etc/shadow 에 대하여"></a>/etc/shadow 에 대하여</h3><p>과거에는 /etc/passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다.</p><p>이후 Shadow Suite의 적용으로 /etc/passwd에 직접 암호를 저장하지 않고,<br>/etc/shadow 에 각 유저에 매칭되는 암호화된 암호와 암호에 관련된 다양한 설정들을 기록해 사용하는 형태로 변모하였다.</p><p>보통 /etc/passwd 는 <strong>644(rw-r-r)</strong>의 권한을 갖고,<br>/etc/shadow는 <strong>600(rw-권한없음-권한없음)</strong>의 권한을 갖는다.</p><h4 id="etc-shadow의-구조"><a href="#etc-shadow의-구조" class="headerlink" title="/etc/shadow의 구조"></a>/etc/shadow의 구조</h4><p>/etc/shadow 파일내에는 각 유저들의 <strong>암호화된 비밀번호</strong> 와 <strong>비밀번호에 관련된 설정값</strong> 들이 기록되어있다.</p><blockquote><p><code>test:$6$O71pCNwB$GnBKDEYulhNdk0QFEpuDX3Ge(중략 ...):18112:0:99999:7:::</code></p></blockquote><h5 id="각-필드-살펴보기"><a href="#각-필드-살펴보기" class="headerlink" title="각 필드 살펴보기"></a>각 필드 살펴보기</h5><p><strong>콜론 :</strong> 을 구분자로 사용해 각 필드를 구분한다.</p><ul><li>첫번째 - <em>test</em><ul><li>/etc/passwd 에 기록된 유저명과 매칭이 된다.</li></ul></li><li>두번째 - “<code>$6$O71pCNwB$GnBKDEYulhNdk0QFEpuDX3Ge(중략 ...)</code>“<ul><li>암호화된 Password 이다. (동어 반복 느낌이 나서 굳이 영단어를 썼다)</li><li>이 역시도 <strong>달러기호 $</strong> 를 구분자로 사용해 다시 필드가 나뉜다.</li><li>첫번째 - <em>6</em></li><li>두번째 - <em>O71pCNwB</em></li><li>세번째 - <em>GnBKDEYulhNdk0QFEpuDX3Ge(중략 …)</em></li></ul></li><li>세번째 - <em>18112</em></li><li>네번째 - <em>0</em></li><li>다섯번째 - <em>99999</em></li><li>여섯번째 - <em>7</em></li></ul><h4 id="해시함수"><a href="#해시함수" class="headerlink" title="해시함수"></a>해시함수</h4><p><a href="https://bityoungjae.com/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/">부록-해시함수.md</a> 를 참고할 것.</p><p>쓰고나서 투머치한 감이 없잖게 있어서 따로 항목을 새로 만들었습니다.</p><p>사족과도 같은 내용으로 필요한 분만 간단하게 참고하는 용도로 열람하시면 될 것 같습니다.</p><h2 id="사용자-추가-삭제-수정"><a href="#사용자-추가-삭제-수정" class="headerlink" title="사용자 추가, 삭제, 수정"></a>사용자 추가, 삭제, 수정</h2><h3 id="사용자-추가하기"><a href="#사용자-추가하기" class="headerlink" title="사용자 추가하기"></a>사용자 추가하기</h3><h3 id="사용자-삭제하기"><a href="#사용자-삭제하기" class="headerlink" title="사용자 삭제하기"></a>사용자 삭제하기</h3><h4 id="사용자-삭제시-오류-사례"><a href="#사용자-삭제시-오류-사례" class="headerlink" title="사용자 삭제시 오류 사례"></a>사용자 삭제시 오류 사례</h4><h3 id="사용자-수정하기"><a href="#사용자-수정하기" class="headerlink" title="사용자 수정하기"></a>사용자 수정하기</h3><h3 id="사용자-목록-확인"><a href="#사용자-목록-확인" class="headerlink" title="사용자 목록 확인"></a>사용자 목록 확인</h3><h3 id="패스워드-변경"><a href="#패스워드-변경" class="headerlink" title="패스워드 변경"></a>패스워드 변경</h3><h2 id="그룹-추가-삭제-수정"><a href="#그룹-추가-삭제-수정" class="headerlink" title="그룹 추가, 삭제, 수정"></a>그룹 추가, 삭제, 수정</h2><h3 id="그룹-목록-확인"><a href="#그룹-목록-확인" class="headerlink" title="그룹 목록 확인"></a>그룹 목록 확인</h3><h2 id="UID-GID"><a href="#UID-GID" class="headerlink" title="UID, GID"></a>UID, GID</h2>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>Find 유티리티에 대한 별도 정리자료</p></blockquote>]]></content>
     
     <summary type="html">
     
-      사용자 관리에 대한 별도 정리자료
-
-권한에 대하여
-소유주, 그룹, 그 외 사람들
-rwx 로 권한을 표기한다
-/etc/passwd 에 대하여
-/etc/shadow 에 대하여
-과거에는 /etc/passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다.
-
-이후 Shadow Suite의 적용으로 /etc/passwd에 직접 암호를 저장하지 않고,
-/etc/shadow 에 각 유저에 매칭되는 암호화된 암호와 암호에 관련된 다양한 설정들을 기록해 사용하는 형태로 변모하였다.
-
-보통 /etc/passwd 는 644(rw-r-r)의 권한을 갖고
+      Find 유티리티에 대한 별도 정리자료
     
     </summary>
     
@@ -90,55 +80,6 @@ rwx 로 권한을 표기한다
       <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
     
       <category term="작성중" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/%EC%9E%91%EC%84%B1%EC%A4%91/"/>
-    
-    
-      <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
-    
-      <category term="Shell Commands" scheme="https://bityoungjae.com/tags/Shell-Commands/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>시스템 조작</title>
-    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/"/>
-    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/시스템조작/</id>
-    <published>2019-10-26T08:14:39.000Z</published>
-    <updated>2019-10-27T05:03:05.567Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>시스템 조작 및 간단한 시스템 정보를 조회하는 방법</p></blockquote><h2 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a>shutdown</h2><p>시스템을 종료하거나 재부팅한다</p><ul><li><em>shutdown -h now</em><ul><li>즉시 시스템 종료</li></ul></li><li><em>shutdown -h 15</em><ul><li>15분 뒤 시스템 종료</li></ul></li><li><em>shutdown -h 22:00</em><ul><li>22:00 에 셧다운 예약</li></ul></li><li><em>shutdown -c</em><ul><li>예약된 셧다운 취소</li></ul></li><li><em>shutdown -k +15</em><ul><li>15분 뒤 종료 예정이라고 전 사용자에게 경고</li></ul></li><li><em>shutdown -r</em><ul><li>재부팅</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/shutdown.gif" alt="shutdown 시리즈 예시"></p><h2 id="w-who-whoami-users"><a href="#w-who-whoami-users" class="headerlink" title="w, who, whoami, users"></a>w, who, whoami, users</h2><p>접속중인 사용자들에 대한 정보를 조회한다</p><ul><li><em>w</em> 현재 접속한 사용자 목록 출력</li><li><em>who</em> 위와 동일</li><li><em>who -b</em> 시스템 부팅시간 출력<ul><li>UTC로 표기가 되므로, 한국 시간을 알고싶다면 -9시간을 계산해야 된다.</li><li><strong>UTC(Universal Time + Coordinated, 협정세계시간)</strong></li><li>한국은 <strong>UTC+9 (UTC에 9시간을 더함)</strong> 를 사용한다.</li></ul></li><li><em>whoami</em> 현재 로그인된 호스트명 출력</li><li><em>users</em> 접속된 사용자 리스트를 나열</li></ul><p><img src="https://bityoungjae.com/images/imgs/ws.gif" alt="who 시리즈 예시"></p><h2 id="id"><a href="#id" class="headerlink" title="id"></a>id</h2><p>id에 관련된 조회 동작을 실시한다</p><ul><li><em>id -un</em> 현재 호스트명 출력</li><li><em>id 1000 -un</em> uid 1000의 호스트명 출력</li><li><em>id -u</em> 현재 로그인된 계정의 uid 출력</li></ul><p><img src="https://bityoungjae.com/images/imgs/id.gif" alt="id 예시"></p><h2 id="finger"><a href="#finger" class="headerlink" title="finger"></a>finger</h2><p>특정 유저의 이름, 메일, 로그인시간 등의 정보를 확인한다</p><ul><li><em>finger -s</em><ul><li>현재 로그인된 계정의 정보를 출력</li></ul></li><li><em>finger -s username</em><ul><li>username으로 지정한 유저의 정보를 출력</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/finger.gif" alt="finger 예시"></p><h2 id="md5sum"><a href="#md5sum" class="headerlink" title="md5sum"></a>md5sum</h2><p>  특정 파일의 md5 체크섬을 확인</p><ul><li><em>md5sum filename</em> md5 체크섬을 출력.</li></ul><h2 id="df-Disk-Free"><a href="#df-Disk-Free" class="headerlink" title="df - Disk Free"></a>df - Disk Free</h2><p>디스크 사용정보를 출력</p><ul><li><em>df *</em>-text4 -hT***<ul><li><strong>-h</strong> 옵션으로 읽기 쉬운 단위로 출력</li><li><strong>-T</strong> 옵션으로 파일시스템 정보를 출력</li><li><strong>-t[type]</strong> 옵션으로 해당 파일시스템의 파티션만 필터링</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/df.gif" alt="df 예시"></p><h2 id="du-Disk-Usage"><a href="#du-Disk-Usage" class="headerlink" title="du - Disk Usage"></a>du - Disk Usage</h2><p>디스크 사용량을 표시한다</p><ul><li><em>du *</em>-hs***<ul><li><strong>-hs</strong> -&gt; Human Readable, Short</li><li>사람이 읽을 수 있게 요약해서 총량만 출력</li></ul></li><li><em>dur *</em>-hsS***<ul><li><strong>-S</strong></li><li>하위 파일 제외 순수 현재 폴더만의 디스크 사용량 표시</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/du.gif" alt="du 예시"></p><h2 id="free-Memory-Usage"><a href="#free-Memory-Usage" class="headerlink" title="free - Memory Usage"></a>free - Memory Usage</h2><p>메모리 사용량을 표시한다</p><ul><li><em>free *</em>-hs1***<ul><li><strong>-s1</strong> 1초에 한 번씩 사용현황을 append</li><li><strong>-t</strong> 총 사용량 행을 가장 아래에 출력</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/free.gif" alt="free 예시"></p>]]></content>
-    
-    <summary type="html">
-    
-      시스템 조작 및 간단한 시스템 정보를 조회하는 방법
-
-shutdown
-시스템을 종료하거나 재부팅한다
-
- * shutdown -h now * 즉시 시스템 종료
-   
-   
- * shutdown -h 15 * 15분 뒤 시스템 종료
-   
-   
- * shutdown -h 22:00 * 22:00 에 셧다운 예약
-   
-   
- * shutdown -c * 예약된 셧다운 취소
-   
-   
- * shutdown -k +15 * 15분 뒤 종료 예정이라고 전 사용자에게 경고
-   
-   
- * shutdown -r * 재부팅
-   
- 
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://bityoungjae.com/categories/Linux/"/>
-    
-      <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
     
     
       <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
@@ -266,17 +207,29 @@ ls - List
   </entry>
   
   <entry>
-    <title>Find 사용법</title>
-    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/"/>
-    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/작성중/Find 유틸리티/</id>
+    <title>사용자 관리</title>
+    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/"/>
+    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/작성중/사용자관리/</id>
     <published>2019-10-26T08:14:39.000Z</published>
     <updated>2019-10-27T05:12:51.244Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>Find 유티리티에 대한 별도 정리자료</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>사용자 관리에 대한 별도 정리자료</p></blockquote><h2 id="권한에-대하여"><a href="#권한에-대하여" class="headerlink" title="권한에 대하여"></a>권한에 대하여</h2><h3 id="소유주-그룹-그-외-사람들"><a href="#소유주-그룹-그-외-사람들" class="headerlink" title="소유주, 그룹, 그 외 사람들"></a>소유주, 그룹, 그 외 사람들</h3><h3 id="rwx-로-권한을-표기한다"><a href="#rwx-로-권한을-표기한다" class="headerlink" title="rwx 로 권한을 표기한다"></a>rwx 로 권한을 표기한다</h3><h2 id="etc-passwd-에-대하여"><a href="#etc-passwd-에-대하여" class="headerlink" title="/etc/passwd 에 대하여"></a>/etc/passwd 에 대하여</h2><h3 id="etc-shadow-에-대하여"><a href="#etc-shadow-에-대하여" class="headerlink" title="/etc/shadow 에 대하여"></a>/etc/shadow 에 대하여</h3><p>과거에는 /etc/passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다.</p><p>이후 Shadow Suite의 적용으로 /etc/passwd에 직접 암호를 저장하지 않고,<br>/etc/shadow 에 각 유저에 매칭되는 암호화된 암호와 암호에 관련된 다양한 설정들을 기록해 사용하는 형태로 변모하였다.</p><p>보통 /etc/passwd 는 <strong>644(rw-r-r)</strong>의 권한을 갖고,<br>/etc/shadow는 <strong>600(rw-권한없음-권한없음)</strong>의 권한을 갖는다.</p><h4 id="etc-shadow의-구조"><a href="#etc-shadow의-구조" class="headerlink" title="/etc/shadow의 구조"></a>/etc/shadow의 구조</h4><p>/etc/shadow 파일내에는 각 유저들의 <strong>암호화된 비밀번호</strong> 와 <strong>비밀번호에 관련된 설정값</strong> 들이 기록되어있다.</p><blockquote><p><code>test:$6$O71pCNwB$GnBKDEYulhNdk0QFEpuDX3Ge(중략 ...):18112:0:99999:7:::</code></p></blockquote><h5 id="각-필드-살펴보기"><a href="#각-필드-살펴보기" class="headerlink" title="각 필드 살펴보기"></a>각 필드 살펴보기</h5><p><strong>콜론 :</strong> 을 구분자로 사용해 각 필드를 구분한다.</p><ul><li>첫번째 - <em>test</em><ul><li>/etc/passwd 에 기록된 유저명과 매칭이 된다.</li></ul></li><li>두번째 - “<code>$6$O71pCNwB$GnBKDEYulhNdk0QFEpuDX3Ge(중략 ...)</code>“<ul><li>암호화된 Password 이다. (동어 반복 느낌이 나서 굳이 영단어를 썼다)</li><li>이 역시도 <strong>달러기호 $</strong> 를 구분자로 사용해 다시 필드가 나뉜다.</li><li>첫번째 - <em>6</em></li><li>두번째 - <em>O71pCNwB</em></li><li>세번째 - <em>GnBKDEYulhNdk0QFEpuDX3Ge(중략 …)</em></li></ul></li><li>세번째 - <em>18112</em></li><li>네번째 - <em>0</em></li><li>다섯번째 - <em>99999</em></li><li>여섯번째 - <em>7</em></li></ul><h4 id="해시함수"><a href="#해시함수" class="headerlink" title="해시함수"></a>해시함수</h4><p><a href="https://bityoungjae.com/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/">부록-해시함수.md</a> 를 참고할 것.</p><p>쓰고나서 투머치한 감이 없잖게 있어서 따로 항목을 새로 만들었습니다.</p><p>사족과도 같은 내용으로 필요한 분만 간단하게 참고하는 용도로 열람하시면 될 것 같습니다.</p><h2 id="사용자-추가-삭제-수정"><a href="#사용자-추가-삭제-수정" class="headerlink" title="사용자 추가, 삭제, 수정"></a>사용자 추가, 삭제, 수정</h2><h3 id="사용자-추가하기"><a href="#사용자-추가하기" class="headerlink" title="사용자 추가하기"></a>사용자 추가하기</h3><h3 id="사용자-삭제하기"><a href="#사용자-삭제하기" class="headerlink" title="사용자 삭제하기"></a>사용자 삭제하기</h3><h4 id="사용자-삭제시-오류-사례"><a href="#사용자-삭제시-오류-사례" class="headerlink" title="사용자 삭제시 오류 사례"></a>사용자 삭제시 오류 사례</h4><h3 id="사용자-수정하기"><a href="#사용자-수정하기" class="headerlink" title="사용자 수정하기"></a>사용자 수정하기</h3><h3 id="사용자-목록-확인"><a href="#사용자-목록-확인" class="headerlink" title="사용자 목록 확인"></a>사용자 목록 확인</h3><h3 id="패스워드-변경"><a href="#패스워드-변경" class="headerlink" title="패스워드 변경"></a>패스워드 변경</h3><h2 id="그룹-추가-삭제-수정"><a href="#그룹-추가-삭제-수정" class="headerlink" title="그룹 추가, 삭제, 수정"></a>그룹 추가, 삭제, 수정</h2><h3 id="그룹-목록-확인"><a href="#그룹-목록-확인" class="headerlink" title="그룹 목록 확인"></a>그룹 목록 확인</h3><h2 id="UID-GID"><a href="#UID-GID" class="headerlink" title="UID, GID"></a>UID, GID</h2>]]></content>
     
     <summary type="html">
     
-      Find 유티리티에 대한 별도 정리자료
+      사용자 관리에 대한 별도 정리자료
+
+권한에 대하여
+소유주, 그룹, 그 외 사람들
+rwx 로 권한을 표기한다
+/etc/passwd 에 대하여
+/etc/shadow 에 대하여
+과거에는 /etc/passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다.
+
+이후 Shadow Suite의 적용으로 /etc/passwd에 직접 암호를 저장하지 않고,
+/etc/shadow 에 각 유저에 매칭되는 암호화된 암호와 암호에 관련된 다양한 설정들을 기록해 사용하는 형태로 변모하였다.
+
+보통 /etc/passwd 는 644(rw-r-r)의 권한을 갖고
     
     </summary>
     
@@ -286,6 +239,55 @@ ls - List
       <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
     
       <category term="작성중" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/%EC%9E%91%EC%84%B1%EC%A4%91/"/>
+    
+    
+      <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
+    
+      <category term="Shell Commands" scheme="https://bityoungjae.com/tags/Shell-Commands/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>시스템 조작</title>
+    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/"/>
+    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/시스템조작/</id>
+    <published>2019-10-26T08:14:39.000Z</published>
+    <updated>2019-10-27T05:03:05.567Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>시스템 조작 및 간단한 시스템 정보를 조회하는 방법</p></blockquote><h2 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a>shutdown</h2><p>시스템을 종료하거나 재부팅한다</p><ul><li><em>shutdown -h now</em><ul><li>즉시 시스템 종료</li></ul></li><li><em>shutdown -h 15</em><ul><li>15분 뒤 시스템 종료</li></ul></li><li><em>shutdown -h 22:00</em><ul><li>22:00 에 셧다운 예약</li></ul></li><li><em>shutdown -c</em><ul><li>예약된 셧다운 취소</li></ul></li><li><em>shutdown -k +15</em><ul><li>15분 뒤 종료 예정이라고 전 사용자에게 경고</li></ul></li><li><em>shutdown -r</em><ul><li>재부팅</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/shutdown.gif" alt="shutdown 시리즈 예시"></p><h2 id="w-who-whoami-users"><a href="#w-who-whoami-users" class="headerlink" title="w, who, whoami, users"></a>w, who, whoami, users</h2><p>접속중인 사용자들에 대한 정보를 조회한다</p><ul><li><em>w</em> 현재 접속한 사용자 목록 출력</li><li><em>who</em> 위와 동일</li><li><em>who -b</em> 시스템 부팅시간 출력<ul><li>UTC로 표기가 되므로, 한국 시간을 알고싶다면 -9시간을 계산해야 된다.</li><li><strong>UTC(Universal Time + Coordinated, 협정세계시간)</strong></li><li>한국은 <strong>UTC+9 (UTC에 9시간을 더함)</strong> 를 사용한다.</li></ul></li><li><em>whoami</em> 현재 로그인된 호스트명 출력</li><li><em>users</em> 접속된 사용자 리스트를 나열</li></ul><p><img src="https://bityoungjae.com/images/imgs/ws.gif" alt="who 시리즈 예시"></p><h2 id="id"><a href="#id" class="headerlink" title="id"></a>id</h2><p>id에 관련된 조회 동작을 실시한다</p><ul><li><em>id -un</em> 현재 호스트명 출력</li><li><em>id 1000 -un</em> uid 1000의 호스트명 출력</li><li><em>id -u</em> 현재 로그인된 계정의 uid 출력</li></ul><p><img src="https://bityoungjae.com/images/imgs/id.gif" alt="id 예시"></p><h2 id="finger"><a href="#finger" class="headerlink" title="finger"></a>finger</h2><p>특정 유저의 이름, 메일, 로그인시간 등의 정보를 확인한다</p><ul><li><em>finger -s</em><ul><li>현재 로그인된 계정의 정보를 출력</li></ul></li><li><em>finger -s username</em><ul><li>username으로 지정한 유저의 정보를 출력</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/finger.gif" alt="finger 예시"></p><h2 id="md5sum"><a href="#md5sum" class="headerlink" title="md5sum"></a>md5sum</h2><p>  특정 파일의 md5 체크섬을 확인</p><ul><li><em>md5sum filename</em> md5 체크섬을 출력.</li></ul><h2 id="df-Disk-Free"><a href="#df-Disk-Free" class="headerlink" title="df - Disk Free"></a>df - Disk Free</h2><p>디스크 사용정보를 출력</p><ul><li><em>df *</em>-text4 -hT***<ul><li><strong>-h</strong> 옵션으로 읽기 쉬운 단위로 출력</li><li><strong>-T</strong> 옵션으로 파일시스템 정보를 출력</li><li><strong>-t[type]</strong> 옵션으로 해당 파일시스템의 파티션만 필터링</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/df.gif" alt="df 예시"></p><h2 id="du-Disk-Usage"><a href="#du-Disk-Usage" class="headerlink" title="du - Disk Usage"></a>du - Disk Usage</h2><p>디스크 사용량을 표시한다</p><ul><li><em>du *</em>-hs***<ul><li><strong>-hs</strong> -&gt; Human Readable, Short</li><li>사람이 읽을 수 있게 요약해서 총량만 출력</li></ul></li><li><em>dur *</em>-hsS***<ul><li><strong>-S</strong></li><li>하위 파일 제외 순수 현재 폴더만의 디스크 사용량 표시</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/du.gif" alt="du 예시"></p><h2 id="free-Memory-Usage"><a href="#free-Memory-Usage" class="headerlink" title="free - Memory Usage"></a>free - Memory Usage</h2><p>메모리 사용량을 표시한다</p><ul><li><em>free *</em>-hs1***<ul><li><strong>-s1</strong> 1초에 한 번씩 사용현황을 append</li><li><strong>-t</strong> 총 사용량 행을 가장 아래에 출력</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/free.gif" alt="free 예시"></p>]]></content>
+    
+    <summary type="html">
+    
+      시스템 조작 및 간단한 시스템 정보를 조회하는 방법
+
+shutdown
+시스템을 종료하거나 재부팅한다
+
+ * shutdown -h now * 즉시 시스템 종료
+   
+   
+ * shutdown -h 15 * 15분 뒤 시스템 종료
+   
+   
+ * shutdown -h 22:00 * 22:00 에 셧다운 예약
+   
+   
+ * shutdown -c * 예약된 셧다운 취소
+   
+   
+ * shutdown -k +15 * 15분 뒤 종료 예정이라고 전 사용자에게 경고
+   
+   
+ * shutdown -r * 재부팅
+   
+ 
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://bityoungjae.com/categories/Linux/"/>
+    
+      <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
     
     
       <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
