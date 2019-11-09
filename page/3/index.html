@@ -149,14 +149,14 @@
                 <time class="level-item has-text-grey" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/%EC%9E%91%EC%84%B1%EC%A4%91/">작성중</a>
+                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4분 분량 (단어수 533 개)
+                    4분 분량 (단어수 577 개)
                 </span>
                 
                 
@@ -165,30 +165,31 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
             
-                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/">사용자 관리</a>
+                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/">grep 사용법</a>
             
         </h1>
         <div class="content">
-            사용자 관리에 대한 별도 정리자료
+            정규표현식을 이용한 텍스트 검색
 
-권한에 대하여
-소유주, 그룹, 그 외 사람들
-rwx 로 권한을 표기한다
-/etc/passwd 에 대하여
-/etc/shadow 에 대하여
-과거에는 /etc/passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다.
+ * grep [Pattern] [Filename] * 일반적인 사용법
+    * [Filename] 에서 [Pattern] 를 찾는다
+    * 기본적으로 Basic regular expression을 사용한다
+   
+   
+ * grep -i [Pattern] * 대소문자를 무시한다. Ignore Case
+   
+   
 
-이후 Shadow Suite의 적용으로 /etc/passwd에 직접 암호를 저장하지 않고,
-/etc/shadow 에 각 유저에 매칭되는 암호화된 암호와 암호에 관련된 다양한 설정들을 기록해 사용하는 형태로 변모하였다.
-
-보통 /etc/passwd 는 644(rw-r-r)의 권한을 갖고
+Basic regular expression
+ * 패턴에서 일부 메타문자를 일반 문자로 인식한다. * ex : ? , + , { , | , (, )
+    * \ 를 앞에 붙여
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/#more">전체 읽기</a>
+                <a class="button is-size-7 is-light" href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/#more">전체 읽기</a>
                 </div>
             </div>
         </div>
@@ -252,6 +253,73 @@ ls - List
             <div class="level-start">
                 <div class="level-item">
                 <a class="button is-size-7 is-light" href="/2019/10/26/Linux/Shell%20Commands/%ED%8C%8C%EC%9D%BC%EC%B2%98%EB%A6%AC/#more">전체 읽기</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4분 분량 (단어수 601 개)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
+            
+                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/">리눅스 텍스트처리 커맨드</a>
+            
+        </h1>
+        <div class="content">
+            텍스트 처리에 관련된 기능들
+
+cat 파일의 내용을 출력합니다
+ * cat [Filename] * [Filename] 의 내용을 출력합니다
+    * cat [Filename1] [Filename2] … * 나열된 파일들을 연이어 출력합니다
+      
+      
+   
+   
+ * cat -n [Filename] * 줄 번호를 붙여서 출력합니다
+   
+   
+
+cat을 입력도구로 사용하기
+ * 옵션 없이 cat 만을 사용할 경우 입력 도구로 사용이 가능합니다 * ex : cat > [Filename] * 이후 텍스트를 입력하고 
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/#more">전체 읽기</a>
                 </div>
             </div>
         </div>
@@ -348,66 +416,6 @@ const Dog = {
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-08T05:55:00.000Z">2019-09-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/JavaScript/%EC%8B%9C%EB%A6%AC%EC%A6%88/">시리즈</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/JavaScript/%EC%8B%9C%EB%A6%AC%EC%A6%88/%EA%B0%9D%EC%B2%B4%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/">객체에 대하여</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7분 분량 (단어수 982 개)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
-            
-                <a class="has-link-black-ter" href="/2019/09/08/JavaScript/%EC%8B%9C%EB%A6%AC%EC%A6%88/%EA%B0%9D%EC%B2%B4%EC%97%90%20%EB%8C%80%ED%95%98%EC%97%AC/3.%20%EA%B0%9D%EC%B2%B4%EB%A5%BC%20%EB%B4%89%EC%9D%B8%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95/">객체를 봉인하는 방법</a>
-            
-        </h1>
-        <div class="content">
-            Object 내장 객체에는 객체를 다루기 위한 다양한 정적 메서드들이 포함되어 있습니다.
-그 중에서도 앞서 설명한 속성 설명자와 연관성이 짙은 몇 가지 메서드들에 대해 알아보려고 합니다.
-
-아래에 알아볼 메서드들은 모두 객체를 사용자가 임의로 확장하고 수정할 수 없도록 봉인하는 방법들을 제공하는 것들입니다. 
-
-Object.preventExtensions
-객체가 확장될 수 있다는 것은, 객체에 새로운 구성요소를 추가할 수 있음을 의미합니다.
-Object.preventExtensions([객체명]) 메서드를 사용할 경우 해당 객체는 
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/08/JavaScript/%EC%8B%9C%EB%A6%AC%EC%A6%88/%EA%B0%9D%EC%B2%B4%EC%97%90%20%EB%8C%80%ED%95%98%EC%97%AC/3.%20%EA%B0%9D%EC%B2%B4%EB%A5%BC%20%EB%B4%89%EC%9D%B8%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95/#more">전체 읽기</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -475,7 +483,7 @@ Object.preventExtensions([객체명]) 메서드를 사용할 경우 해당 객�
                         포스트
                     </p>
                     <p class="title has-text-weight-bold">
-                        15
+                        16
                     </p>
                 </div>
             </div>
@@ -485,7 +493,7 @@ Object.preventExtensions([객체명]) 메서드를 사용할 경우 해당 객�
                         분류
                     </p>
                     <p class="title has-text-weight-bold">
-                        10
+                        11
                     </p>
                 </div>
             </div>
@@ -495,7 +503,7 @@ Object.preventExtensions([객체명]) 메서드를 사용할 경우 해당 객�
                         태그
                     </p>
                     <p class="title has-text-weight-bold">
-                        15
+                        16
                     </p>
                 </div>
             </div>
@@ -588,6 +596,14 @@ Object.preventExtensions([객체명]) 메서드를 사용할 경우 해당 객�
                 <span class="level-item tag">4</span>
             </span>
         </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Life/">
+            <span class="level-start">
+                <span class="level-item">Life</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Linux/">
             <span class="level-start">
                 <span class="level-item">Linux</span>
@@ -614,7 +630,7 @@ Object.preventExtensions([객체명]) 메서드를 사용할 경우 해당 객�
         <h3 class="menu-label">
             태그 클라우드
         </h3>
-        <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Shell-Commands/" style="font-size: 16.67px;">Shell Commands</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/short-circuit-evaluation/" style="font-size: 10px;">short-circuit evaluation</a> <a href="/tags/%EA%B0%9D%EC%B2%B4%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/" style="font-size: 13.33px;">객체에 대하여</a> <a href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/" style="font-size: 10px;">단락평가</a> <a href="/tags/%EB%94%94%EB%B0%94%EC%9A%B4%EC%8B%B1/" style="font-size: 10px;">디바운싱</a> <a href="/tags/%EB%A9%94%EB%AA%A8/" style="font-size: 10px;">메모</a> <a href="/tags/%EC%8A%A4%ED%81%AC%EB%A1%A4%EC%9D%B4%EB%B2%A4%ED%8A%B8/" style="font-size: 10px;">스크롤이벤트</a> <a href="/tags/%EC%8B%9C%EB%A6%AC%EC%A6%88/" style="font-size: 13.33px;">시리즈</a> <a href="/tags/%EC%93%B0%EB%A1%9C%ED%8B%80%EB%A7%81/" style="font-size: 10px;">쓰로틀링</a> <a href="/tags/%EC%9D%B4%EB%B2%A4%ED%8A%B8/" style="font-size: 10px;">이벤트</a> <a href="/tags/%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" style="font-size: 10px;">지름길평가</a> <a href="/tags/%EC%A7%80%EC%97%B0%EB%A1%9C%EB%94%A9/" style="font-size: 10px;">지연로딩</a> <a href="/tags/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" style="font-size: 10px;">해시함수</a>
+        <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Shell-Commands/" style="font-size: 16.67px;">Shell Commands</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/short-circuit-evaluation/" style="font-size: 10px;">short-circuit evaluation</a> <a href="/tags/%EA%B0%9D%EC%B2%B4%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/" style="font-size: 13.33px;">객체에 대하여</a> <a href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/" style="font-size: 10px;">단락평가</a> <a href="/tags/%EB%94%94%EB%B0%94%EC%9A%B4%EC%8B%B1/" style="font-size: 10px;">디바운싱</a> <a href="/tags/%EB%A9%94%EB%AA%A8/" style="font-size: 10px;">메모</a> <a href="/tags/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/" style="font-size: 10px;">생각정리</a> <a href="/tags/%EC%8A%A4%ED%81%AC%EB%A1%A4%EC%9D%B4%EB%B2%A4%ED%8A%B8/" style="font-size: 10px;">스크롤이벤트</a> <a href="/tags/%EC%8B%9C%EB%A6%AC%EC%A6%88/" style="font-size: 13.33px;">시리즈</a> <a href="/tags/%EC%93%B0%EB%A1%9C%ED%8B%80%EB%A7%81/" style="font-size: 10px;">쓰로틀링</a> <a href="/tags/%EC%9D%B4%EB%B2%A4%ED%8A%B8/" style="font-size: 10px;">이벤트</a> <a href="/tags/%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" style="font-size: 10px;">지름길평가</a> <a href="/tags/%EC%A7%80%EC%97%B0%EB%A1%9C%EB%94%A9/" style="font-size: 10px;">지연로딩</a> <a href="/tags/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" style="font-size: 10px;">해시함수</a>
     </div>
 </div>
     
@@ -651,6 +667,25 @@ Object.preventExtensions([객체명]) 메서드를 사용할 경우 해당 객�
         <h3 class="menu-label">
             최근 글
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/10/Life/191110%20%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="19.11.10 생각 정리">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T16:05:12.000Z">2019-11-10</time></div>
+                    <a href="/2019/11/10/Life/191110%20%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">19.11.10 생각 정리</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Life/">Life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -728,25 +763,6 @@ Object.preventExtensions([객체명]) 메서드를 사용할 경우 해당 객�
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="리눅스 텍스트처리 커맨드">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">리눅스 텍스트처리 커맨드</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -764,7 +780,7 @@ Object.preventExtensions([객체명]) 메서드를 사용할 경우 해당 객�
                     <span class="level-item">11월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -867,6 +883,13 @@ Object.preventExtensions([객체명]) 메서드를 사용할 경우 해당 객�
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%EB%A9%94%EB%AA%A8/">
                         <span class="tag">메모</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/">
+                        <span class="tag">생각정리</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -944,6 +967,25 @@ Object.preventExtensions([객체명]) 메서드를 사용할 경우 해당 객�
         
         <article class="media">
             
+            <a href="/2019/11/10/Life/191110%20%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="19.11.10 생각 정리">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T16:05:12.000Z">2019-11-10</time></div>
+                    <a href="/2019/11/10/Life/191110%20%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">19.11.10 생각 정리</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Life/">Life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/09/JavaScript/%EB%8D%B0%EB%AA%A8/%EC%A7%80%EC%97%B0%EB%A1%9C%EB%94%A9%20%EB%8D%B0%EB%AA%A8/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="지연로딩 데모">
@@ -1018,25 +1060,6 @@ Object.preventExtensions([객체명]) 메서드를 사용할 경우 해당 객�
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="리눅스 텍스트처리 커맨드">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time></div>
-                    <a href="/2019/10/26/Linux/Shell%20Commands/%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%B2%98%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">리눅스 텍스트처리 커맨드</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1054,7 +1077,7 @@ Object.preventExtensions([객체명]) 메서드를 사용할 경우 해당 객�
                     <span class="level-item">11월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1157,6 +1180,13 @@ Object.preventExtensions([객체명]) 메서드를 사용할 경우 해당 객�
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%EB%A9%94%EB%AA%A8/">
                         <span class="tag">메모</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/">
+                        <span class="tag">생각정리</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
