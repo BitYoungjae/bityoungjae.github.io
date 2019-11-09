@@ -9,14 +9,21 @@
 
     <url>
         <loc>https://bityoungjae.com/categories/JavaScript/%25EA%25B0%259C%25EB%2585%2590%25EC%25A0%2595%25EB%25A6%25AC/</loc>
-        <lastmod>2019-10-27T10:11:53.093Z</lastmod>
+        <lastmod>2019-11-09T13:38:18.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://bityoungjae.com/categories/JavaScript/</loc>
-        <lastmod>2019-10-27T10:11:53.093Z</lastmod>
+        <lastmod>2019-11-09T13:38:18.330Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://bityoungjae.com/categories/JavaScript/%25EB%25A9%2594%25EB%25AA%25A8/</loc>
+        <lastmod>2019-11-03T07:08:14.236Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

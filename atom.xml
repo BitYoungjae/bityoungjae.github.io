@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://bityoungjae.com/"/>
-  <updated>2019-10-27T10:11:53.093Z</updated>
+  <updated>2019-11-09T13:38:18.330Z</updated>
   <id>https://bityoungjae.com/</id>
   
   <author>
@@ -15,6 +15,88 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>디바운싱과 쓰로틀링 (Debouncing and Throttling)</title>
+    <link href="https://bityoungjae.com/2019/11/09/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/%EB%94%94%EB%B0%94%EC%9A%B4%EC%8B%B1%EA%B3%BC%20%EC%93%B0%EB%A1%9C%ED%8B%80%EB%A7%81/"/>
+    <id>https://bityoungjae.com/2019/11/09/JavaScript/개념정리/디바운싱과 쓰로틀링/</id>
+    <published>2019-11-09T11:35:41.000Z</published>
+    <updated>2019-11-09T13:38:18.330Z</updated>
+    
+    <content type="html"><![CDATA[<p>누르면 폭죽이 발사되는 버튼이 있다고 가정해보자.<br>폭죽 한 발을 쏘는데는 100원의 비용이 든다.</p><p>폭죽이 워낙 화려한 폭죽이라 한 번 쏠때마다 값이 비싸기도 하고,<br>한 번 터지면 적어도 3초간은 하늘을 화려하게 불빛으로 수놓는다.</p><p>따라서 화려한 3초 동안에는 새로운 폭죽은 사족만이 될 뿐이다.</p><h2 id="이벤트로-생각해보자"><a href="#이벤트로-생각해보자" class="headerlink" title="이벤트로 생각해보자"></a>이벤트로 생각해보자</h2><p>위 예에서 폭죽 발사 버튼을 누르는 것을 하나의 이벤트라고 생각해보자.<br>폭죽을 쏘는 비용은 해당 이벤트에 연결된 핸들러가 실행될 때 걸리는 연산량 혹은 메모리 사용량이 부하되는 정도라고 볼 수 있다.</p><p><strong>디바운싱</strong>과 <strong>쓰로틀링</strong>은 필요이상으로 과도하게 반복되는 이벤트로 인한 부하를 완충하는 방법이다.</p><h2 id="디바운싱과-쓰로틀링의-개념과-차이"><a href="#디바운싱과-쓰로틀링의-개념과-차이" class="headerlink" title="디바운싱과 쓰로틀링의 개념과 차이"></a>디바운싱과 쓰로틀링의 개념과 차이</h2><p>비슷한 목적을 가지고 있으나, 작동 방식이 미묘하게 다르다.<br>처음 보면 충분히 헷갈릴 수 있을 정도로 묘한 차이이기 때문에 차근차근 짚어보는 것이 좋을 것 같다.</p><p>그럼 다시 서론에서 이야기한 폭죽 발사 버튼의 예를 활용해 개념과 차이를 서술해보겠다.<br>비싼 폭죽을 최대한 아끼면서 화려한 불꽃놀이를 위해 버튼에 무슨 작업을 해야할 것인가..?</p><h3 id="디바운싱"><a href="#디바운싱" class="headerlink" title="디바운싱"></a>디바운싱</h3><p>3초의 시간을 설정해두고,<br>3초 내에는 버튼이 눌려도 폭죽이 발사되지 않도록 조정해두었다.</p><p>마구 연타시 폭죽은 발사되지 않고 마지막 버튼을 떼는 순간 3초 뒤 발사된다.</p><h3 id="쓰로틀링"><a href="#쓰로틀링" class="headerlink" title="쓰로틀링"></a>쓰로틀링</h3><p>일단 버튼이 눌리면 3초간 먹통이 된다.<br>그리고 3초 후에는 다시 폭죽이 발사되도록 초기화가 된다.</p><p>이제 버튼을 마구 연타를 해도 3초의 발사 간격을 보장해준다.</p><h3 id="차이"><a href="#차이" class="headerlink" title="차이"></a>차이</h3><p>똑같이 3초의 시간을 설정해두고, 버튼을 쉼없이 연타한다고 가정해보자.</p><p>디바운싱의 경우 버튼을 누르는 동작이 3초내에 계속 반복될 경우,<br>이벤트는 절대 실행되지 않는다.</p><p>특정 시간내에 반복되는 동작은 그 동작이 다 마칠 때까지 일단 무시하는 것이다.<br>‘아무 동작없이 3초가 흘렀다’라는 것을 어떤 목적을 가진 연속된 동작이 마무리된 것으로 간주하는 것이다.</p><p>반면, 쓰로틀링의 경우 일단 3초라는 시간이 지나면, 대기가 풀려 다시 이벤트를 처리할 수 있게 된다.</p><p>곧, 연속되는 이벤트의 경우 3초 단위로 반드시 실행이 되는 것이다.</p><h2 id="용도"><a href="#용도" class="headerlink" title="용도"></a>용도</h2><p>용도는 역시 쓰기 나름일 것이다.<br>개념을 이해하면 그때그때 맞는 녀석을 골라서 쓰면 될 것이다.</p><p>쉽게 생각할 수 있는 기본적인 예들만 살펴보도록 하자.</p><h3 id="디바운싱-ID-중복검사"><a href="#디바운싱-ID-중복검사" class="headerlink" title="디바운싱 - ID 중복검사"></a>디바운싱 - ID 중복검사</h3><p>예를 들어 회원가입 폼에서 ID 입력상자에 어떤 id를 입력하면,<br>입력된 값을 서버로 요청을 보내 중복여부를 확인받는 이벤트 핸들러가 있다고 가정해보자.</p><p>한 자 한 자 타이핑하는 동안 줄곧 서버로 요청을 보낸다면 10글자 짜리 id를 쓰는데 10번의 요청이 발송될 것이다.</p><p>하지만 여기에 한 2초 정도의 디바운싱만 적용을 하여도,<br>한 번의 타이핑이 완료된 이후에 확인 요청을 보내도록 만들 수 있을 것이다.</p><h3 id="쓰로틀링-스크롤-이벤트"><a href="#쓰로틀링-스크롤-이벤트" class="headerlink" title="쓰로틀링 - 스크롤 이벤트"></a>쓰로틀링 - 스크롤 이벤트</h3><p>보통 웹 서핑을 할 때 스크롤은 그냥저냥 휙휙 넘기는 녀석이다.<br>경우에 따라 다르겠지만, 마우스 휠 한 번을 굴리는데 스크롤 이벤트가 십수회 발생한다.</p><p>사실 스크롤 이벤트라는게 그렇게 정교하지 않아도 유저 경험에는 크게 지장이 없다.</p><p>스크롤을 통해 측량 작업을 하는 것이 아니기에,<br>일반적인 목적이라면 1초 혹은 0.5초씩 처리를 해도 특별히 불편한 점이 없는 것이다.</p><h2 id="구현"><a href="#구현" class="headerlink" title="구현"></a>구현</h2><p>아래의 두 함수는 특정 이벤트 핸들러를 인자로 받아 디바운싱과 쓰로틀링 기능을 덧 씌워 반환하는 함수이다.</p><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment"> * 디바운싱 : Interval 내 반복되는 이벤트를 무시함.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">const</span> debounce = <span class="hljs-function">(<span class="hljs-params">f, interval = <span class="hljs-number">30</span></span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> now = <span class="hljs-literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">...param</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (now) clearTimeout(now);</span><br><span class="line"></span><br><span class="line">        now = setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">            f(...param);</span><br><span class="line">        &#125;, interval);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment"> * 쓰로틀링 : 연이은 이벤트의 Interval 단위 실행을 보장.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">const</span> throttling = <span class="hljs-function">(<span class="hljs-params">f, interval = <span class="hljs-number">300</span></span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> isPending = <span class="hljs-literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">...param</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (!isPending) &#123;</span><br><span class="line">            isPending = !!setTimeout(</span><br><span class="line">                () =&gt; &#123;</span><br><span class="line">                    f(...param);</span><br><span class="line">                    isPending = <span class="hljs-literal">false</span>;</span><br><span class="line">                &#125;, interval);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="사용"><a href="#사용" class="headerlink" title="사용"></a>사용</h2><h3 id="input-이벤트"><a href="#input-이벤트" class="headerlink" title="input 이벤트"></a>input 이벤트</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> log = <span class="hljs-built_in">console</span>.log;</span><br><span class="line"><span class="hljs-keyword">const</span> inputBox = <span class="hljs-built_in">document</span>.getElementsByName(<span class="hljs-string">"textInput"</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> inputHandler = <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> &#123;value&#125; = event.target;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (value) log(<span class="hljs-string">`id 중복여부 확인요청 : <span class="hljs-subst">$&#123;value&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">inputBox[<span class="hljs-number">0</span>].addEventListener(<span class="hljs-string">'input'</span>, debounce(inputHandler, <span class="hljs-number">500</span>));</span><br></pre></td></tr></table></figure><h4 id="데모"><a href="#데모" class="headerlink" title="데모"></a>데모</h4><p><img src="https://bityoungjae.com/images/imgs/debouncing.gif" alt="디바운싱 예제"></p><h3 id="스크롤-이벤트"><a href="#스크롤-이벤트" class="headerlink" title="스크롤 이벤트"></a>스크롤 이벤트</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> log = <span class="hljs-built_in">console</span>.log;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> scrollHandler = <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;</span><br><span class="line">    log(<span class="hljs-string">"debounce"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> scrollHandler2 = <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;</span><br><span class="line">    log(<span class="hljs-string">"throttling"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'scroll'</span>, debounce(scrollHandler, <span class="hljs-number">300</span>));</span><br><span class="line"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'scroll'</span>, throttling(scrollHandler2, <span class="hljs-number">300</span>));</span><br></pre></td></tr></table></figure><h4 id="데모-1"><a href="#데모-1" class="headerlink" title="데모"></a>데모</h4><p><img src="https://bityoungjae.com/images/imgs/throttling.gif" alt="쓰로틀링 예제"></p>]]></content>
+    
+    <summary type="html">
+    
+      누르면 폭죽이 발사되는 버튼이 있다고 가정해보자.
+폭죽 한 발을 쏘는데는 100원의 비용이 든다.
+
+폭죽이 워낙 화려한 폭죽이라 한 번 쏠때마다 값이 비싸기도 하고,
+한 번 터지면 적어도 3초간은 하늘을 화려하게 불빛으로 수놓는다.
+
+따라서 화려한 3초 동안에는 새로운 폭죽은 사족만이 될 뿐이다.
+
+이벤트로 생각해보자
+위 예에서 폭죽 발사 버튼을 누르는 것을 하나의 이벤트라고 생각해보자.
+폭죽을 쏘는 비용은 해당 이벤트에 연결된 핸들러가 실행될 때 걸리는 연산량 혹은 메모리 사용량이 부하되는 정도라고 볼 수 있다.
+
+디바운싱과 쓰로
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="https://bityoungjae.com/categories/JavaScript/"/>
+    
+      <category term="개념정리" scheme="https://bityoungjae.com/categories/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/"/>
+    
+    
+      <category term="javascript" scheme="https://bityoungjae.com/tags/javascript/"/>
+    
+      <category term="디바운싱" scheme="https://bityoungjae.com/tags/%EB%94%94%EB%B0%94%EC%9A%B4%EC%8B%B1/"/>
+    
+      <category term="쓰로틀링" scheme="https://bityoungjae.com/tags/%EC%93%B0%EB%A1%9C%ED%8B%80%EB%A7%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>191103의 메모</title>
+    <link href="https://bityoungjae.com/2019/11/03/JavaScript/%EB%A9%94%EB%AA%A8/191103%20%EB%A9%94%EB%AA%A8/"/>
+    <id>https://bityoungjae.com/2019/11/03/JavaScript/메모/191103 메모/</id>
+    <published>2019-11-03T06:14:39.000Z</published>
+    <updated>2019-11-03T07:08:14.236Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="자바스크립트의-동시성"><a href="#자바스크립트의-동시성" class="headerlink" title="자바스크립트의 동시성"></a>자바스크립트의 동시성</h1><h2 id="동기-모델의-단점"><a href="#동기-모델의-단점" class="headerlink" title="동기 모델의 단점"></a>동기 모델의 단점</h2><ul><li>다른 언어의 멀티 쓰레드를 이용하는 동기 모델의 경우 각 쓰레드별로 메모리를 점유하게 되고 context switching이 발생하게 되면서 메모리와 cpu에 대한 오버헤드가 발생한다.</li></ul><h2 id="콜백"><a href="#콜백" class="headerlink" title="콜백"></a>콜백</h2><ul><li>Just pass a function that will be called when the task is complete.</li></ul><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// file.txt의 읽기가 끝났을 때 읽어온 content를 인자로 미리 예약된 callback을 호출한다.</span></span><br><span class="line">readFile(<span class="hljs-string">'file.txt'</span>, (content) =&gt; &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(content);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h3 id="단점"><a href="#단점" class="headerlink" title="단점"></a>단점</h3><ul><li>어떤 일을 순차적으로 동작시키거나, 병렬로 동작시키는게 어렵다.</li><li>for/while  try/catch 구조를 포기하게 만든다.</li><li>에러 핸들링이 어렵다.</li><li>코드 가독성이 떨어진다.</li></ul><h2 id="프로미스"><a href="#프로미스" class="headerlink" title="프로미스"></a>프로미스</h2><h3 id="무엇을-해결했나"><a href="#무엇을-해결했나" class="headerlink" title="무엇을 해결했나"></a>무엇을 해결했나</h3><ul><li>순차적, 병렬적 작업들의 쉬운 연결.</li><li>에러 핸들링</li></ul><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Promise style</span></span><br><span class="line">readFile(<span class="hljs-string">'confing.json'</span>)</span><br><span class="line">.then(...)</span><br><span class="line">.then(...) <span class="hljs-comment">// 순차적 실행</span></span><br><span class="line">.catch(...); <span class="hljs-comment">// 에러 핸들링</span></span><br></pre></td></tr></table></figure><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fetchJSON(<span class="hljs-string">'/user-profile'</span>)</span><br><span class="line">  .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> fetchJSON(<span class="hljs-string">`/users/<span class="hljs-subst">$&#123;user.id&#125;</span>/friends`</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="hljs-function"><span class="hljs-params">friendsIDs</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> promises = friendIDs.map(<span class="hljs-function"><span class="hljs-params">id</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> fetchJSON(<span class="hljs-string">`/users/<span class="hljs-subst">$&#123;id&#125;</span>`</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.all(promises);</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="hljs-function"><span class="hljs-params">friends</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(friends));</span><br></pre></td></tr></table></figure><h2 id="이벤트루프"><a href="#이벤트루프" class="headerlink" title="이벤트루프"></a>이벤트루프</h2><ul><li>이벤트루프는 자바스크립트 런타임이 아닌 호스팅 환경에 종속된다.</li><li>이벤트루프를 통해 각 호스팅 환경의 방법으로 이벤트를 스케쥴링하게된다.</li></ul><h3 id="JS엔진이-호스팅환경에게"><a href="#JS엔진이-호스팅환경에게" class="headerlink" title="JS엔진이 호스팅환경에게"></a>JS엔진이 호스팅환경에게</h3><blockquote><p>“이봐 나는 이제 코드 수행을 중지시킬 거야. 하지만 자네는 네트워크 요청이 모두 끝나면 가져온 데이터를 이용해 이 함수를 호출(call back)해주게.”<br><strong>출처 :</strong> <a href="https://engineering.huiseoul.com/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%9E%91%EB%8F%99%ED%95%98%EB%8A%94%EA%B0%80-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A3%A8%ED%94%84%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%9D%98-%EB%B6%80%EC%83%81-async-await%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%BD%94%EB%94%A9-%ED%8C%81-%EB%8B%A4%EC%84%AF-%EA%B0%80%EC%A7%80-df65ffb4e7e" target="_blank" rel="noopener">자바스크립트는 어떻게 작동하는가: 이벤트 루프와 비동기 프로그래밍의 부상, async/await을 이용한 코딩 팁 다섯 가지</a></p></blockquote><h3 id="이벤트루프의-임무"><a href="#이벤트루프의-임무" class="headerlink" title="이벤트루프의 임무"></a>이벤트루프의 임무</h3><p>콜스택과 콜백 큐를 모니터링한다.<br>콜스택이 비었을 때, 콜백 큐의 첫번째 이벤트 핸들러를 실행시킨다.</p>]]></content>
+    
+    <summary type="html">
+    
+      자바스크립트의 동시성
+동기 모델의 단점
+ * 다른 언어의 멀티 쓰레드를 이용하는 동기 모델의 경우 각 쓰레드별로 메모리를 점유하게 되고 context switching이 발생하게 되면서 메모리와 cpu에 대한 오버헤드가 발생한다.
+
+콜백
+ * Just pass a function that will be called when the task is complete.
+
+1
+2
+3
+4
+
+
+// file.txt의 읽기가 끝났을 때 읽어온 content를 인자로 미리 예약된 callback을 호출한다.
+readFile(&#39;file.txt&#39;, (
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="https://bityoungjae.com/categories/JavaScript/"/>
+    
+      <category term="메모" scheme="https://bityoungjae.com/categories/JavaScript/%EB%A9%94%EB%AA%A8/"/>
+    
+    
+      <category term="javascript" scheme="https://bityoungjae.com/tags/javascript/"/>
+    
+      <category term="메모" scheme="https://bityoungjae.com/tags/%EB%A9%94%EB%AA%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>단락평가, 지름길 평가 (Short-circuit evaluation)</title>
@@ -58,46 +140,6 @@ and 연산자
       <category term="short-circuit evaluation" scheme="https://bityoungjae.com/tags/short-circuit-evaluation/"/>
     
       <category term="javascript" scheme="https://bityoungjae.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>grep 사용법</title>
-    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/"/>
-    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/Grep 유틸리티/</id>
-    <published>2019-10-26T08:14:39.000Z</published>
-    <updated>2019-10-27T05:03:05.571Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p><strong>정규표현식</strong>을 이용한 텍스트 검색</p></blockquote><ul><li><em>grep [Pattern] [Filename]</em><ul><li>일반적인 사용법</li><li>[Filename] 에서 [Pattern] 를 찾는다</li><li>기본적으로 Basic regular expression을 사용한다</li></ul></li><li><em>grep <strong>-i</strong> [Pattern]</em><ul><li>대소문자를 무시한다. Ignore Case</li></ul></li></ul><h2 id="Basic-regular-expression"><a href="#Basic-regular-expression" class="headerlink" title="Basic regular expression"></a>Basic regular expression</h2><ul><li>패턴에서 일부 메타문자를 일반 문자로 인식한다.<ul><li><strong>ex :</strong> ? , + , { , | , (, )</li><li>\ 를 앞에 붙여줘야 비로서 정규표현식 메타문자로 작동한다<ul><li><strong>ex :</strong> \?, \+, \{ …</li></ul></li></ul></li><li>굳이 \를 붙이고 싶지 않다면 아래의 -E 옵션 사용이 가능하다.</li></ul><h2 id="E-옵션과-F-옵션의-한-쌍"><a href="#E-옵션과-F-옵션의-한-쌍" class="headerlink" title="-E 옵션과 -F 옵션의 한 쌍"></a>-E 옵션과 -F 옵션의 한 쌍</h2><ul><li><em>grep <strong>-ie</strong> [Pattern]</em><ul><li>두번째 인자를 정규식 표현으로만 취급한다</li><li><strong>-</strong> 가 들어간 문자열을 검색할 때 용이하다<ul><li><strong>ex :</strong> grep –help | grep -e -e<ul><li>grep –help 문서에서 -e 옵션을 검색한다</li></ul></li></ul></li></ul></li><li><em>grep <strong>-Ei</strong> [Extended Regular Expression]</em><ul><li><strong>확장된 정규표현식</strong>에선 메타문자를 굳이 이스케이프하지 않아도 된다.<ul><li><strong>ex :</strong> grep –help | grep -Ei ‘\s(-e|-f)’</li></ul></li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/grep1.gif" alt="grep 기본 예시"></p><ul><li><em>grep <strong>-Fi</strong> ‘(t|f)est’</em><ul><li>정규식을 사용하지 않고 순수 문자열로 검색</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/grep2.gif" alt="grep -F 기본 예시"></p><h3 id="egrep과-fgrep"><a href="#egrep과-fgrep" class="headerlink" title="egrep과 fgrep"></a>egrep과 fgrep</h3><ul><li><strong>egrep</strong> 사용시 -E 옵션 생략이 가능하다.<ul><li><strong>ex :</strong> grep –help | grep -Ei ‘\s(-e|-f)’</li><li><strong>ex :</strong> grep –help | egrep -i ‘\s-(-e|-f)’</li></ul></li><li><strong>fgrep</strong> 사용시 -F 옵션 생략이 가능하다.</li></ul><h2 id="경로-내-파일검색-및-하위-경로-탐색"><a href="#경로-내-파일검색-및-하위-경로-탐색" class="headerlink" title="경로 내 파일검색 및 하위 경로 탐색"></a>경로 내 파일검색 및 하위 경로 탐색</h2><ul><li><em>grep [Pattern] ./*</em><ul><li>해당 폴더내 파일들을 검색함</li></ul></li><li><em>grep *</em>-r** [Pattern] ./**<ul><li>하위 폴더의 파일들까지 모두 탐색함</li></ul></li></ul><h2 id="줄에-대한-정보들"><a href="#줄에-대한-정보들" class="headerlink" title="줄에 대한 정보들"></a>줄에 대한 정보들</h2><ul><li><em>grep *</em>-n** [Pattern] ./**<ul><li>매칭되는 라인번호를 표시함</li></ul></li><li><em>grep <strong>-c</strong> [Pattern] [Filename]</em><ul><li>해당 패턴이 매칭되는 줄이 총 몇 줄인지 <strong>라인 수</strong>를 출력함.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/grep5.gif" alt="grep -nc 기본 예시"></p><h2 id="파일-이름-관련"><a href="#파일-이름-관련" class="headerlink" title="파일 이름 관련"></a>파일 이름 관련</h2><ul><li><em>grep *</em>-l***<ul><li>파일 이름만 출력함</li></ul></li><li><em>grep *</em>-h***<ul><li>파일 이름을 출력하지 않음</li></ul></li><li><em>grep *</em>-H***<ul><li>파일 이름을 출력함</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/grep4.gif" alt="grep -h 기본 예시"></p><ul><li><em>grep <strong>-C[n]</strong> [Pattern] [Filename]</em><ul><li>매칭된 라인 앞뒤로 n개 줄을 표시함.</li></ul></li><li><em>grep <strong>-m[n]</strong> [Pattern] [Filename]</em><ul><li>파일 당 출력 라인수를 제한함.</li></ul></li></ul><h2 id="저장된-패턴을-활용"><a href="#저장된-패턴을-활용" class="headerlink" title="저장된 패턴을 활용"></a>저장된 패턴을 활용</h2><ul><li><em>grep <strong>-f [Filename]</strong> [Filename]</em><ul><li>-f 뒤의 [Filename] 의 내용을 패턴으로 활용해 검색한다.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/grep3.gif" alt="grep -f 기본 예시"></p>]]></content>
-    
-    <summary type="html">
-    
-      정규표현식을 이용한 텍스트 검색
-
- * grep [Pattern] [Filename] * 일반적인 사용법
-    * [Filename] 에서 [Pattern] 를 찾는다
-    * 기본적으로 Basic regular expression을 사용한다
-   
-   
- * grep -i [Pattern] * 대소문자를 무시한다. Ignore Case
-   
-   
-
-Basic regular expression
- * 패턴에서 일부 메타문자를 일반 문자로 인식한다. * ex : ? , + , { , | , (, )
-    * \ 를 앞에 붙여
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://bityoungjae.com/categories/Linux/"/>
-    
-      <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
-    
-    
-      <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
-    
-      <category term="Shell Commands" scheme="https://bityoungjae.com/tags/Shell-Commands/"/>
     
   </entry>
   
@@ -249,6 +291,46 @@ shutdown
       <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
     
       <category term="작성중" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/%EC%9E%91%EC%84%B1%EC%A4%91/"/>
+    
+    
+      <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
+    
+      <category term="Shell Commands" scheme="https://bityoungjae.com/tags/Shell-Commands/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>grep 사용법</title>
+    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/"/>
+    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/Grep 유틸리티/</id>
+    <published>2019-10-26T08:14:39.000Z</published>
+    <updated>2019-10-27T05:03:05.571Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><strong>정규표현식</strong>을 이용한 텍스트 검색</p></blockquote><ul><li><em>grep [Pattern] [Filename]</em><ul><li>일반적인 사용법</li><li>[Filename] 에서 [Pattern] 를 찾는다</li><li>기본적으로 Basic regular expression을 사용한다</li></ul></li><li><em>grep <strong>-i</strong> [Pattern]</em><ul><li>대소문자를 무시한다. Ignore Case</li></ul></li></ul><h2 id="Basic-regular-expression"><a href="#Basic-regular-expression" class="headerlink" title="Basic regular expression"></a>Basic regular expression</h2><ul><li>패턴에서 일부 메타문자를 일반 문자로 인식한다.<ul><li><strong>ex :</strong> ? , + , { , | , (, )</li><li>\ 를 앞에 붙여줘야 비로서 정규표현식 메타문자로 작동한다<ul><li><strong>ex :</strong> \?, \+, \{ …</li></ul></li></ul></li><li>굳이 \를 붙이고 싶지 않다면 아래의 -E 옵션 사용이 가능하다.</li></ul><h2 id="E-옵션과-F-옵션의-한-쌍"><a href="#E-옵션과-F-옵션의-한-쌍" class="headerlink" title="-E 옵션과 -F 옵션의 한 쌍"></a>-E 옵션과 -F 옵션의 한 쌍</h2><ul><li><em>grep <strong>-ie</strong> [Pattern]</em><ul><li>두번째 인자를 정규식 표현으로만 취급한다</li><li><strong>-</strong> 가 들어간 문자열을 검색할 때 용이하다<ul><li><strong>ex :</strong> grep –help | grep -e -e<ul><li>grep –help 문서에서 -e 옵션을 검색한다</li></ul></li></ul></li></ul></li><li><em>grep <strong>-Ei</strong> [Extended Regular Expression]</em><ul><li><strong>확장된 정규표현식</strong>에선 메타문자를 굳이 이스케이프하지 않아도 된다.<ul><li><strong>ex :</strong> grep –help | grep -Ei ‘\s(-e|-f)’</li></ul></li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/grep1.gif" alt="grep 기본 예시"></p><ul><li><em>grep <strong>-Fi</strong> ‘(t|f)est’</em><ul><li>정규식을 사용하지 않고 순수 문자열로 검색</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/grep2.gif" alt="grep -F 기본 예시"></p><h3 id="egrep과-fgrep"><a href="#egrep과-fgrep" class="headerlink" title="egrep과 fgrep"></a>egrep과 fgrep</h3><ul><li><strong>egrep</strong> 사용시 -E 옵션 생략이 가능하다.<ul><li><strong>ex :</strong> grep –help | grep -Ei ‘\s(-e|-f)’</li><li><strong>ex :</strong> grep –help | egrep -i ‘\s-(-e|-f)’</li></ul></li><li><strong>fgrep</strong> 사용시 -F 옵션 생략이 가능하다.</li></ul><h2 id="경로-내-파일검색-및-하위-경로-탐색"><a href="#경로-내-파일검색-및-하위-경로-탐색" class="headerlink" title="경로 내 파일검색 및 하위 경로 탐색"></a>경로 내 파일검색 및 하위 경로 탐색</h2><ul><li><em>grep [Pattern] ./*</em><ul><li>해당 폴더내 파일들을 검색함</li></ul></li><li><em>grep *</em>-r** [Pattern] ./**<ul><li>하위 폴더의 파일들까지 모두 탐색함</li></ul></li></ul><h2 id="줄에-대한-정보들"><a href="#줄에-대한-정보들" class="headerlink" title="줄에 대한 정보들"></a>줄에 대한 정보들</h2><ul><li><em>grep *</em>-n** [Pattern] ./**<ul><li>매칭되는 라인번호를 표시함</li></ul></li><li><em>grep <strong>-c</strong> [Pattern] [Filename]</em><ul><li>해당 패턴이 매칭되는 줄이 총 몇 줄인지 <strong>라인 수</strong>를 출력함.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/grep5.gif" alt="grep -nc 기본 예시"></p><h2 id="파일-이름-관련"><a href="#파일-이름-관련" class="headerlink" title="파일 이름 관련"></a>파일 이름 관련</h2><ul><li><em>grep *</em>-l***<ul><li>파일 이름만 출력함</li></ul></li><li><em>grep *</em>-h***<ul><li>파일 이름을 출력하지 않음</li></ul></li><li><em>grep *</em>-H***<ul><li>파일 이름을 출력함</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/grep4.gif" alt="grep -h 기본 예시"></p><ul><li><em>grep <strong>-C[n]</strong> [Pattern] [Filename]</em><ul><li>매칭된 라인 앞뒤로 n개 줄을 표시함.</li></ul></li><li><em>grep <strong>-m[n]</strong> [Pattern] [Filename]</em><ul><li>파일 당 출력 라인수를 제한함.</li></ul></li></ul><h2 id="저장된-패턴을-활용"><a href="#저장된-패턴을-활용" class="headerlink" title="저장된 패턴을 활용"></a>저장된 패턴을 활용</h2><ul><li><em>grep <strong>-f [Filename]</strong> [Filename]</em><ul><li>-f 뒤의 [Filename] 의 내용을 패턴으로 활용해 검색한다.</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/grep3.gif" alt="grep -f 기본 예시"></p>]]></content>
+    
+    <summary type="html">
+    
+      정규표현식을 이용한 텍스트 검색
+
+ * grep [Pattern] [Filename] * 일반적인 사용법
+    * [Filename] 에서 [Pattern] 를 찾는다
+    * 기본적으로 Basic regular expression을 사용한다
+   
+   
+ * grep -i [Pattern] * 대소문자를 무시한다. Ignore Case
+   
+   
+
+Basic regular expression
+ * 패턴에서 일부 메타문자를 일반 문자로 인식한다. * ex : ? , + , { , | , (, )
+    * \ 를 앞에 붙여
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://bityoungjae.com/categories/Linux/"/>
+    
+      <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
     
     
       <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
