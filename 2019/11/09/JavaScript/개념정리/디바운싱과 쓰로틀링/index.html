@@ -10,16 +10,16 @@
 <title>디바운싱과 쓰로틀링 (Debouncing and Throttling) - BitYoungjae | Youngjae&#39;s Blog</title>
 
 
-    <meta name="description" content="누르면 폭죽이 발사되는 버튼이 있다고 가정해보자. 폭죽 한 발을 쏘는데는 100원의 비용이 든다.  폭죽이 워낙 화려한 폭죽이라 한 번 쏠때마다 값이 비싸기도 하고, 한 번 터지면 적어도 3초간은 하늘을 화려하게 불빛으로 수놓는다.  따라서 화려한 3초 동안에는 새로운 폭죽은 사족만이 될 뿐이다.  이벤트로 생각해보자 위 예에서 폭죽 발사 버튼을 누르는 것">
+    <meta name="description" content="누르면 폭죽이 발사되는 버튼이 있다고 가정해보자. 폭죽 한 발을 쏘는데는 100만원의 비용이 든다.  폭죽이 워낙 화려한 폭죽이라 한 번 쏠때마다 값이 비싸기도 하고, 한 번 터지면 적어도 3초간은 하늘을 화려하게 불빛으로 수놓는다.  따라서 화려한 3초 동안에는 새로운 폭죽은 사족만이 될 뿐이다.  이벤트로 생각해보자 위 예에서 폭죽 발사 버튼을 누르는">
 <meta name="keywords" content="javascript,디바운싱,쓰로틀링">
 <meta property="og:type" content="article">
 <meta property="og:title" content="디바운싱과 쓰로틀링 (Debouncing and Throttling)">
 <meta property="og:url" content="https:&#x2F;&#x2F;bityoungjae.com&#x2F;2019&#x2F;11&#x2F;09&#x2F;JavaScript&#x2F;%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC&#x2F;%EB%94%94%EB%B0%94%EC%9A%B4%EC%8B%B1%EA%B3%BC%20%EC%93%B0%EB%A1%9C%ED%8B%80%EB%A7%81&#x2F;index.html">
 <meta property="og:site_name" content="BitYoungjae | Youngjae&#39;s Blog">
-<meta property="og:description" content="누르면 폭죽이 발사되는 버튼이 있다고 가정해보자. 폭죽 한 발을 쏘는데는 100원의 비용이 든다.  폭죽이 워낙 화려한 폭죽이라 한 번 쏠때마다 값이 비싸기도 하고, 한 번 터지면 적어도 3초간은 하늘을 화려하게 불빛으로 수놓는다.  따라서 화려한 3초 동안에는 새로운 폭죽은 사족만이 될 뿐이다.  이벤트로 생각해보자 위 예에서 폭죽 발사 버튼을 누르는 것">
+<meta property="og:description" content="누르면 폭죽이 발사되는 버튼이 있다고 가정해보자. 폭죽 한 발을 쏘는데는 100만원의 비용이 든다.  폭죽이 워낙 화려한 폭죽이라 한 번 쏠때마다 값이 비싸기도 하고, 한 번 터지면 적어도 3초간은 하늘을 화려하게 불빛으로 수놓는다.  따라서 화려한 3초 동안에는 새로운 폭죽은 사족만이 될 뿐이다.  이벤트로 생각해보자 위 예에서 폭죽 발사 버튼을 누르는">
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="https:&#x2F;&#x2F;bityoungjae.com&#x2F;images&#x2F;og_img.png">
-<meta property="og:updated_time" content="2019-11-09T13:38:18.330Z">
+<meta property="og:updated_time" content="2019-11-09T13:41:28.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;bityoungjae.com&#x2F;images&#x2F;og_img.png">
 
@@ -156,7 +156,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9분 분량 (단어수 1345 개)
+                    9분 분량 (단어수 1346 개)
                 </span>
                 
                 
@@ -169,7 +169,7 @@
             
         </h1>
         <div class="content">
-            <p>누르면 폭죽이 발사되는 버튼이 있다고 가정해보자.<br>폭죽 한 발을 쏘는데는 100원의 비용이 든다.</p>
+            <p>누르면 폭죽이 발사되는 버튼이 있다고 가정해보자.<br>폭죽 한 발을 쏘는데는 100만원의 비용이 든다.</p>
 <p>폭죽이 워낙 화려한 폭죽이라 한 번 쏠때마다 값이 비싸기도 하고,<br>한 번 터지면 적어도 3초간은 하늘을 화려하게 불빛으로 수놓는다.</p>
 <p>따라서 화려한 3초 동안에는 새로운 폭죽은 사족만이 될 뿐이다.</p>
 <h2 id="이벤트로-생각해보자"><a href="#이벤트로-생각해보자" class="headerlink" title="이벤트로 생각해보자"></a>이벤트로 생각해보자</h2><p>위 예에서 폭죽 발사 버튼을 누르는 것을 하나의 이벤트라고 생각해보자.<br>폭죽을 쏘는 비용은 해당 이벤트에 연결된 핸들러가 실행될 때 걸리는 연산량 혹은 메모리 사용량이 부하되는 정도라고 볼 수 있다.</p>
