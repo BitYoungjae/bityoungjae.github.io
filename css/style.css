@@ -409,7 +409,8 @@ figure.highlight {
   padding: 0;
   width: 100%;
   position: relative;
-  margin: 1em -1em 1em !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 figure.highlight.folded .highlight-body {
   height: 0;
