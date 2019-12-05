@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://bityoungjae.com/"/>
-  <updated>2019-11-09T16:05:12.993Z</updated>
+  <updated>2019-11-17T14:03:58.255Z</updated>
   <id>https://bityoungjae.com/</id>
   
   <author>
@@ -15,6 +15,77 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>async함수와 await 표현식의 간단 개념정리</title>
+    <link href="https://bityoungjae.com/2019/11/17/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/async%EC%99%80%20await%20%EA%B0%84%EB%8B%A8%20%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/"/>
+    <id>https://bityoungjae.com/2019/11/17/JavaScript/개념정리/async와 await 간단 개념정리/</id>
+    <published>2019-11-17T12:56:31.000Z</published>
+    <updated>2019-11-17T14:03:58.255Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="async-함수"><a href="#async-함수" class="headerlink" title="async 함수"></a>async 함수</h2><p>async 함수는 비동기로 실행되는 함수이다.<br>종전의 Promise API를 따르는 것에 비해 일반적인 동기 함수를 사용하는 것과 유사한 방법으로 비동기 로직을 처리할 수 있도록 한다.</p><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 1초 뒤 v를 값으로 Fulfilled 되는 Promise를 반환한다.</span></span><br><span class="line"><span class="hljs-keyword">const</span> p = <span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(</span><br><span class="line">    resolve =&gt; &#123;</span><br><span class="line">      setTimeout(</span><br><span class="line">        () =&gt; resolve(v),</span><br><span class="line">        <span class="hljs-number">1000</span></span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 종전의 방식 : then이나 catch 메서드를 이용해 콜백을 줄줄이 등록하는 방식</span></span><br><span class="line">p(<span class="hljs-number">1</span>)</span><br><span class="line">.then(<span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(v);</span><br><span class="line">    <span class="hljs-keyword">return</span> p(<span class="hljs-number">2</span>);</span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(v);</span><br><span class="line">    <span class="hljs-keyword">return</span> p(<span class="hljs-number">3</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// async 함수 사용 : 일반적인 동기 함수와 다를 바 없는 사용법.</span></span><br><span class="line"><span class="hljs-keyword">const</span> main = <span class="hljs-keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">await</span> p(<span class="hljs-number">1</span>));</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">await</span> p(<span class="hljs-number">2</span>));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">main();</span><br></pre></td></tr></table></figure><p>위 두 코드는 모두 같은 동작을 한다.</p><p>async 함수는 실행결과를 반환하기 위해 내부적으로 Promise 객체를 사용한다.</p><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> foo = <span class="hljs-keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">123</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(foo); <span class="hljs-comment">// 출력 : Promise &#123;&lt;pending&gt;&#125;</span></span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line">.then(<span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(v)); <span class="hljs-comment">// 출력 : 123</span></span><br></pre></td></tr></table></figure><p>아래와 같은 형태로 실행된다.</p><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> foo = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">123</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h2 id="await-표현식"><a href="#await-표현식" class="headerlink" title="await 표현식"></a>await 표현식</h2><p>await는 async 함수 내에서만 사용이 가능하며, 아래와 같이 사용한다.</p><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">await</span> [<span class="hljs-built_in">Promise</span>를 반환하는 표현식]</span><br></pre></td></tr></table></figure><p>await는 지정된 Promise가 Fulfilled 될 때까지 async 함수의 실행을 일시정지 시킨다. (generator와 흡사하다)</p><p>그리고 전체 await 표현식이 해당 Promise의 Fulfilled된 결과값으로 평가된다.</p><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> foo = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(</span><br><span class="line">        resolve =&gt; &#123;</span><br><span class="line">            setTimeout(</span><br><span class="line">                () =&gt; resolve(<span class="hljs-number">123</span>), <span class="hljs-comment">// 1초 뒤 123으로 이행됨.</span></span><br><span class="line">                <span class="hljs-number">1000</span></span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">    )</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> main = <span class="hljs-keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"main함수가 실행되었다"</span>);</span><br><span class="line">    <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> foo(); <span class="hljs-comment">// p()가 반환하는 Promise가 1초 뒤 이행될 때까지 중지.</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// 이행된 Promise의 결과값이 result에 할당되었다. 출력 : 123</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">main();</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"안녕하신가요"</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">출력 :</span></span><br><span class="line"><span class="hljs-comment">        main함수가 실행되었다</span></span><br><span class="line"><span class="hljs-comment">        안녕하신가요</span></span><br><span class="line"><span class="hljs-comment">        123</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure><p>만약, await 뒤에 따라오는 표현식이 Promise로 평가되지 않는다면, 해당 표현식이 평가된 값으로 이행된 Promise로 변환이 된다.</p><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> main = <span class="hljs-keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-number">123</span>; <span class="hljs-comment">// await Promise.resolve(123) 으로 변환됨.</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(result);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>Promise가 Fulfilled 되지 않고 Rejected 될 경우 해당 Promise의 결과값을 throw 한다.</p><p>따라서, catch 메서드를 통해 에러처리를 위한 콜백을 전달하던 종전의 방식과 달리 try-catch 구문을 활용할 수 있게 된다.</p><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> foo = <span class="hljs-keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-number">123</span>);</span><br><span class="line">    &#125; <span class="hljs-keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(e); <span class="hljs-comment">// 출력 : 123</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">foo();</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      async 함수
+async 함수는 비동기로 실행되는 함수이다.
+종전의 Promise API를 따르는 것에 비해 일반적인 동기 함수를 사용하는 것과 유사한 방법으로 비동기 로직을 처리할 수 있도록 한다.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+
+
+// 1초 뒤 v를 값으로 Fulfilled 되는 Promise를 반환한다.
+const p = v =&gt; {
+  return new Promise(
+    resolve =&gt; {
+    
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="https://bityoungjae.com/categories/JavaScript/"/>
+    
+      <category term="개념정리" scheme="https://bityoungjae.com/categories/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/"/>
+    
+    
+      <category term="javascript" scheme="https://bityoungjae.com/tags/javascript/"/>
+    
+      <category term="개념정리" scheme="https://bityoungjae.com/tags/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/"/>
+    
+      <category term="async" scheme="https://bityoungjae.com/tags/async/"/>
+    
+      <category term="await" scheme="https://bityoungjae.com/tags/await/"/>
+    
+  </entry>
   
   <entry>
     <title>19.11.10 생각 정리</title>
@@ -309,125 +380,6 @@ and 연산자
   </entry>
   
   <entry>
-    <title>시스템 조작</title>
-    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/"/>
-    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/시스템조작/</id>
-    <published>2019-10-26T08:14:39.000Z</published>
-    <updated>2019-10-27T05:03:05.567Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>시스템 조작 및 간단한 시스템 정보를 조회하는 방법</p></blockquote><h2 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a>shutdown</h2><p>시스템을 종료하거나 재부팅한다</p><ul><li><em>shutdown -h now</em><ul><li>즉시 시스템 종료</li></ul></li><li><em>shutdown -h 15</em><ul><li>15분 뒤 시스템 종료</li></ul></li><li><em>shutdown -h 22:00</em><ul><li>22:00 에 셧다운 예약</li></ul></li><li><em>shutdown -c</em><ul><li>예약된 셧다운 취소</li></ul></li><li><em>shutdown -k +15</em><ul><li>15분 뒤 종료 예정이라고 전 사용자에게 경고</li></ul></li><li><em>shutdown -r</em><ul><li>재부팅</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/shutdown.gif" alt="shutdown 시리즈 예시"></p><h2 id="w-who-whoami-users"><a href="#w-who-whoami-users" class="headerlink" title="w, who, whoami, users"></a>w, who, whoami, users</h2><p>접속중인 사용자들에 대한 정보를 조회한다</p><ul><li><em>w</em> 현재 접속한 사용자 목록 출력</li><li><em>who</em> 위와 동일</li><li><em>who -b</em> 시스템 부팅시간 출력<ul><li>UTC로 표기가 되므로, 한국 시간을 알고싶다면 -9시간을 계산해야 된다.</li><li><strong>UTC(Universal Time + Coordinated, 협정세계시간)</strong></li><li>한국은 <strong>UTC+9 (UTC에 9시간을 더함)</strong> 를 사용한다.</li></ul></li><li><em>whoami</em> 현재 로그인된 호스트명 출력</li><li><em>users</em> 접속된 사용자 리스트를 나열</li></ul><p><img src="https://bityoungjae.com/images/imgs/ws.gif" alt="who 시리즈 예시"></p><h2 id="id"><a href="#id" class="headerlink" title="id"></a>id</h2><p>id에 관련된 조회 동작을 실시한다</p><ul><li><em>id -un</em> 현재 호스트명 출력</li><li><em>id 1000 -un</em> uid 1000의 호스트명 출력</li><li><em>id -u</em> 현재 로그인된 계정의 uid 출력</li></ul><p><img src="https://bityoungjae.com/images/imgs/id.gif" alt="id 예시"></p><h2 id="finger"><a href="#finger" class="headerlink" title="finger"></a>finger</h2><p>특정 유저의 이름, 메일, 로그인시간 등의 정보를 확인한다</p><ul><li><em>finger -s</em><ul><li>현재 로그인된 계정의 정보를 출력</li></ul></li><li><em>finger -s username</em><ul><li>username으로 지정한 유저의 정보를 출력</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/finger.gif" alt="finger 예시"></p><h2 id="md5sum"><a href="#md5sum" class="headerlink" title="md5sum"></a>md5sum</h2><p>  특정 파일의 md5 체크섬을 확인</p><ul><li><em>md5sum filename</em> md5 체크섬을 출력.</li></ul><h2 id="df-Disk-Free"><a href="#df-Disk-Free" class="headerlink" title="df - Disk Free"></a>df - Disk Free</h2><p>디스크 사용정보를 출력</p><ul><li><em>df *</em>-text4 -hT***<ul><li><strong>-h</strong> 옵션으로 읽기 쉬운 단위로 출력</li><li><strong>-T</strong> 옵션으로 파일시스템 정보를 출력</li><li><strong>-t[type]</strong> 옵션으로 해당 파일시스템의 파티션만 필터링</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/df.gif" alt="df 예시"></p><h2 id="du-Disk-Usage"><a href="#du-Disk-Usage" class="headerlink" title="du - Disk Usage"></a>du - Disk Usage</h2><p>디스크 사용량을 표시한다</p><ul><li><em>du *</em>-hs***<ul><li><strong>-hs</strong> -&gt; Human Readable, Short</li><li>사람이 읽을 수 있게 요약해서 총량만 출력</li></ul></li><li><em>dur *</em>-hsS***<ul><li><strong>-S</strong></li><li>하위 파일 제외 순수 현재 폴더만의 디스크 사용량 표시</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/du.gif" alt="du 예시"></p><h2 id="free-Memory-Usage"><a href="#free-Memory-Usage" class="headerlink" title="free - Memory Usage"></a>free - Memory Usage</h2><p>메모리 사용량을 표시한다</p><ul><li><em>free *</em>-hs1***<ul><li><strong>-s1</strong> 1초에 한 번씩 사용현황을 append</li><li><strong>-t</strong> 총 사용량 행을 가장 아래에 출력</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/free.gif" alt="free 예시"></p>]]></content>
-    
-    <summary type="html">
-    
-      시스템 조작 및 간단한 시스템 정보를 조회하는 방법
-
-shutdown
-시스템을 종료하거나 재부팅한다
-
- * shutdown -h now * 즉시 시스템 종료
-   
-   
- * shutdown -h 15 * 15분 뒤 시스템 종료
-   
-   
- * shutdown -h 22:00 * 22:00 에 셧다운 예약
-   
-   
- * shutdown -c * 예약된 셧다운 취소
-   
-   
- * shutdown -k +15 * 15분 뒤 종료 예정이라고 전 사용자에게 경고
-   
-   
- * shutdown -r * 재부팅
-   
- 
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://bityoungjae.com/categories/Linux/"/>
-    
-      <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
-    
-    
-      <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
-    
-      <category term="Shell Commands" scheme="https://bityoungjae.com/tags/Shell-Commands/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>사용자 관리</title>
-    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/"/>
-    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/작성중/사용자관리/</id>
-    <published>2019-10-26T08:14:39.000Z</published>
-    <updated>2019-10-27T05:12:51.244Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>사용자 관리에 대한 별도 정리자료</p></blockquote><h2 id="권한에-대하여"><a href="#권한에-대하여" class="headerlink" title="권한에 대하여"></a>권한에 대하여</h2><h3 id="소유주-그룹-그-외-사람들"><a href="#소유주-그룹-그-외-사람들" class="headerlink" title="소유주, 그룹, 그 외 사람들"></a>소유주, 그룹, 그 외 사람들</h3><h3 id="rwx-로-권한을-표기한다"><a href="#rwx-로-권한을-표기한다" class="headerlink" title="rwx 로 권한을 표기한다"></a>rwx 로 권한을 표기한다</h3><h2 id="etc-passwd-에-대하여"><a href="#etc-passwd-에-대하여" class="headerlink" title="/etc/passwd 에 대하여"></a>/etc/passwd 에 대하여</h2><h3 id="etc-shadow-에-대하여"><a href="#etc-shadow-에-대하여" class="headerlink" title="/etc/shadow 에 대하여"></a>/etc/shadow 에 대하여</h3><p>과거에는 /etc/passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다.</p><p>이후 Shadow Suite의 적용으로 /etc/passwd에 직접 암호를 저장하지 않고,<br>/etc/shadow 에 각 유저에 매칭되는 암호화된 암호와 암호에 관련된 다양한 설정들을 기록해 사용하는 형태로 변모하였다.</p><p>보통 /etc/passwd 는 <strong>644(rw-r-r)</strong>의 권한을 갖고,<br>/etc/shadow는 <strong>600(rw-권한없음-권한없음)</strong>의 권한을 갖는다.</p><h4 id="etc-shadow의-구조"><a href="#etc-shadow의-구조" class="headerlink" title="/etc/shadow의 구조"></a>/etc/shadow의 구조</h4><p>/etc/shadow 파일내에는 각 유저들의 <strong>암호화된 비밀번호</strong> 와 <strong>비밀번호에 관련된 설정값</strong> 들이 기록되어있다.</p><blockquote><p><code>test:$6$O71pCNwB$GnBKDEYulhNdk0QFEpuDX3Ge(중략 ...):18112:0:99999:7:::</code></p></blockquote><h5 id="각-필드-살펴보기"><a href="#각-필드-살펴보기" class="headerlink" title="각 필드 살펴보기"></a>각 필드 살펴보기</h5><p><strong>콜론 :</strong> 을 구분자로 사용해 각 필드를 구분한다.</p><ul><li>첫번째 - <em>test</em><ul><li>/etc/passwd 에 기록된 유저명과 매칭이 된다.</li></ul></li><li>두번째 - “<code>$6$O71pCNwB$GnBKDEYulhNdk0QFEpuDX3Ge(중략 ...)</code>“<ul><li>암호화된 Password 이다. (동어 반복 느낌이 나서 굳이 영단어를 썼다)</li><li>이 역시도 <strong>달러기호 $</strong> 를 구분자로 사용해 다시 필드가 나뉜다.</li><li>첫번째 - <em>6</em></li><li>두번째 - <em>O71pCNwB</em></li><li>세번째 - <em>GnBKDEYulhNdk0QFEpuDX3Ge(중략 …)</em></li></ul></li><li>세번째 - <em>18112</em></li><li>네번째 - <em>0</em></li><li>다섯번째 - <em>99999</em></li><li>여섯번째 - <em>7</em></li></ul><h4 id="해시함수"><a href="#해시함수" class="headerlink" title="해시함수"></a>해시함수</h4><p><a href="https://bityoungjae.com/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/">부록-해시함수.md</a> 를 참고할 것.</p><p>쓰고나서 투머치한 감이 없잖게 있어서 따로 항목을 새로 만들었습니다.</p><p>사족과도 같은 내용으로 필요한 분만 간단하게 참고하는 용도로 열람하시면 될 것 같습니다.</p><h2 id="사용자-추가-삭제-수정"><a href="#사용자-추가-삭제-수정" class="headerlink" title="사용자 추가, 삭제, 수정"></a>사용자 추가, 삭제, 수정</h2><h3 id="사용자-추가하기"><a href="#사용자-추가하기" class="headerlink" title="사용자 추가하기"></a>사용자 추가하기</h3><h3 id="사용자-삭제하기"><a href="#사용자-삭제하기" class="headerlink" title="사용자 삭제하기"></a>사용자 삭제하기</h3><h4 id="사용자-삭제시-오류-사례"><a href="#사용자-삭제시-오류-사례" class="headerlink" title="사용자 삭제시 오류 사례"></a>사용자 삭제시 오류 사례</h4><h3 id="사용자-수정하기"><a href="#사용자-수정하기" class="headerlink" title="사용자 수정하기"></a>사용자 수정하기</h3><h3 id="사용자-목록-확인"><a href="#사용자-목록-확인" class="headerlink" title="사용자 목록 확인"></a>사용자 목록 확인</h3><h3 id="패스워드-변경"><a href="#패스워드-변경" class="headerlink" title="패스워드 변경"></a>패스워드 변경</h3><h2 id="그룹-추가-삭제-수정"><a href="#그룹-추가-삭제-수정" class="headerlink" title="그룹 추가, 삭제, 수정"></a>그룹 추가, 삭제, 수정</h2><h3 id="그룹-목록-확인"><a href="#그룹-목록-확인" class="headerlink" title="그룹 목록 확인"></a>그룹 목록 확인</h3><h2 id="UID-GID"><a href="#UID-GID" class="headerlink" title="UID, GID"></a>UID, GID</h2>]]></content>
-    
-    <summary type="html">
-    
-      사용자 관리에 대한 별도 정리자료
-
-권한에 대하여
-소유주, 그룹, 그 외 사람들
-rwx 로 권한을 표기한다
-/etc/passwd 에 대하여
-/etc/shadow 에 대하여
-과거에는 /etc/passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다.
-
-이후 Shadow Suite의 적용으로 /etc/passwd에 직접 암호를 저장하지 않고,
-/etc/shadow 에 각 유저에 매칭되는 암호화된 암호와 암호에 관련된 다양한 설정들을 기록해 사용하는 형태로 변모하였다.
-
-보통 /etc/passwd 는 644(rw-r-r)의 권한을 갖고
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://bityoungjae.com/categories/Linux/"/>
-    
-      <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
-    
-      <category term="작성중" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/%EC%9E%91%EC%84%B1%EC%A4%91/"/>
-    
-    
-      <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
-    
-      <category term="Shell Commands" scheme="https://bityoungjae.com/tags/Shell-Commands/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Find 사용법</title>
-    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/"/>
-    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/작성중/Find 유틸리티/</id>
-    <published>2019-10-26T08:14:39.000Z</published>
-    <updated>2019-10-27T05:12:51.244Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>Find 유티리티에 대한 별도 정리자료</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      Find 유티리티에 대한 별도 정리자료
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://bityoungjae.com/categories/Linux/"/>
-    
-      <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
-    
-      <category term="작성중" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/%EC%9E%91%EC%84%B1%EC%A4%91/"/>
-    
-    
-      <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
-    
-      <category term="Shell Commands" scheme="https://bityoungjae.com/tags/Shell-Commands/"/>
-    
-  </entry>
-  
-  <entry>
     <title>grep 사용법</title>
     <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/"/>
     <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/Grep 유틸리티/</id>
@@ -537,6 +489,125 @@ cat을 입력도구로 사용하기
       <category term="Linux" scheme="https://bityoungjae.com/categories/Linux/"/>
     
       <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
+    
+    
+      <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
+    
+      <category term="Shell Commands" scheme="https://bityoungjae.com/tags/Shell-Commands/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>시스템 조작</title>
+    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/"/>
+    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/시스템조작/</id>
+    <published>2019-10-26T08:14:39.000Z</published>
+    <updated>2019-10-27T05:03:05.567Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>시스템 조작 및 간단한 시스템 정보를 조회하는 방법</p></blockquote><h2 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a>shutdown</h2><p>시스템을 종료하거나 재부팅한다</p><ul><li><em>shutdown -h now</em><ul><li>즉시 시스템 종료</li></ul></li><li><em>shutdown -h 15</em><ul><li>15분 뒤 시스템 종료</li></ul></li><li><em>shutdown -h 22:00</em><ul><li>22:00 에 셧다운 예약</li></ul></li><li><em>shutdown -c</em><ul><li>예약된 셧다운 취소</li></ul></li><li><em>shutdown -k +15</em><ul><li>15분 뒤 종료 예정이라고 전 사용자에게 경고</li></ul></li><li><em>shutdown -r</em><ul><li>재부팅</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/shutdown.gif" alt="shutdown 시리즈 예시"></p><h2 id="w-who-whoami-users"><a href="#w-who-whoami-users" class="headerlink" title="w, who, whoami, users"></a>w, who, whoami, users</h2><p>접속중인 사용자들에 대한 정보를 조회한다</p><ul><li><em>w</em> 현재 접속한 사용자 목록 출력</li><li><em>who</em> 위와 동일</li><li><em>who -b</em> 시스템 부팅시간 출력<ul><li>UTC로 표기가 되므로, 한국 시간을 알고싶다면 -9시간을 계산해야 된다.</li><li><strong>UTC(Universal Time + Coordinated, 협정세계시간)</strong></li><li>한국은 <strong>UTC+9 (UTC에 9시간을 더함)</strong> 를 사용한다.</li></ul></li><li><em>whoami</em> 현재 로그인된 호스트명 출력</li><li><em>users</em> 접속된 사용자 리스트를 나열</li></ul><p><img src="https://bityoungjae.com/images/imgs/ws.gif" alt="who 시리즈 예시"></p><h2 id="id"><a href="#id" class="headerlink" title="id"></a>id</h2><p>id에 관련된 조회 동작을 실시한다</p><ul><li><em>id -un</em> 현재 호스트명 출력</li><li><em>id 1000 -un</em> uid 1000의 호스트명 출력</li><li><em>id -u</em> 현재 로그인된 계정의 uid 출력</li></ul><p><img src="https://bityoungjae.com/images/imgs/id.gif" alt="id 예시"></p><h2 id="finger"><a href="#finger" class="headerlink" title="finger"></a>finger</h2><p>특정 유저의 이름, 메일, 로그인시간 등의 정보를 확인한다</p><ul><li><em>finger -s</em><ul><li>현재 로그인된 계정의 정보를 출력</li></ul></li><li><em>finger -s username</em><ul><li>username으로 지정한 유저의 정보를 출력</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/finger.gif" alt="finger 예시"></p><h2 id="md5sum"><a href="#md5sum" class="headerlink" title="md5sum"></a>md5sum</h2><p>  특정 파일의 md5 체크섬을 확인</p><ul><li><em>md5sum filename</em> md5 체크섬을 출력.</li></ul><h2 id="df-Disk-Free"><a href="#df-Disk-Free" class="headerlink" title="df - Disk Free"></a>df - Disk Free</h2><p>디스크 사용정보를 출력</p><ul><li><em>df *</em>-text4 -hT***<ul><li><strong>-h</strong> 옵션으로 읽기 쉬운 단위로 출력</li><li><strong>-T</strong> 옵션으로 파일시스템 정보를 출력</li><li><strong>-t[type]</strong> 옵션으로 해당 파일시스템의 파티션만 필터링</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/df.gif" alt="df 예시"></p><h2 id="du-Disk-Usage"><a href="#du-Disk-Usage" class="headerlink" title="du - Disk Usage"></a>du - Disk Usage</h2><p>디스크 사용량을 표시한다</p><ul><li><em>du *</em>-hs***<ul><li><strong>-hs</strong> -&gt; Human Readable, Short</li><li>사람이 읽을 수 있게 요약해서 총량만 출력</li></ul></li><li><em>dur *</em>-hsS***<ul><li><strong>-S</strong></li><li>하위 파일 제외 순수 현재 폴더만의 디스크 사용량 표시</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/du.gif" alt="du 예시"></p><h2 id="free-Memory-Usage"><a href="#free-Memory-Usage" class="headerlink" title="free - Memory Usage"></a>free - Memory Usage</h2><p>메모리 사용량을 표시한다</p><ul><li><em>free *</em>-hs1***<ul><li><strong>-s1</strong> 1초에 한 번씩 사용현황을 append</li><li><strong>-t</strong> 총 사용량 행을 가장 아래에 출력</li></ul></li></ul><p><img src="https://bityoungjae.com/images/imgs/free.gif" alt="free 예시"></p>]]></content>
+    
+    <summary type="html">
+    
+      시스템 조작 및 간단한 시스템 정보를 조회하는 방법
+
+shutdown
+시스템을 종료하거나 재부팅한다
+
+ * shutdown -h now * 즉시 시스템 종료
+   
+   
+ * shutdown -h 15 * 15분 뒤 시스템 종료
+   
+   
+ * shutdown -h 22:00 * 22:00 에 셧다운 예약
+   
+   
+ * shutdown -c * 예약된 셧다운 취소
+   
+   
+ * shutdown -k +15 * 15분 뒤 종료 예정이라고 전 사용자에게 경고
+   
+   
+ * shutdown -r * 재부팅
+   
+ 
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://bityoungjae.com/categories/Linux/"/>
+    
+      <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
+    
+    
+      <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
+    
+      <category term="Shell Commands" scheme="https://bityoungjae.com/tags/Shell-Commands/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Find 사용법</title>
+    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/"/>
+    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/작성중/Find 유틸리티/</id>
+    <published>2019-10-26T08:14:39.000Z</published>
+    <updated>2019-10-27T05:12:51.244Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Find 유티리티에 대한 별도 정리자료</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      Find 유티리티에 대한 별도 정리자료
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://bityoungjae.com/categories/Linux/"/>
+    
+      <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
+    
+      <category term="작성중" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/%EC%9E%91%EC%84%B1%EC%A4%91/"/>
+    
+    
+      <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>
+    
+      <category term="Shell Commands" scheme="https://bityoungjae.com/tags/Shell-Commands/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>사용자 관리</title>
+    <link href="https://bityoungjae.com/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/"/>
+    <id>https://bityoungjae.com/2019/10/26/Linux/Shell Commands/작성중/사용자관리/</id>
+    <published>2019-10-26T08:14:39.000Z</published>
+    <updated>2019-10-27T05:12:51.244Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>사용자 관리에 대한 별도 정리자료</p></blockquote><h2 id="권한에-대하여"><a href="#권한에-대하여" class="headerlink" title="권한에 대하여"></a>권한에 대하여</h2><h3 id="소유주-그룹-그-외-사람들"><a href="#소유주-그룹-그-외-사람들" class="headerlink" title="소유주, 그룹, 그 외 사람들"></a>소유주, 그룹, 그 외 사람들</h3><h3 id="rwx-로-권한을-표기한다"><a href="#rwx-로-권한을-표기한다" class="headerlink" title="rwx 로 권한을 표기한다"></a>rwx 로 권한을 표기한다</h3><h2 id="etc-passwd-에-대하여"><a href="#etc-passwd-에-대하여" class="headerlink" title="/etc/passwd 에 대하여"></a>/etc/passwd 에 대하여</h2><h3 id="etc-shadow-에-대하여"><a href="#etc-shadow-에-대하여" class="headerlink" title="/etc/shadow 에 대하여"></a>/etc/shadow 에 대하여</h3><p>과거에는 /etc/passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다.</p><p>이후 Shadow Suite의 적용으로 /etc/passwd에 직접 암호를 저장하지 않고,<br>/etc/shadow 에 각 유저에 매칭되는 암호화된 암호와 암호에 관련된 다양한 설정들을 기록해 사용하는 형태로 변모하였다.</p><p>보통 /etc/passwd 는 <strong>644(rw-r-r)</strong>의 권한을 갖고,<br>/etc/shadow는 <strong>600(rw-권한없음-권한없음)</strong>의 권한을 갖는다.</p><h4 id="etc-shadow의-구조"><a href="#etc-shadow의-구조" class="headerlink" title="/etc/shadow의 구조"></a>/etc/shadow의 구조</h4><p>/etc/shadow 파일내에는 각 유저들의 <strong>암호화된 비밀번호</strong> 와 <strong>비밀번호에 관련된 설정값</strong> 들이 기록되어있다.</p><blockquote><p><code>test:$6$O71pCNwB$GnBKDEYulhNdk0QFEpuDX3Ge(중략 ...):18112:0:99999:7:::</code></p></blockquote><h5 id="각-필드-살펴보기"><a href="#각-필드-살펴보기" class="headerlink" title="각 필드 살펴보기"></a>각 필드 살펴보기</h5><p><strong>콜론 :</strong> 을 구분자로 사용해 각 필드를 구분한다.</p><ul><li>첫번째 - <em>test</em><ul><li>/etc/passwd 에 기록된 유저명과 매칭이 된다.</li></ul></li><li>두번째 - “<code>$6$O71pCNwB$GnBKDEYulhNdk0QFEpuDX3Ge(중략 ...)</code>“<ul><li>암호화된 Password 이다. (동어 반복 느낌이 나서 굳이 영단어를 썼다)</li><li>이 역시도 <strong>달러기호 $</strong> 를 구분자로 사용해 다시 필드가 나뉜다.</li><li>첫번째 - <em>6</em></li><li>두번째 - <em>O71pCNwB</em></li><li>세번째 - <em>GnBKDEYulhNdk0QFEpuDX3Ge(중략 …)</em></li></ul></li><li>세번째 - <em>18112</em></li><li>네번째 - <em>0</em></li><li>다섯번째 - <em>99999</em></li><li>여섯번째 - <em>7</em></li></ul><h4 id="해시함수"><a href="#해시함수" class="headerlink" title="해시함수"></a>해시함수</h4><p><a href="https://bityoungjae.com/2019/10/26/ETC/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98%EC%97%90_%EB%8C%80%ED%95%98%EC%97%AC/">부록-해시함수.md</a> 를 참고할 것.</p><p>쓰고나서 투머치한 감이 없잖게 있어서 따로 항목을 새로 만들었습니다.</p><p>사족과도 같은 내용으로 필요한 분만 간단하게 참고하는 용도로 열람하시면 될 것 같습니다.</p><h2 id="사용자-추가-삭제-수정"><a href="#사용자-추가-삭제-수정" class="headerlink" title="사용자 추가, 삭제, 수정"></a>사용자 추가, 삭제, 수정</h2><h3 id="사용자-추가하기"><a href="#사용자-추가하기" class="headerlink" title="사용자 추가하기"></a>사용자 추가하기</h3><h3 id="사용자-삭제하기"><a href="#사용자-삭제하기" class="headerlink" title="사용자 삭제하기"></a>사용자 삭제하기</h3><h4 id="사용자-삭제시-오류-사례"><a href="#사용자-삭제시-오류-사례" class="headerlink" title="사용자 삭제시 오류 사례"></a>사용자 삭제시 오류 사례</h4><h3 id="사용자-수정하기"><a href="#사용자-수정하기" class="headerlink" title="사용자 수정하기"></a>사용자 수정하기</h3><h3 id="사용자-목록-확인"><a href="#사용자-목록-확인" class="headerlink" title="사용자 목록 확인"></a>사용자 목록 확인</h3><h3 id="패스워드-변경"><a href="#패스워드-변경" class="headerlink" title="패스워드 변경"></a>패스워드 변경</h3><h2 id="그룹-추가-삭제-수정"><a href="#그룹-추가-삭제-수정" class="headerlink" title="그룹 추가, 삭제, 수정"></a>그룹 추가, 삭제, 수정</h2><h3 id="그룹-목록-확인"><a href="#그룹-목록-확인" class="headerlink" title="그룹 목록 확인"></a>그룹 목록 확인</h3><h2 id="UID-GID"><a href="#UID-GID" class="headerlink" title="UID, GID"></a>UID, GID</h2>]]></content>
+    
+    <summary type="html">
+    
+      사용자 관리에 대한 별도 정리자료
+
+권한에 대하여
+소유주, 그룹, 그 외 사람들
+rwx 로 권한을 표기한다
+/etc/passwd 에 대하여
+/etc/shadow 에 대하여
+과거에는 /etc/passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다.
+
+이후 Shadow Suite의 적용으로 /etc/passwd에 직접 암호를 저장하지 않고,
+/etc/shadow 에 각 유저에 매칭되는 암호화된 암호와 암호에 관련된 다양한 설정들을 기록해 사용하는 형태로 변모하였다.
+
+보통 /etc/passwd 는 644(rw-r-r)의 권한을 갖고
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://bityoungjae.com/categories/Linux/"/>
+    
+      <category term="Shell Commands" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/"/>
+    
+      <category term="작성중" scheme="https://bityoungjae.com/categories/Linux/Shell-Commands/%EC%9E%91%EC%84%B1%EC%A4%91/"/>
     
     
       <category term="Linux" scheme="https://bityoungjae.com/tags/Linux/"/>

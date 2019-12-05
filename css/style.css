@@ -212,6 +212,9 @@ img.thumbnail {
 .article .content a {
   word-wrap: break-word;
 }
+.article .content a .toc {
+  margin-bottom: 21px;
+}
 .rtl {
   direction: rtl;
 }

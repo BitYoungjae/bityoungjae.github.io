@@ -146,6 +146,100 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-17T12:56:31.000Z">2019-11-17</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">개념정리</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4분 분량 (단어수 594 개)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
+            
+                <a class="has-link-black-ter" href="/2019/11/17/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/async%EC%99%80%20await%20%EA%B0%84%EB%8B%A8%20%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">async함수와 await 표현식의 간단 개념정리</a>
+            
+        </h1>
+        <div class="content">
+            <div class="toc menu-list"></div>
+            async 함수
+async 함수는 비동기로 실행되는 함수이다.
+종전의 Promise API를 따르는 것에 비해 일반적인 동기 함수를 사용하는 것과 유사한 방법으로 비동기 로직을 처리할 수 있도록 한다.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+
+
+// 1초 뒤 v를 값으로 Fulfilled 되는 Promise를 반환한다.
+const p = v => {
+  return new Promise(
+    resolve => {
+    
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/11/17/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/async%EC%99%80%20await%20%EA%B0%84%EB%8B%A8%20%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/#more">전체 읽기</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-11-09T16:05:12.000Z">2019-11-10</time>
                 
                 <div class="level-item">
@@ -169,6 +263,7 @@
             
         </h1>
         <div class="content">
+            <div class="toc menu-list"></div>
             1.  오른쪽 뺨을 맞으면 왼편을 돌려대라. 라는 성경 구절은 대부분의 상황에 정답이다.벌꿀을 얻으려면 벌통을 걷어차지 말라. - <인간관계론 (데일카네기) 中>
      
      
@@ -228,6 +323,7 @@
             
         </h1>
         <div class="content">
+            <div class="toc menu-list"></div>
             영상
 
 
@@ -386,6 +482,7 @@ js1
             
         </h1>
         <div class="content">
+            <div class="toc menu-list"></div>
             누르면 폭죽이 발사되는 버튼이 있다고 가정해보자.
 폭죽 한 발을 쏘는데는 100만원의 비용이 든다.
 
@@ -421,73 +518,6 @@ js1
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-03T06:14:39.000Z">2019-11-03</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/JavaScript/%EB%A9%94%EB%AA%A8/">메모</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4분 분량 (단어수 610 개)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
-            
-                <a class="has-link-black-ter" href="/2019/11/03/JavaScript/%EB%A9%94%EB%AA%A8/191103%20%EB%A9%94%EB%AA%A8/">191103의 메모</a>
-            
-        </h1>
-        <div class="content">
-            자바스크립트의 동시성
-동기 모델의 단점
- * 다른 언어의 멀티 쓰레드를 이용하는 동기 모델의 경우 각 쓰레드별로 메모리를 점유하게 되고 context switching이 발생하게 되면서 메모리와 cpu에 대한 오버헤드가 발생한다.
-
-콜백
- * Just pass a function that will be called when the task is complete.
-
-1
-2
-3
-4
-
-
-// file.txt의 읽기가 끝났을 때 읽어온 content를 인자로 미리 예약된 callback을 호출한다.
-readFile('file.txt', (
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/03/JavaScript/%EB%A9%94%EB%AA%A8/191103%20%EB%A9%94%EB%AA%A8/#more">전체 읽기</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -504,9 +534,9 @@ readFile('file.txt', (
             
             <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/3/">3</a></li>
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/4/">4</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/5/">5</a></li>
             
         </ul>
     </nav>
@@ -555,7 +585,7 @@ readFile('file.txt', (
                         포스트
                     </p>
                     <p class="title has-text-weight-bold">
-                        16
+                        17
                     </p>
                 </div>
             </div>
@@ -575,7 +605,7 @@ readFile('file.txt', (
                         태그
                     </p>
                     <p class="title has-text-weight-bold">
-                        16
+                        19
                     </p>
                 </div>
             </div>
@@ -633,7 +663,7 @@ readFile('file.txt', (
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">
@@ -641,7 +671,7 @@ readFile('file.txt', (
                 <span class="level-item">개념정리</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/JavaScript/%EB%8D%B0%EB%AA%A8/">
@@ -702,7 +732,7 @@ readFile('file.txt', (
         <h3 class="menu-label">
             태그 클라우드
         </h3>
-        <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Shell-Commands/" style="font-size: 16.67px;">Shell Commands</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/short-circuit-evaluation/" style="font-size: 10px;">short-circuit evaluation</a> <a href="/tags/%EA%B0%9D%EC%B2%B4%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/" style="font-size: 13.33px;">객체에 대하여</a> <a href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/" style="font-size: 10px;">단락평가</a> <a href="/tags/%EB%94%94%EB%B0%94%EC%9A%B4%EC%8B%B1/" style="font-size: 10px;">디바운싱</a> <a href="/tags/%EB%A9%94%EB%AA%A8/" style="font-size: 10px;">메모</a> <a href="/tags/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/" style="font-size: 10px;">생각정리</a> <a href="/tags/%EC%8A%A4%ED%81%AC%EB%A1%A4%EC%9D%B4%EB%B2%A4%ED%8A%B8/" style="font-size: 10px;">스크롤이벤트</a> <a href="/tags/%EC%8B%9C%EB%A6%AC%EC%A6%88/" style="font-size: 13.33px;">시리즈</a> <a href="/tags/%EC%93%B0%EB%A1%9C%ED%8B%80%EB%A7%81/" style="font-size: 10px;">쓰로틀링</a> <a href="/tags/%EC%9D%B4%EB%B2%A4%ED%8A%B8/" style="font-size: 10px;">이벤트</a> <a href="/tags/%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" style="font-size: 10px;">지름길평가</a> <a href="/tags/%EC%A7%80%EC%97%B0%EB%A1%9C%EB%94%A9/" style="font-size: 10px;">지연로딩</a> <a href="/tags/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" style="font-size: 10px;">해시함수</a>
+        <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Shell-Commands/" style="font-size: 16.67px;">Shell Commands</a> <a href="/tags/async/" style="font-size: 10px;">async</a> <a href="/tags/await/" style="font-size: 10px;">await</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/short-circuit-evaluation/" style="font-size: 10px;">short-circuit evaluation</a> <a href="/tags/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/" style="font-size: 10px;">개념정리</a> <a href="/tags/%EA%B0%9D%EC%B2%B4%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/" style="font-size: 13.33px;">객체에 대하여</a> <a href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/" style="font-size: 10px;">단락평가</a> <a href="/tags/%EB%94%94%EB%B0%94%EC%9A%B4%EC%8B%B1/" style="font-size: 10px;">디바운싱</a> <a href="/tags/%EB%A9%94%EB%AA%A8/" style="font-size: 10px;">메모</a> <a href="/tags/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/" style="font-size: 10px;">생각정리</a> <a href="/tags/%EC%8A%A4%ED%81%AC%EB%A1%A4%EC%9D%B4%EB%B2%A4%ED%8A%B8/" style="font-size: 10px;">스크롤이벤트</a> <a href="/tags/%EC%8B%9C%EB%A6%AC%EC%A6%88/" style="font-size: 13.33px;">시리즈</a> <a href="/tags/%EC%93%B0%EB%A1%9C%ED%8B%80%EB%A7%81/" style="font-size: 10px;">쓰로틀링</a> <a href="/tags/%EC%9D%B4%EB%B2%A4%ED%8A%B8/" style="font-size: 10px;">이벤트</a> <a href="/tags/%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" style="font-size: 10px;">지름길평가</a> <a href="/tags/%EC%A7%80%EC%97%B0%EB%A1%9C%EB%94%A9/" style="font-size: 10px;">지연로딩</a> <a href="/tags/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" style="font-size: 10px;">해시함수</a>
     </div>
 </div>
     
@@ -739,6 +769,25 @@ readFile('file.txt', (
         <h3 class="menu-label">
             최근 글
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/17/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/async%EC%99%80%20await%20%EA%B0%84%EB%8B%A8%20%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="async함수와 await 표현식의 간단 개념정리">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T12:56:31.000Z">2019-11-17</time></div>
+                    <a href="/2019/11/17/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/async%EC%99%80%20await%20%EA%B0%84%EB%8B%A8%20%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">async함수와 await 표현식의 간단 개념정리</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a> / <a class="has-link-grey -link" href="/categories/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">개념정리</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -816,25 +865,6 @@ readFile('file.txt', (
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/27/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80%20%ED%98%B9%EC%9D%80%20%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="단락평가, 지름길 평가 (Short-circuit evaluation)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T17:14:39.000Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80%20%ED%98%B9%EC%9D%80%20%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="title has-link-black-ter is-size-6 has-text-weight-bold">단락평가, 지름길 평가 (Short-circuit evaluation)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a> / <a class="has-link-grey -link" href="/categories/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">개념정리</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -852,7 +882,7 @@ readFile('file.txt', (
                     <span class="level-item">11월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -918,15 +948,36 @@ readFile('file.txt', (
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/async/">
+                        <span class="tag">async</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/await/">
+                        <span class="tag">await</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/short-circuit-evaluation/">
                         <span class="tag">short-circuit evaluation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">
+                        <span class="tag">개념정리</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1039,6 +1090,25 @@ readFile('file.txt', (
         
         <article class="media">
             
+            <a href="/2019/11/17/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/async%EC%99%80%20await%20%EA%B0%84%EB%8B%A8%20%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="async함수와 await 표현식의 간단 개념정리">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T12:56:31.000Z">2019-11-17</time></div>
+                    <a href="/2019/11/17/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/async%EC%99%80%20await%20%EA%B0%84%EB%8B%A8%20%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">async함수와 await 표현식의 간단 개념정리</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a> / <a class="has-link-grey -link" href="/categories/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">개념정리</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/10/Life/191110%20%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="19.11.10 생각 정리">
@@ -1113,25 +1183,6 @@ readFile('file.txt', (
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/27/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80%20%ED%98%B9%EC%9D%80%20%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="단락평가, 지름길 평가 (Short-circuit evaluation)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T17:14:39.000Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80%20%ED%98%B9%EC%9D%80%20%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="title has-link-black-ter is-size-6 has-text-weight-bold">단락평가, 지름길 평가 (Short-circuit evaluation)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a> / <a class="has-link-grey -link" href="/categories/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">개념정리</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1149,7 +1200,7 @@ readFile('file.txt', (
                     <span class="level-item">11월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -1215,15 +1266,36 @@ readFile('file.txt', (
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/async/">
+                        <span class="tag">async</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/await/">
+                        <span class="tag">await</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/short-circuit-evaluation/">
                         <span class="tag">short-circuit evaluation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">
+                        <span class="tag">개념정리</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

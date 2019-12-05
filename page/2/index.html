@@ -146,6 +146,74 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-03T06:14:39.000Z">2019-11-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/JavaScript/%EB%A9%94%EB%AA%A8/">메모</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4분 분량 (단어수 610 개)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
+            
+                <a class="has-link-black-ter" href="/2019/11/03/JavaScript/%EB%A9%94%EB%AA%A8/191103%20%EB%A9%94%EB%AA%A8/">191103의 메모</a>
+            
+        </h1>
+        <div class="content">
+            <div class="toc menu-list"></div>
+            자바스크립트의 동시성
+동기 모델의 단점
+ * 다른 언어의 멀티 쓰레드를 이용하는 동기 모델의 경우 각 쓰레드별로 메모리를 점유하게 되고 context switching이 발생하게 되면서 메모리와 cpu에 대한 오버헤드가 발생한다.
+
+콜백
+ * Just pass a function that will be called when the task is complete.
+
+1
+2
+3
+4
+
+
+// file.txt의 읽기가 끝났을 때 읽어온 content를 인자로 미리 예약된 callback을 호출한다.
+readFile('file.txt', (
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/11/03/JavaScript/%EB%A9%94%EB%AA%A8/191103%20%EB%A9%94%EB%AA%A8/#more">전체 읽기</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-26T17:14:39.000Z">2019-10-27</time>
                 
                 <div class="level-item">
@@ -169,6 +237,7 @@
             
         </h1>
         <div class="content">
+            <div class="toc menu-list"></div>
             자바스크립트의 논리연산자를 기본 용도인 참/거짓의 판단을 위해 사용하는 것이 아닌, 조건문을 대체해 사용하는 일종의 문법 설탕 이라고 볼 수 있다.
 
 기본원리
@@ -223,7 +292,7 @@ and 연산자
                 <span class="level-item has-text-grey">
                     
                     
-                    4분 분량 (단어수 603 개)
+                    4분 분량 (단어수 577 개)
                 </span>
                 
                 
@@ -232,40 +301,32 @@ and 연산자
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
             
-                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/">시스템 조작</a>
+                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/">grep 사용법</a>
             
         </h1>
         <div class="content">
-            시스템 조작 및 간단한 시스템 정보를 조회하는 방법
+            <div class="toc menu-list"></div>
+            정규표현식을 이용한 텍스트 검색
 
-shutdown
-시스템을 종료하거나 재부팅한다
+ * grep [Pattern] [Filename] * 일반적인 사용법
+    * [Filename] 에서 [Pattern] 를 찾는다
+    * 기본적으로 Basic regular expression을 사용한다
+   
+   
+ * grep -i [Pattern] * 대소문자를 무시한다. Ignore Case
+   
+   
 
- * shutdown -h now * 즉시 시스템 종료
-   
-   
- * shutdown -h 15 * 15분 뒤 시스템 종료
-   
-   
- * shutdown -h 22:00 * 22:00 에 셧다운 예약
-   
-   
- * shutdown -c * 예약된 셧다운 취소
-   
-   
- * shutdown -k +15 * 15분 뒤 종료 예정이라고 전 사용자에게 경고
-   
-   
- * shutdown -r * 재부팅
-   
- 
+Basic regular expression
+ * 패턴에서 일부 메타문자를 일반 문자로 인식한다. * ex : ? , + , { , | , (, )
+    * \ 를 앞에 붙여
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/10/26/Linux/Shell%20Commands/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A1%B0%EC%9E%91/#more">전체 읽기</a>
+                <a class="button is-size-7 is-light" href="/2019/10/26/Linux/Shell%20Commands/Grep%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/#more">전체 읽기</a>
                 </div>
             </div>
         </div>
@@ -291,14 +352,14 @@ shutdown
                 <time class="level-item has-text-grey" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/%EC%9E%91%EC%84%B1%EC%A4%91/">작성중</a>
+                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4분 분량 (단어수 533 개)
+                    6분 분량 (단어수 875 개)
                 </span>
                 
                 
@@ -307,83 +368,29 @@ shutdown
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
             
-                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/">사용자 관리</a>
+                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/%ED%8C%8C%EC%9D%BC%EC%B2%98%EB%A6%AC/">리눅스 파일처리 커맨드</a>
             
         </h1>
         <div class="content">
-            사용자 관리에 대한 별도 정리자료
+            <div class="toc menu-list"></div>
+            파일들을 조회하고, 지우고, 잘라내고, 복사하고, 바로가기를 만든다
 
-권한에 대하여
-소유주, 그룹, 그 외 사람들
-rwx 로 권한을 표기한다
-/etc/passwd 에 대하여
-/etc/shadow 에 대하여
-과거에는 /etc/passwd 파일에 직접 인코딩된 암호를 기록하여 사용했다.
-
-이후 Shadow Suite의 적용으로 /etc/passwd에 직접 암호를 저장하지 않고,
-/etc/shadow 에 각 유저에 매칭되는 암호화된 암호와 암호에 관련된 다양한 설정들을 기록해 사용하는 형태로 변모하였다.
-
-보통 /etc/passwd 는 644(rw-r-r)의 권한을 갖고
+ls - List
+ * ls -a 숨김파일 포함해 전체 출력.
+ * ls -A -a 와 동일하되 .와 ..를 제외하고 출력.
+ * ls -l 리스트 형태로 출력. * ls -l (기본값) 기본적으로 최종 수정시간을 표시한다 (Modified)
+    * ls -lc -l 옵션에서 시간을 최종 변경시간으로 표시 (Changed)
+    * ls -lu -l 옵션에서 시간을 최종 접근시간으로 표시 (Access)
+   
+   
+ * ls -h 파일크기를 KB, GB,
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC/#more">전체 읽기</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-26T08:14:39.000Z">2019-10-26</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/">Shell Commands</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Shell-Commands/%EC%9E%91%EC%84%B1%EC%A4%91/">작성중</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    몇 초 분량 (단어수 14 개)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-bold">
-            
-                <a class="has-link-black-ter" href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/">Find 사용법</a>
-            
-        </h1>
-        <div class="content">
-            Find 유티리티에 대한 별도 정리자료
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/10/26/Linux/Shell%20Commands/%EC%9E%91%EC%84%B1%EC%A4%91/Find%20%EC%9C%A0%ED%8B%B8%EB%A6%AC%ED%8B%B0/#more">전체 읽기</a>
+                <a class="button is-size-7 is-light" href="/2019/10/26/Linux/Shell%20Commands/%ED%8C%8C%EC%9D%BC%EC%B2%98%EB%A6%AC/#more">전체 읽기</a>
                 </div>
             </div>
         </div>
@@ -418,6 +425,8 @@ rwx 로 권한을 표기한다
             <li><a class="pagination-link has-text-black-ter" href="/page/3/">3</a></li>
             
             <li><a class="pagination-link has-text-black-ter" href="/page/4/">4</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/5/">5</a></li>
             
         </ul>
     </nav>
@@ -466,7 +475,7 @@ rwx 로 권한을 표기한다
                         포스트
                     </p>
                     <p class="title has-text-weight-bold">
-                        16
+                        17
                     </p>
                 </div>
             </div>
@@ -486,7 +495,7 @@ rwx 로 권한을 표기한다
                         태그
                     </p>
                     <p class="title has-text-weight-bold">
-                        16
+                        19
                     </p>
                 </div>
             </div>
@@ -544,7 +553,7 @@ rwx 로 권한을 표기한다
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">
@@ -552,7 +561,7 @@ rwx 로 권한을 표기한다
                 <span class="level-item">개념정리</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/JavaScript/%EB%8D%B0%EB%AA%A8/">
@@ -613,7 +622,7 @@ rwx 로 권한을 표기한다
         <h3 class="menu-label">
             태그 클라우드
         </h3>
-        <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Shell-Commands/" style="font-size: 16.67px;">Shell Commands</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/short-circuit-evaluation/" style="font-size: 10px;">short-circuit evaluation</a> <a href="/tags/%EA%B0%9D%EC%B2%B4%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/" style="font-size: 13.33px;">객체에 대하여</a> <a href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/" style="font-size: 10px;">단락평가</a> <a href="/tags/%EB%94%94%EB%B0%94%EC%9A%B4%EC%8B%B1/" style="font-size: 10px;">디바운싱</a> <a href="/tags/%EB%A9%94%EB%AA%A8/" style="font-size: 10px;">메모</a> <a href="/tags/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/" style="font-size: 10px;">생각정리</a> <a href="/tags/%EC%8A%A4%ED%81%AC%EB%A1%A4%EC%9D%B4%EB%B2%A4%ED%8A%B8/" style="font-size: 10px;">스크롤이벤트</a> <a href="/tags/%EC%8B%9C%EB%A6%AC%EC%A6%88/" style="font-size: 13.33px;">시리즈</a> <a href="/tags/%EC%93%B0%EB%A1%9C%ED%8B%80%EB%A7%81/" style="font-size: 10px;">쓰로틀링</a> <a href="/tags/%EC%9D%B4%EB%B2%A4%ED%8A%B8/" style="font-size: 10px;">이벤트</a> <a href="/tags/%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" style="font-size: 10px;">지름길평가</a> <a href="/tags/%EC%A7%80%EC%97%B0%EB%A1%9C%EB%94%A9/" style="font-size: 10px;">지연로딩</a> <a href="/tags/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" style="font-size: 10px;">해시함수</a>
+        <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Shell-Commands/" style="font-size: 16.67px;">Shell Commands</a> <a href="/tags/async/" style="font-size: 10px;">async</a> <a href="/tags/await/" style="font-size: 10px;">await</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/short-circuit-evaluation/" style="font-size: 10px;">short-circuit evaluation</a> <a href="/tags/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/" style="font-size: 10px;">개념정리</a> <a href="/tags/%EA%B0%9D%EC%B2%B4%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/" style="font-size: 13.33px;">객체에 대하여</a> <a href="/tags/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80/" style="font-size: 10px;">단락평가</a> <a href="/tags/%EB%94%94%EB%B0%94%EC%9A%B4%EC%8B%B1/" style="font-size: 10px;">디바운싱</a> <a href="/tags/%EB%A9%94%EB%AA%A8/" style="font-size: 10px;">메모</a> <a href="/tags/%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/" style="font-size: 10px;">생각정리</a> <a href="/tags/%EC%8A%A4%ED%81%AC%EB%A1%A4%EC%9D%B4%EB%B2%A4%ED%8A%B8/" style="font-size: 10px;">스크롤이벤트</a> <a href="/tags/%EC%8B%9C%EB%A6%AC%EC%A6%88/" style="font-size: 13.33px;">시리즈</a> <a href="/tags/%EC%93%B0%EB%A1%9C%ED%8B%80%EB%A7%81/" style="font-size: 10px;">쓰로틀링</a> <a href="/tags/%EC%9D%B4%EB%B2%A4%ED%8A%B8/" style="font-size: 10px;">이벤트</a> <a href="/tags/%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" style="font-size: 10px;">지름길평가</a> <a href="/tags/%EC%A7%80%EC%97%B0%EB%A1%9C%EB%94%A9/" style="font-size: 10px;">지연로딩</a> <a href="/tags/%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98/" style="font-size: 10px;">해시함수</a>
     </div>
 </div>
     
@@ -650,6 +659,25 @@ rwx 로 권한을 표기한다
         <h3 class="menu-label">
             최근 글
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/17/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/async%EC%99%80%20await%20%EA%B0%84%EB%8B%A8%20%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="async함수와 await 표현식의 간단 개념정리">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T12:56:31.000Z">2019-11-17</time></div>
+                    <a href="/2019/11/17/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/async%EC%99%80%20await%20%EA%B0%84%EB%8B%A8%20%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">async함수와 await 표현식의 간단 개념정리</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a> / <a class="has-link-grey -link" href="/categories/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">개념정리</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -727,25 +755,6 @@ rwx 로 권한을 표기한다
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/27/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80%20%ED%98%B9%EC%9D%80%20%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="단락평가, 지름길 평가 (Short-circuit evaluation)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T17:14:39.000Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80%20%ED%98%B9%EC%9D%80%20%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="title has-link-black-ter is-size-6 has-text-weight-bold">단락평가, 지름길 평가 (Short-circuit evaluation)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a> / <a class="has-link-grey -link" href="/categories/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">개념정리</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -763,7 +772,7 @@ rwx 로 권한을 표기한다
                     <span class="level-item">11월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -829,15 +838,36 @@ rwx 로 권한을 표기한다
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/async/">
+                        <span class="tag">async</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/await/">
+                        <span class="tag">await</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/short-circuit-evaluation/">
                         <span class="tag">short-circuit evaluation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">
+                        <span class="tag">개념정리</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -950,6 +980,25 @@ rwx 로 권한을 표기한다
         
         <article class="media">
             
+            <a href="/2019/11/17/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/async%EC%99%80%20await%20%EA%B0%84%EB%8B%A8%20%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="async함수와 await 표현식의 간단 개념정리">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-17T12:56:31.000Z">2019-11-17</time></div>
+                    <a href="/2019/11/17/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/async%EC%99%80%20await%20%EA%B0%84%EB%8B%A8%20%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/" class="title has-link-black-ter is-size-6 has-text-weight-bold">async함수와 await 표현식의 간단 개념정리</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a> / <a class="has-link-grey -link" href="/categories/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">개념정리</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/10/Life/191110%20%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="19.11.10 생각 정리">
@@ -1024,25 +1073,6 @@ rwx 로 권한을 표기한다
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/27/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80%20%ED%98%B9%EC%9D%80%20%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="단락평가, 지름길 평가 (Short-circuit evaluation)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-26T17:14:39.000Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/%EB%8B%A8%EB%9D%BD%ED%8F%89%EA%B0%80%20%ED%98%B9%EC%9D%80%20%EC%A7%80%EB%A6%84%EA%B8%B8%ED%8F%89%EA%B0%80/" class="title has-link-black-ter is-size-6 has-text-weight-bold">단락평가, 지름길 평가 (Short-circuit evaluation)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a> / <a class="has-link-grey -link" href="/categories/JavaScript/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">개념정리</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1060,7 +1090,7 @@ rwx 로 권한을 표기한다
                     <span class="level-item">11월 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -1126,15 +1156,36 @@ rwx 로 권한을 표기한다
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/async/">
+                        <span class="tag">async</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/await/">
+                        <span class="tag">await</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/short-circuit-evaluation/">
                         <span class="tag">short-circuit evaluation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC/">
+                        <span class="tag">개념정리</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
