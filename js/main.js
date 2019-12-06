@@ -232,6 +232,7 @@
             };
 
             result.subHeadings.push(now.value);
+            parentPointer.set(now.value.tagName, result);
             previous = result;
         }
 
@@ -317,6 +318,7 @@
         try {
         const content = document.getElementsByClassName("content")[0];
         const tocObj = createTOCObject(content);
+        console.log(tocObj);
         
         tocObj.textContent = title.textContent;
         tocObj.id = "";
