@@ -3,6 +3,34 @@
 
 
     <url>
+        <loc>https://bityoungjae.com/tags/%25EC%25A7%2580%25EC%2597%25B0%25EB%25A1%259C%25EB%2594%25A9/</loc>
+        <lastmod>2019-12-07T06:23:01.159Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://bityoungjae.com/tags/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A1%25A4%25EC%259D%25B4%25EB%25B2%25A4%25ED%258A%25B8/</loc>
+        <lastmod>2019-12-07T06:23:01.159Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://bityoungjae.com/tags/%25EC%259D%25B4%25EB%25B2%25A4%25ED%258A%25B8/</loc>
+        <lastmod>2019-12-07T06:23:01.159Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://bityoungjae.com/tags/javascript/</loc>
+        <lastmod>2019-12-07T06:23:01.159Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://bityoungjae.com/tags/await/</loc>
         <lastmod>2019-11-17T14:03:58.255Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,34 +47,6 @@
     <url>
         <loc>https://bityoungjae.com/tags/%25EA%25B0%259C%25EB%2585%2590%25EC%25A0%2595%25EB%25A6%25AC/</loc>
         <lastmod>2019-11-17T14:03:58.255Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://bityoungjae.com/tags/javascript/</loc>
-        <lastmod>2019-11-17T14:03:58.255Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://bityoungjae.com/tags/%25EC%25A7%2580%25EC%2597%25B0%25EB%25A1%259C%25EB%2594%25A9/</loc>
-        <lastmod>2019-11-10T14:34:42.881Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://bityoungjae.com/tags/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A1%25A4%25EC%259D%25B4%25EB%25B2%25A4%25ED%258A%25B8/</loc>
-        <lastmod>2019-11-10T14:34:42.881Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://bityoungjae.com/tags/%25EC%259D%25B4%25EB%25B2%25A4%25ED%258A%25B8/</loc>
-        <lastmod>2019-11-10T14:34:42.881Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
